@@ -17,3 +17,58 @@
 		6 & 0            & 0            & \tfrac{1}{6} & 0            & \tfrac{1}{3} & \tfrac{1}{2}
 	\end{array}
 \]
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e1/.style   = {->, shorten >=2pt, shorten <=2pt},
+		e2/.style   = {->, shorten >=2pt, shorten <=2pt},
+		e3/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вероятности ---
+	\newcommand{\p}[1]{p_{#1}}
+	% если нужны цифры: раскомментировать ↓ и закомментировать ↑
+	\renewcommand{\p}[1]{\ifcase#1\relax \or \frac{1}{2}\or \frac{1}{3}\or \frac{1}{6}\fi}
+
+	% --- вершины ---
+	\node[state] (Q1) at (90:3)   {$123$};
+	\node[state] (Q2) at (30:3)   {$231$};
+	\node[state] (Q3) at (-30:3)  {$312$};
+	\node[state] (Q4) at (-90:3)  {$321$};
+	\node[state] (Q5) at (-150:3) {$213$};
+	\node[state] (Q6) at (150:3)  {$132$};
+
+	% --- рёбра ---
+	% Q1 = 123
+	\path[e1, bend left=12] (Q1) edge node[lbl] {$\p{1}$} (Q2);
+	\path[e2, bend left=12] (Q1) edge node[lbl] {$\p{2}$} (Q6);
+	\path[e3, loop above]   (Q1) edge node[lbl] {$\p{3}$} (Q1);
+
+	% Q2 = 231
+	\path[e1, loop right]   (Q2) edge node[lbl] {$\p{1}$} (Q2);
+	\path[e2, bend left=12] (Q2) edge node[lbl] {$\p{2}$} (Q3);
+	\path[e3, bend left=12] (Q2) edge node[lbl] {$\p{3}$} (Q5);
+
+	% Q3 = 312
+	\path[e1, bend left=12] (Q3) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, loop right]   (Q3) edge node[lbl] {$\p{2}$} (Q3);
+	\path[e3, bend left=12] (Q3) edge node[lbl] {$\p{3}$} (Q1);
+
+	% Q4 = 321
+	\path[e1, loop below]   (Q4) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, bend left=12] (Q4) edge node[lbl] {$\p{2}$} (Q3);
+	\path[e3, bend left=12] (Q4) edge node[lbl] {$\p{3}$} (Q5);
+
+	% Q5 = 213
+	\path[e1, bend left=12] (Q5) edge node[lbl] {$\p{1}$} (Q2);
+	\path[e2, bend left=12] (Q5) edge node[lbl] {$\p{2}$} (Q6);
+	\path[e3, loop left]    (Q5) edge node[lbl] {$\p{3}$} (Q5);
+
+	% Q6 = 132
+	\path[e1, bend left=12] (Q6) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, loop left]    (Q6) edge node[lbl] {$\p{2}$} (Q6);
+	\path[e3, bend left=12] (Q6) edge node[lbl] {$\p{3}$} (Q1);
+
+\end{tikzpicture}
