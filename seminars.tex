@@ -1,5 +1,7 @@
 \section{Семинары}
 
+\subsection{Семинар 1}
+
 \subsection{Семинар 2}
 
 \subsubsection*{Задача с книгами}
@@ -164,4 +166,140 @@
 
 \subsection{Семинар 3}
 
-\subsubsection*{Задача}
+\subsubsection*{Задача 3.1}
+
+\subsubsection*{Задача 3.2}
+
+\subsubsection*{Задача 3.3.1}
+
+Условие: $p+q=1$, $p,q>0$.
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q1) at (0,0) {$1$};
+	\node[state] (Q2) at (2.5,0) {$2$};
+	\node[state] (Q3) at (5,0) {$3$};
+
+	% --- рёбра ---
+	% Q1
+	\path[e, loop above]   (Q1) edge node[lbl] {$1$} (Q1);
+
+	% Q2
+	\path[e, bend left=12] (Q2) edge node[lbl] {$q$} (Q1);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p$} (Q3);
+
+	% Q3
+	\path[e, loop above]   (Q3) edge node[lbl] {$1$} (Q3);
+
+\end{tikzpicture}
+
+
+Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
+
+Решение.
+
+\[
+	P =
+	\begin{array}{c|ccc}
+		    & Q_1 & Q_2 & Q_3 \\ \hline
+		Q_1 & 1   & 0   & 0   \\
+		Q_2 & q   & 0   & p   \\
+		Q_3 & 0   & 0   & 1
+	\end{array}
+\]
+
+$P=P^2=P^n$
+
+\subsubsection*{Задача 3.3.2}
+
+Условие:
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q1) at (0,0) {$1$};
+	\node[state] (Q2) at (2.5,0) {$2$};
+	\node[state] (Q3) at (5,0) {$3$};
+
+	% --- рёбра ---
+	% Q1
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q2);
+
+	% Q2
+	\path[e, bend left=12] (Q2) edge node[lbl] {$q$} (Q1);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p$} (Q3);
+
+	% Q3
+	\path[e, bend left=12] (Q3) edge node[lbl] {$1$} (Q2);
+
+\end{tikzpicture}
+
+Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
+
+Решение.
+
+\[
+	P =
+	\begin{array}{c|ccc}
+		    & Q_1 & Q_2 & Q_3 \\ \hline
+		Q_1 & 0   & 1   & 0   \\
+		Q_2 & q   & 0   & p   \\
+		Q_3 & 0   & 1   & 0
+	\end{array}
+\]
+
+\subsubsection*{Задача 3.3.3}
+
+Условие:
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q1) at (0,0) {$1$};
+	\node[state] (Q2) at (2.5,0) {$2$};
+	\node[state] (Q3) at (5,0) {$3$};
+
+	% --- рёбра ---
+	% Q1
+	\path[e, loop above]   (Q1) edge node[lbl] {$q$} (Q1);
+	\path[e, bend left=12] (Q1) edge node[lbl] {$p$} (Q2);
+
+	% Q2
+	\path[e, bend left=12] (Q2) edge node[lbl] {$q$} (Q1);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p$} (Q3);
+
+	% Q3
+	\path[e, loop above]   (Q3) edge node[lbl] {$p$} (Q3);
+	\path[e, bend left=12] (Q3) edge node[lbl] {$q$} (Q2);
+
+\end{tikzpicture}
+
+Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
+
+Решение.
+
+\[
+	P =
+	\begin{array}{c|ccc}
+		    & Q_1 & Q_2 & Q_3 \\ \hline
+		Q_1 & q   & p   & 0   \\
+		Q_2 & q   & 0   & p   \\
+		Q_3 & 0   & q   & p
+	\end{array}
+\]
