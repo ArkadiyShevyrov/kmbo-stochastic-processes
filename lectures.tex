@@ -377,32 +377,6 @@ $\left\{ {P}(t) \right\}_{t \ge 0}$
 
 ---
 
-Составим систему уравнений Колмогорова:
-\[
-	\begin{cases}
-		p_0'(t) = -2p_0(t) + p_1(t);           \\
-		p_1'(t) = 2p_0(t) - 3p_1(t) + 2p_2(t); \\
-		p_2'(t) = 2p_1(t) - 2p_2(t).
-	\end{cases}
-\]
-
-Решая систему уравнений для стационарных вероятностей:
-\[
-	\begin{cases}
-		r_1 = 2r_0;         \\
-		3r_1 = 2r_0 + 2r_2; \\
-		r_1 = r_2;          \\
-		r_0 + r_1 + r_2 = 1;
-	\end{cases}
-\]
-
-находим
-\[
-	(r_0, r_1, r_2) = (0.2, 0.4, 0.4).
-\]
-
----
-
 \begin{align*}
 	{P}'(t)
 	 & = \lim_{\tau \to 0}
@@ -545,3 +519,324 @@ $\lim_{n \to \infty} [p_{ii}(\frac{t}{n})]^n
 Значит, $F_{\tau(i)}(t) = 1 - e^{-\lambda_i t}$,
 т.\,е. $\tau(i)$ имеет показатель­ное распределение с параметром $\lambda_i$.
 
+
+\subsection{Лекция 5}
+
+Пример. В системе 2 устройства и один мастер, проводящий ремонт.
+Работа системы описывается марковским процессом $\{X_t, t\in [0, +\infty) \}$,
+значением $X_t$ является число исправных устройств в момент времени $t$.
+Каждое устройство выходит из строя с интенсивностью $\lambda=1$,
+востановление устройства проходит с интенсивностью $\mu=2$.
+
+Граф системы имеет вид:
+
+\begin{center}
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style = {draw, circle, minimum size=9mm, font=\small},
+			e/.style   = {->, shorten >=2pt, shorten <=2pt},
+			lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+		]
+
+		% --- вершины ---
+		\node[state] (Q1) at (0,0) {$2$};
+		\node[state] (Q2) at (2.5,0) {$1$};
+		\node[state] (Q3) at (5,0) {$0$};
+
+		% --- рёбра ---
+		% Q1
+		\path[e, bend left=12]   (Q1) edge node[lbl] {$2$} (Q2);
+
+		% Q2
+		\path[e, bend left=12] (Q2) edge node[lbl] {$2$} (Q1);
+		\path[e, bend left=12] (Q2) edge node[lbl] {$1$} (Q3);
+
+		% Q3
+		\path[e, bend left=12]   (Q3) edge node[lbl] {$2$} (Q2);
+
+	\end{tikzpicture}
+\end{center}
+
+Найдём стационарные вероятности состояний.
+
+---
+
+
+Составим систему уравнений Колмогорова:
+\[
+	\begin{cases}
+		p_0'(t) = -2p_0(t) + p_1(t);           \\
+		p_1'(t) = 2p_0(t) - 3p_1(t) + 2p_2(t); \\
+		p_2'(t) = 2p_1(t) - 2p_2(t).
+	\end{cases}
+\]
+
+Решая систему уравнений для стационарных вероятностей:
+\[
+	\begin{cases}
+		r_1 = 2r_0;         \\
+		3r_1 = 2r_0 + 2r_2; \\
+		r_1 = r_2;          \\
+		r_0 + r_1 + r_2 = 1;
+	\end{cases}
+\]
+
+находим
+\[
+	(r_0, r_1, r_2) = (0.2, 0.4, 0.4).
+\]
+
+---
+
+\textbf{Задача 4.6.} \\
+\textit{Два устройства и один мастер. Пусть $E_i$~--- работают $i$ устройств.}
+
+\vspace{1em}
+
+\begin{center}
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style={draw, circle, minimum size=8mm, font=\small}
+		]
+		\node[state] (2) at (0,0) {2};
+		\node[state] (1) at (2.5,0) {1};
+		\node[state] (0) at (5,0) {0};
+
+		\path[->] (2) edge[bend left=20] node[above] {$2\lambda$} (1);
+		\path[->] (1) edge[bend left=20] node[below] {$\mu$} (2);
+
+		\path[->] (1) edge[bend left=20] node[above] {$\lambda$} (0);
+		\path[->] (0) edge[bend left=20] node[below] {$\mu$} (1);
+	\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+\[
+	\begin{cases}
+		2\lambda r_2 = \mu r_1,                     \\[4pt]
+		(\lambda+\mu) r_1 = 2\lambda r_2 + \mu r_0, \\[4pt]
+		\mu r_0 = \lambda r_1,                      \\[4pt]
+		r_0 + r_1 + r_2 = 1.
+	\end{cases}
+\]
+
+Из первого и третьего уравнений:
+\[
+	r_1 = \dfrac{2\lambda}{\mu} r_2,
+	\qquad
+	r_0 = \dfrac{\lambda}{\mu} r_1 = \dfrac{2\lambda^2}{\mu^2} r_2.
+\]
+
+Подставляем в нормировочное:
+\[
+	r_2\!\left(1 + \dfrac{2\lambda}{\mu} + \dfrac{2\lambda^2}{\mu^2}\right) = 1,
+	\quad\Rightarrow\quad
+	r_2 = \dfrac{\mu^2}{\mu^2 + 2\lambda\mu + 2\lambda^2}.
+\]
+
+Средняя доля времени простоя мастера: $r_2$
+
+Средняя доля времени занятости мастера:
+\[
+	1 - r_2 = \dfrac{2\lambda(1+\mu)}{\mu^2 + 2\lambda\mu + 2\lambda^2}.
+\]
+
+\[
+	r_1 = \dfrac{2\lambda\mu}{\mu^2 + 2\lambda\mu + 2\lambda^2},
+	\qquad
+	r_0 = \dfrac{2\lambda^2}{\mu^2 + 2\lambda\mu + 2\lambda^2}.
+\]
+
+
+\textbf{Задача 4.6} \quad [$\lambda = 1$, $\mu = 2$]
+
+\vspace{1em}
+
+\begin{center}
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style={draw, circle, minimum size=8mm, font=\small}
+		]
+		\node[state] (2) at (0,0) {2};
+		\node[state] (1) at (2.5,0) {1};
+		\node[state] (0) at (5,0) {0};
+
+		\path[->] (2) edge[bend left=20] node[above] {$2\lambda$} (1);
+		\path[->] (1) edge[bend left=20] node[below] {$\mu$} (2);
+
+		\path[->] (1) edge[bend left=20] node[above] {$\lambda$} (0);
+		\path[->] (0) edge[bend left=20] node[below] {$\mu$} (1);
+	\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+\[
+	\begin{cases}
+		p_0'(t) = -2p_0(t) + p_1(t),           \\[4pt]
+		p_1'(t) = 2p_0(t) + 2p_2(t) - 3p_1(t), \\[4pt]
+		p_2'(t) = 2p_1(t) - 2p_2(t),           \\[4pt]
+		p_2(0) = 1,\quad p_0(0) = p_1(0) = 0,  \\[4pt]
+		p_0 + p_1 + p_2 = 1.
+	\end{cases}
+\]
+
+$$p_i(t)=\pi_i (s)$$
+
+\vspace{1em}
+Переходим к изображению Лапласа:
+$$
+	\begin{cases}
+		S \pi_0  = -2 \pi_0 + \pi_1,     \\
+		S \pi_2 - 1 = 2 \pi_1 - 2 \pi_2. \\
+	\end{cases}
+$$
+
+Сумма вероятностей:
+\[
+	\pi_0 + \pi_1 + \pi_2 = \frac{1}{S}.
+\]
+
+Из первого и последнего уравнений:
+\[
+	\pi_0 = \frac{\pi_1}{S + 2}, \qquad
+	\pi_2 = \frac{1 + 2\pi_1}{S + 2}.
+\]
+
+Подставим:
+\[
+	\pi_1\!\left(\frac{1}{S + 2} + 1 + \frac{2}{S + 2}\right)
+	= \text{[тут у Лобузова какой-то бред с числами]}.
+\]
+
+Следовательно:
+\[
+	p_1(t) = \frac{2}{5}\left(1 - e^{-5t}\right).
+\]
+
+Аналогично:
+\[
+	\pi_0 = \frac{1}{S} \cdot \frac{1}{5} - \frac{1}{3} \cdot \frac{1}{S + 2} + \frac{2}{15} \cdot \frac{1}{S + 5},
+\]
+\[
+	p_0(t) = \frac{1}{5} - \frac{1}{3}e^{-2t} + \frac{2}{15}e^{-5t}.
+\]
+
+---
+
+\[
+	p_1(t) = \frac{2}{5} - \frac{2}{5} e^{-5t}
+	\quad \xrightarrow[t \to +\infty]{} \quad
+	\frac{2}{5},
+\]
+
+\[
+	p_0(t) = \frac{1}{5} - \frac{1}{3} e^{-2t} + \frac{2}{15} e^{-5t}
+	\quad \xrightarrow[t \to +\infty]{} \quad
+	\frac{1}{5},
+\]
+
+\[
+	p_2(t) = \frac{2}{5} + \frac{1}{3} e^{-2t} + \frac{4}{15} e^{-5t}
+	\quad \xrightarrow[t \to +\infty]{} \quad
+	\frac{2}{5}.
+\]
+
+\vspace{1em}
+
+\[
+	\pi_i(s) \; = \; p_i(t),
+	\qquad
+	p_i'(t) \; = \; s\,\pi_i(s) - p_i(0).
+\]
+
+---
+
+Пусть $\tau$ — время нахождения в состоянии $i$,
+а $\tau_{(s)}$ — время нахождения в этом состоянии после времени $s$.
+
+\[
+	P(\tau_{(s)} > t)
+	= P(\tau > s + t \mid \tau > s)
+	= \frac{e^{-\lambda (t + s)}}{e^{-\lambda s}}
+	= e^{-\lambda t},
+	\qquad [\,\lambda = \lambda_i\,].
+\]
+
+Отсюда
+\[
+	P(\tau_{(s)} \le t) =
+	\begin{cases}
+		0,                  & t < 0,   \\[6pt]
+		1 - e^{-\lambda t}, & t \ge 0,
+	\end{cases}
+	\qquad
+	\text{— показатель­ное распределение с параметром } \lambda.
+\]
+
+Следовательно $\tau_{(s)} \sim \tau$.
+
+\subsubsection*{Процессы рождения и гибели. Процесс Пуассона}
+
+Граф процесса рождения и гибели с конечным числом состояний
+
+\begin{center}
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style={draw, rectangle, minimum width=10mm, minimum height=8mm, font=\small, align=center}
+		]
+
+		% узлы
+		\node[state] (0) at (0,0) {0};
+		\node[state] (1) at (2,0) {1};
+		\node[state] (2) at (4,0) {2};
+		\node[state] (k) at (6,0) {$\dots$};
+		\node[state] (n) at (8,0) {$n$};
+
+		% стрелки вправо (рождения)
+		\path[->] (0) edge[bend left=20] node[above] {$\lambda_0$} (1);
+		\path[->] (1) edge[bend left=20] node[above] {$\lambda_1$} (2);
+		\path[->] (2) edge[bend left=20] node[above] {$\lambda_2$} (k);
+		\path[->] (k) edge[bend left=20] node[above] {$\lambda_{n-1}$} (n);
+
+		% стрелки влево (гибели)
+		\path[->] (1) edge[bend left=20] node[below] {$\mu_1$} (0);
+		\path[->] (2) edge[bend left=20] node[below] {$\mu_2$} (1);
+		\path[->] (k) edge[bend left=20] node[below] {$\mu_3$} (2);
+		\path[->] (n) edge[bend left=20] node[below] {$\mu_n$} (k);
+
+	\end{tikzpicture}
+\end{center}
+
+Система дифференциальных уравнений Колмогорова:
+
+\[
+	\begin{cases}
+		p_0'(t) = -\lambda_0 p_0(t) + \mu_1 p_1(t), \\[4pt]
+		p_k'(t) = \lambda_{k-1} p_{k-1}(t)
+		- (\lambda_k + \mu_k) p_k(t)
+		+ \mu_{k+1} p_{k+1}(t),
+		 & 1 \le k < n,                             \\[4pt]
+		p_n'(t) = \lambda_{n-1} p_{n-1}(t) - \mu_n p_n(t).
+	\end{cases}
+\]
+
+---
+
+Стационарные вероятности состояний $r_0, r_1, r_2, \ldots, r_n$ процесса рождения и гибели
+с конечным числом состояний удовлетворяют системе линейных алгебраических уравнений:
+
+\[
+	\begin{cases}
+		0 = -\lambda_0 r_0 + \mu_1 r_1, \\[4pt]
+		0 = \lambda_{k-1} r_{k-1} - (\lambda_k + \mu_k) r_k + \mu_{k+1} r_{k+1},
+		 & 1 \le k < n,                 \\[4pt]
+		0 = \lambda_{n-1} r_{n-1} - \mu_n r_n.
+	\end{cases}
+\]
+
+А также уравнению нормировки:
+\[
+	\sum_{k=0}^{n} r_k = 1.
+\]
