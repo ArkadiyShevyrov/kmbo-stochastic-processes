@@ -199,10 +199,9 @@
 
 \end{tikzpicture}
 
+Найти: $P$, $P^n$, $\overline{r}$ (стационарное распределение), $\lambda_1=1$, $\lambda_2$, $\lambda_3$ (собственные числа).
 
-Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
-
-Решение.
+\paragraph{Решение.}
 
 \[
 	P =
@@ -214,7 +213,46 @@
 	\end{array}
 \]
 
-$P=P^2=P^n$
+\[
+	P^0=I,\qquad P^2=P \;\Rightarrow\; P^n=P\ (n\ge1).
+\]
+
+Стационарное распределение $\overline r=(r_1,r_2,r_3)$ задаётся условиями
+\[
+	\overline r P = \overline r,\quad r_1+r_2+r_3=1,\quad r_i\ge0.
+\]
+Из $rP=\bigl(\,r\cdot\text{col}_1,\ r\cdot\text{col}_2,\ r\cdot\text{col}_3\,\bigr)$ и столбцов $P$ получаем систему
+\[
+	\begin{aligned}
+		r_1 & = r_1 + q r_2, \\
+		r_2 & = 0,           \\
+		r_3 & = p r_2 + r_3,
+	\end{aligned}
+	\qquad\Rightarrow\qquad
+	r_2=0,\ \ r_1+r_3=1.
+\]
+Отсюда
+\[
+	\overline r=(\alpha,\,0,\,1-\alpha),\quad \alpha\in[0,1].
+\]
+
+Собственные числа: вычислим характеристический многочлен
+\[
+	\det(P-\lambda I)=\det
+	\begin{pmatrix}
+		1-\lambda & 0        & 0         \\
+		q         & -\lambda & p         \\
+		0         & 0        & 1-\lambda
+	\end{pmatrix}
+	=(1-\lambda)\cdot(-\lambda)\cdot(1-\lambda)
+	=-\lambda(1-\lambda)^2.
+\]
+Следовательно,
+\[
+	\boxed{\ \lambda_1=1,\ \lambda_2=1,\ \lambda_3=0\ }.
+\]
+
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsubsection*{Задача 3.3.2}
 
@@ -233,21 +271,18 @@ $P=P^2=P^n$
 	\node[state] (Q3) at (5,0) {$3$};
 
 	% --- рёбра ---
-	% Q1
 	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q2);
 
-	% Q2
 	\path[e, bend left=12] (Q2) edge node[lbl] {$q$} (Q1);
 	\path[e, bend left=12] (Q2) edge node[lbl] {$p$} (Q3);
 
-	% Q3
 	\path[e, bend left=12] (Q3) edge node[lbl] {$1$} (Q2);
 
 \end{tikzpicture}
 
-Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
+Найти: $P$, $P^n$, $\overline{r}$ (стационарное распределение), $\lambda_1=1$, $\lambda_2$, $\lambda_3$ (собственные числа).
 
-Решение.
+\paragraph{Решение.}
 
 \[
 	P =
@@ -258,6 +293,65 @@ $P=P^2=P^n$
 		Q_3 & 0   & 1   & 0
 	\end{array}
 \]
+
+\emph{Степени.} Прямым перемножением:
+\[
+	P^2=
+	\begin{pmatrix}
+		q & 0 & p \\
+		0 & 1 & 0 \\
+		q & 0 & p
+	\end{pmatrix},
+	\qquad
+	P^{2k}=P^2,\quad P^{2k+1}=P\ \ (k\ge0),\quad P^0=I.
+\]
+
+\emph{Стационарное распределение.} Пусть $\overline r=(r_1,r_2,r_3)$.
+По столбцам $P$ имеем
+\[
+	\begin{aligned}
+		r_1 & = q r_2,     \\
+		r_2 & = r_1 + r_3, \\
+		r_3 & = p r_2,
+	\end{aligned}
+	\qquad r_1+r_2+r_3=1.
+\]
+Подставляя $r_1=q r_2$, $r_3=p r_2$ во второе уравнение:
+\[
+	r_2=(q r_2)+(p r_2)=(p+q)r_2=r_2 \quad(\text{тождество}).
+\]
+Из нормировки:
+\[
+	r_1+r_2+r_3=(q r_2)+r_2+(p r_2)=(1+p+q)r_2=2r_2=1 \Rightarrow r_2=\tfrac12,
+\]
+следовательно
+\[
+	\overline r=\Bigl(\tfrac{q}{2},\ \tfrac12,\ \tfrac{p}{2}\Bigr).
+\]
+
+\emph{Собственные числа.} Находим
+\[
+	\det(P-\lambda I)=
+	\det\begin{pmatrix}
+		-\lambda & 1        & 0        \\
+		q        & -\lambda & p        \\
+		0        & 1        & -\lambda
+	\end{pmatrix}
+	=(-\lambda)\!\det\!\begin{pmatrix}-\lambda&p\\[2pt]1&-\lambda\end{pmatrix}
+	-1\cdot\det\!\begin{pmatrix}q&p\\[2pt]0&-\lambda\end{pmatrix}.
+\]
+Отсюда
+\[
+	\det(P-\lambda I)=(-\lambda)(\lambda^2-p) - ( -q\lambda )
+	=-\lambda^3 + (p+q)\lambda
+	=-\lambda(\lambda^2-1).
+\]
+Так как $p+q=1$, получаем
+\[
+	\boxed{\ \lambda_1=1,\ \lambda_2=0,\ \lambda_3=-1\ }.
+\]
+
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsubsection*{Задача 3.3.3}
 
@@ -276,23 +370,20 @@ $P=P^2=P^n$
 	\node[state] (Q3) at (5,0) {$3$};
 
 	% --- рёбра ---
-	% Q1
 	\path[e, loop above]   (Q1) edge node[lbl] {$q$} (Q1);
 	\path[e, bend left=12] (Q1) edge node[lbl] {$p$} (Q2);
 
-	% Q2
 	\path[e, bend left=12] (Q2) edge node[lbl] {$q$} (Q1);
 	\path[e, bend left=12] (Q2) edge node[lbl] {$p$} (Q3);
 
-	% Q3
 	\path[e, loop above]   (Q3) edge node[lbl] {$p$} (Q3);
 	\path[e, bend left=12] (Q3) edge node[lbl] {$q$} (Q2);
 
 \end{tikzpicture}
 
-Найти: $P$, $P^n$,$\overline{r}$ (стационарное распределение),$\lambda_1 = 1$, $\lambda_2$, $\lambda_3$ (собственные числа), $\mathbf{v_1}$, $\mathbf{v_2}$, $\mathbf{v_3}$ (собственные векторы).
+Найти: $P$, $P^n$, $\overline{r}$ (стационарное распределение), $\lambda_1=1$, $\lambda_2$, $\lambda_3$ (собственные числа).
 
-Решение.
+\paragraph{Решение.}
 
 \[
 	P =
@@ -302,4 +393,76 @@ $P=P^2=P^n$
 		Q_2 & q   & 0   & p   \\
 		Q_3 & 0   & q   & p
 	\end{array}
+\]
+
+\emph{Стационарное распределение.} Пусть $\overline r=(r_1,r_2,r_3)$.
+Из $rP=\overline r$ по столбцам получаем
+\[
+	\begin{aligned}
+		r_1 & = q(r_1+r_2),    \\
+		r_2 & = p r_1 + q r_3, \\
+		r_3 & = p(r_2+r_3),
+	\end{aligned}
+	\qquad r_1+r_2+r_3=1.
+\]
+Из первого и третьего:
+\[
+	(1-q)r_1=q r_2 \ \Rightarrow\ p r_1=q r_2 \ \Rightarrow\ r_2=\frac{p}{q}r_1,
+	\qquad
+	(1-p)r_3=p r_2 \ \Rightarrow\ q r_3=p r_2 \ \Rightarrow\ r_3=\frac{p}{q}r_2.
+\]
+Следовательно
+\[
+	r_1:r_2:r_3 = 1 : \frac{p}{q} : \frac{p^2}{q^2} = q^2 : pq : p^2.
+\]
+Нормируя на единицу, получаем
+\[
+	\overline r=\pi=
+	\frac{1}{\,q^2+pq+p^2\,}\,(q^2,\ pq,\ p^2).
+\]
+
+\emph{Собственные числа.} Находим характеристический многочлен:
+\[
+	\det(P-\lambda I)=
+	\det\begin{pmatrix}
+		q-\lambda & p        & 0         \\
+		q         & -\lambda & p         \\
+		0         & q        & p-\lambda
+	\end{pmatrix}
+	=(q-\lambda)\bigl(\lambda^2-\lambda p-pq\bigr)-pq(p-\lambda).
+\]
+Раскрывая и используя $p+q=1$:
+\[
+	\det(P-\lambda I)
+	= -\lambda^3+\lambda^2+pq\,\lambda-pq
+	= -(\lambda-1)(\lambda^2-pq).
+\]
+Итак,
+\[
+	\boxed{\ \lambda_1=1,\quad \lambda_2=\sqrt{pq},\quad \lambda_3=-\sqrt{pq}\ }.
+\]
+
+\[
+	P^2 =
+	\begin{pmatrix}
+		q   & pq  & p^2 \\
+		q^2 & 2pq & p^2 \\
+		q^2 & pq  & p
+	\end{pmatrix},
+	\qquad
+	P^3 =
+	\begin{pmatrix}
+		q^2(1+p) & pq(1+p) & p^2      \\
+		q^2(1+p) & pq      & p^2(1+q) \\
+		q^2      & pq(1+q) & p^2(1+q)
+	\end{pmatrix}.
+\]
+
+\[
+	P^4 =
+	\begin{pmatrix}
+		q^2(1+p)  & pq(1+pq)  & p^2(1+pq) \\
+		q^2(1+pq) & pq(1+2pq) & p^2(1+pq) \\
+		q^2(1+pq) & pq(1+pq)  & p^2(1+q)
+	\end{pmatrix}.
 \]
