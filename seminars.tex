@@ -797,7 +797,8 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 
 \end{tikzpicture}
 
-Найти: $P$, $\overline{r}$ (стационарное распределение), que.
+Найти: $P$, $\overline{r}$ (стационарное распределение), $\mathrm{que} := \mathbb E[K]$.
+
 \paragraph{Решение.}
 
 \[
@@ -818,7 +819,6 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\overline r P = \overline r,\quad \sum_{i=0}^\infty r_i = 1,\quad r_i\ge0.
 \]
 Из матрицы $P$ получаем систему:
-
 \[
 	\begin{array}{rcl}
 		\begin{aligned}
@@ -830,48 +830,43 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\end{array}
 \]
 
-
 \subsubsection*{Задача 5.1}
 
-При вероятностях $p_0=\tfrac{1}{2},\quad p_1=\tfrac{1}{4},\quad p_2=\tfrac{1}{4}$
+Пусть $p_0=\tfrac{1}{2},\ p_1=\tfrac{1}{4},\ p_2=\tfrac{1}{4}$. Тогда
 \[
 	\begin{array}{rcl}
 		\begin{aligned}
 			r_0 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1,                                           \\
 			r_1 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{2} r_2,                        \\
 			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{2} r_3,     \\
-			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{4} r_k + \tfrac{1}{2} r_{k+1}, \quad k \ge 3.
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{4} r_k + \tfrac{1}{2} r_{k+1}, \quad k \ge 2.
 		\end{aligned}
 		 & \qquad \Rightarrow \qquad &
 		\begin{aligned}
-			r_0 & = r_0,                                 \\
-			r_1 & = r_0,                                 \\
-			r_2 & = \tfrac{1}{2} r_0,                    \\
-			r_k & = \tfrac{1}{2^{k-2}} r_0,\quad k\ge 3.
+			r_1 & = r_0,                         \\
+			r_2 & = r_0,                         \\
+			r_k & = r_0\,2^{\,2-k},\quad k\ge 2.
 		\end{aligned}
 	\end{array}
 \]
 
 \[
-	\sum_{i=0}^\infty r_i
-	= r_0 + r_0 + \tfrac{1}{2}r_0 + \tfrac{1}{4}r_0 + \tfrac{1}{8}r_0 + \ldots
-	= r_0\!\left(1 + 1 + \tfrac{1}{2} + \sum_{k=3}^\infty 2^{-(k-1)}\right)
-	= 4r_0 = 1 \;\Rightarrow\; r_0 = \tfrac{1}{4}.
+	\sum_{i=0}^\infty r_i = r_0+r_1+r_2+\sum_{k=3}^\infty r_0\,2^{\,2-k}
+	=3r_0+r_0\!\sum_{m=1}^\infty 2^{-m}=4r_0=1
+	\ \Rightarrow\ r_0=\tfrac14.
 \]
 
 
-Следовательно,
 \[
 	\overline r = \left(\tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{8},\ \tfrac{1}{16},\ \tfrac{1}{32},\ \ldots\right).
 \]
 
 \[
-	que = \sum_{i=0}^\infty v_i r_i =
-	= \tfrac{1}{4} + \tfrac{2}{8} + \sum_{k=3}^\infty k \cdot \tfrac{1}{2^{k+1}}
-	= \tfrac{1}{4} + \tfrac{1}{4} + \tfrac{1}{2}
-	= 1.
+	\mathrm{que}=\mathbb E[K]=\sum_{k=0}^\infty k\,r_k
+	=\tfrac14+\tfrac12+\sum_{k=3}^\infty k\,2^{-k}
+	=\tfrac34+\Bigl(\sum_{k=1}^\infty k\,2^{-k}-\tfrac12-\tfrac12\Bigr)
+	=\tfrac34+1=\tfrac{7}{4}.
 \]
-
 
 \subsubsection*{Задача 5.2}
 
@@ -882,21 +877,165 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 			r_0 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1,                                           \\
 			r_1 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2,                        \\
 			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{4} r_3,     \\
-			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{2} r_k + \tfrac{1}{4} r_{k+1}, \quad k \ge 3.
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{2} r_k + \tfrac{1}{4} r_{k+1}, \quad k \ge 2,
 		\end{aligned}
 		 & \qquad \Rightarrow \qquad &
 		\begin{aligned}
-			r_0 & = r_0,                 \\
-			r_1 & = 3r_0,                \\
-			r_2 & = 4r_0,                \\
-			r_k & = 4r_0, \quad k \ge 3.
+			r_1 & = 3r_0,                    \\
+			r_2 & = 4r_0,                    \\
+			r_k & = r_0\,(k+2),\quad k\ge 0.
 		\end{aligned}
 	\end{array}
 \]
-
-Нормированного решения нет, стационарного распределения не существует.
+Серия \(\sum_{k\ge0} r_k\) расходится, нормированного решения нет; стационарное распределение не существует.
 
 
 \subsection{Семинар 6}
 
 \subsubsection*{Задача 6.1}
+
+\[
+	p'(0)=\Lambda =
+	\begin{pmatrix}
+		0 & 0  & 0 \\
+		1 & -2 & 1 \\
+		0 & 0  & 0
+	\end{pmatrix}
+\]
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
+
+\end{tikzpicture}
+
+\[
+	\vec{p}(0) = (0,1,0).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t),     \\
+		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-2) + p_3(t)\cdot 0 = -2p_2(t), \\
+		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_2(t) & = p_2(0)e^{-2t} = e^{-2t},                                       \\
+		p_1(t) & = \int p_2(t)\,dt = \int e^{-2t}\,dt = -\tfrac{1}{2}e^{-2t}+C_1, \\
+		p_3(t) & = \int p_2(t)\,dt = \int e^{-2t}\,dt = -\tfrac{1}{2}e^{-2t}+C_2.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(0) & = -\tfrac{1}{2}+C_1=0 \ \Rightarrow\ C_1=\tfrac{1}{2}, \\
+		p_3(0) & = -\tfrac{1}{2}+C_2=0 \ \Rightarrow\ C_2=\tfrac{1}{2}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \tfrac{1}{2}-\tfrac{1}{2}e^{-2t}, \\
+		p_2(t) & = e^{-2t},                          \\
+		p_3(t) & = \tfrac{1}{2}-\tfrac{1}{2}e^{-2t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(\tfrac{1}{2},\,0,\,\tfrac{1}{2}\right).
+\]
+
+\subsubsection*{Задача 6.2}
+
+
+\[
+	p'(0)=\Lambda =
+	\begin{pmatrix}
+		0 & 0  & 0 \\
+		1 & -2 & 1 \\
+		0 & 0  & 0
+	\end{pmatrix}
+\]
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
+
+\end{tikzpicture}
+
+\[
+	\vec{p}(0) = (\beta_1,\beta_2,\beta_3).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t),     \\
+		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-2) + p_3(t)\cdot 0 = -2p_2(t), \\
+		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_2(t) & = p_2(0)e^{-2t} = \beta_2 e^{-2t},                                             \\
+		p_1(t) & = \int p_2(t)\,dt = \int \beta_2 e^{-2t}\,dt = -\tfrac{\beta_2}{2}e^{-2t}+C_1, \\
+		p_3(t) & = \int p_2(t)\,dt = \int \beta_2 e^{-2t}\,dt = -\tfrac{\beta_2}{2}e^{-2t}+C_2.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(0) & = -\tfrac{\beta_2}{2}+C_1=\beta_1 \ \Rightarrow\ C_1=\beta_1+\tfrac{\beta_2}{2}, \\
+		p_3(0) & = -\tfrac{\beta_2}{2}+C_2=\beta_3 \ \Rightarrow\ C_2=\beta_3+\tfrac{\beta_2}{2}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \beta_1+\tfrac{\beta_2}{2}-\tfrac{\beta_2}{2}e^{-2t}, \\
+		p_2(t) & = \beta_2 e^{-2t},                                      \\
+		p_3(t) & = \beta_3+\tfrac{\beta_2}{2}-\tfrac{\beta_2}{2}e^{-2t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(\beta_1+\tfrac{\beta_2}{2},\,0,\,\beta_3+\tfrac{\beta_2}{2}\right).
+\]
+
+\subsubsection*{Задача 6.3}
+
