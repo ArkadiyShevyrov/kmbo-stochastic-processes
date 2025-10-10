@@ -767,66 +767,65 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	]
 
 	% --- вершины ---
-	\node[state] (Q1) at (0,0) {$1$};
-	\node[state] (Q2) at (2.5,0) {$2$};
-	\node[state] (Q3) at (5,0) {$3$};
-	\node[state] (Q4) at (7.5,0) {$4$};
-	\node[state] (Q5) at (10,0) {$5$};
-	\node[state] (Q6) at (12.5,0) {$...$};
+	\node[state] (Q0) at (0,0) {$0$};
+	\node[state] (Q1) at (2.5,0) {$1$};
+	\node[state] (Q2) at (5,0) {$2$};
+	\node[state] (Q3) at (7.5,0) {$3$};
+	\node[state] (Q4) at (10,0) {$4$};
+	\node[state] (Q5) at (12.5,0) {$\ldots$};
 
 	% --- рёбра ---
+	\path[e, loop above]   (Q0) edge node[lbl] {$p_0$} (Q0);
+	\path[e, bend left=12] (Q0) edge node[lbl] {$p_1$} (Q1);
+	\path[e, bend left=56] (Q0) edge node[lbl] {$p_2$} (Q2);
+
+	\path[e, bend left=12] (Q1) edge node[lbl] {$p_0$} (Q0);
 	\path[e, loop above]   (Q1) edge node[lbl] {$p_1$} (Q1);
 	\path[e, bend left=12] (Q1) edge node[lbl] {$p_2$} (Q2);
-	\path[e, bend left=56] (Q1) edge node[lbl] {$p_3$} (Q3);
 
-	\path[e, bend left=12] (Q2) edge node[lbl] {$p_1$} (Q1);
-	\path[e, loop above]   (Q2) edge node[lbl] {$p_2$} (Q2);
-	\path[e, bend left=12] (Q2) edge node[lbl] {$p_3$} (Q3);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p_0$} (Q1);
+	\path[e, loop above]   (Q2) edge node[lbl] {$p_1$} (Q2);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p_2$} (Q3);
 
-	\path[e, bend left=12] (Q3) edge node[lbl] {$p_1$} (Q2);
-	\path[e, loop above]   (Q3) edge node[lbl] {$p_2$} (Q3);
-	\path[e, bend left=12] (Q3) edge node[lbl] {$p_3$} (Q4);
+	\path[e, bend left=12] (Q3) edge node[lbl] {$p_0$} (Q2);
+	\path[e, loop above]   (Q3) edge node[lbl] {$p_1$} (Q3);
+	\path[e, bend left=12] (Q3) edge node[lbl] {$p_2$} (Q4);
 
-	\path[e, bend left=12] (Q4) edge node[lbl] {$p_1$} (Q3);
-	\path[e, loop above]   (Q4) edge node[lbl] {$p_2$} (Q4);
-	\path[e, bend left=12] (Q4) edge node[lbl] {$p_3$} (Q5);
-
-	\path[e, bend left=12] (Q5) edge node[lbl] {$p_1$} (Q4);
-	\path[e, loop above]   (Q5) edge node[lbl] {$p_2$} (Q5);
-	\path[e, bend left=12] (Q5) edge node[lbl] {$p_3$} (Q6);
+	\path[e, bend left=12] (Q4) edge node[lbl] {$p_0$} (Q3);
+	\path[e, loop above]   (Q4) edge node[lbl] {$p_1$} (Q4);
+	\path[e, bend left=12] (Q4) edge node[lbl] {$p_2$} (Q5);
 
 \end{tikzpicture}
 
-Найти: $P$, $\overline{r}$ (стационарное распределение).
+Найти: $P$, $\overline{r}$ (стационарное распределение), que.
 \paragraph{Решение.}
 
 \[
 	P =
 	\begin{array}{c|cccccc}
-		       & Q_1    & Q_2    & Q_3    & Q_4    & Q_5    & \ldots \\
-		\hline
-		Q_1    & p_1    & p_2    & p_3    & 0      & 0      & \ldots \\
-		Q_2    & p_1    & p_2    & p_3    & 0      & 0      & \ldots \\
-		Q_3    & 0      & p_1    & p_2    & p_3    & 0      & \ldots \\
-		Q_4    & 0      & 0      & p_1    & p_2    & p_3    & \ldots \\
-		Q_5    & 0      & 0      & 0      & p_1    & p_2    & \ldots \\
+		       & Q_0    & Q_1    & Q_2    & Q_3    & Q_4    & \ldots \\ \hline
+		Q_0    & p_0    & p_1    & p_2    & 0      & 0      & \ldots \\
+		Q_1    & p_0    & p_1    & p_2    & 0      & 0      & \ldots \\
+		Q_2    & 0      & p_0    & p_1    & p_2    & 0      & \ldots \\
+		Q_3    & 0      & 0      & p_0    & p_1    & p_2    & \ldots \\
+		Q_4    & 0      & 0      & 0      & p_0    & p_1    & \ldots \\
 		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
 	\end{array}
 \]
 
-Стационарное распределение $\overline r=(r_1,r_2,r_3,r_4,\ldots)$ задаётся условиями
+Стационарное распределение $\overline r=(r_0,r_1,r_2,r_3,\ldots)$ задаётся условиями
 \[
-	\overline r P = \overline r,\quad \sum_{i=1}^\infty r_i = 1,\quad r_i\ge0.
+	\overline r P = \overline r,\quad \sum_{i=0}^\infty r_i = 1,\quad r_i\ge0.
 \]
 Из матрицы $P$ получаем систему:
 
 \[
 	\begin{array}{rcl}
 		\begin{aligned}
-			r_1 & = p_1 r_1 + p_1 r_2,                           \\
-			r_2 & = p_2 r_1 + p_2 r_2 + p_1 r_3,                 \\
-			r_3 & = p_3 r_1 + p_3 r_2 + p_2 r_3 + p_1 r_4,       \\
-			r_k & = p_3 r_{k-2} + p_2 r_k + p_1 r_{k+1}, k\geq 4
+			r_0 & = p_0 r_0 + p_0 r_1,                                 \\
+			r_1 & = p_1 r_0 + p_1 r_1 + p_0 r_2,                       \\
+			r_2 & = p_2 r_0 + p_2 r_1 + p_1 r_2 + p_0 r_3,             \\
+			r_k & = p_2 r_{k-1} + p_1 r_k + p_0 r_{k+1}, \quad k\ge 2.
 		\end{aligned}
 	\end{array}
 \]
@@ -834,70 +833,68 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 
 \subsubsection*{Задача 5.1}
 
-При вероятностях $p_1=\tfrac{1}{2},\quad p_2=\tfrac{1}{4},\quad p_3=\tfrac{1}{4}$
-
+При вероятностях $p_0=\tfrac{1}{2},\quad p_1=\tfrac{1}{4},\quad p_2=\tfrac{1}{4}$
 \[
 	\begin{array}{rcl}
 		\begin{aligned}
-			r_1 & = \tfrac{1}{2} r_1 + \tfrac{1}{2} r_2,                                           \\
-			r_2 & = \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{2} r_3,                        \\
-			r_3 & = \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{4} r_3 + \tfrac{1}{2} r_4,     \\
-			r_k & = \tfrac{1}{4} r_{k-2} + \tfrac{1}{4} r_k + \tfrac{1}{2} r_{k+1}, \quad k \ge 3.
+			r_0 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1,                                           \\
+			r_1 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{2} r_2,                        \\
+			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{2} r_3,     \\
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{4} r_k + \tfrac{1}{2} r_{k+1}, \quad k \ge 3.
 		\end{aligned}
 		 & \qquad \Rightarrow \qquad &
 		\begin{aligned}
-			r_1 & = r_1,                   \\
-			r_2 & = r_1,                   \\
-			r_3 & = \frac{1}{2} r_1,       \\
-			r_k & = \frac{1}{2^{k-2}} r_1.
+			r_0 & = r_0,                                 \\
+			r_1 & = r_0,                                 \\
+			r_2 & = \tfrac{1}{2} r_0,                    \\
+			r_k & = \tfrac{1}{2^{k-2}} r_0,\quad k\ge 3.
 		\end{aligned}
 	\end{array}
 \]
 
 \[
-	\begin{aligned}
-		que = \sum_{i=1}^\infty r_i
-		= r_1 + r_1 + \tfrac{1}{2}r_1 + \tfrac{1}{4}r_1 + \tfrac{1}{8}r_1 + \ldots
-		= r_1 \left(1 + 1 + \tfrac{1}{2} + \sum_{k=3}^\infty \tfrac{1}{2^{k-2}}\right)
-		= 4r_1 = 1 \;\Rightarrow\; r_1 = \tfrac{1}{4}.
-	\end{aligned}
+	\sum_{i=0}^\infty r_i
+	= r_0 + r_0 + \tfrac{1}{2}r_0 + \tfrac{1}{4}r_0 + \tfrac{1}{8}r_0 + \ldots
+	= r_0\!\left(1 + 1 + \tfrac{1}{2} + \sum_{k=3}^\infty 2^{-(k-1)}\right)
+	= 4r_0 = 1 \;\Rightarrow\; r_0 = \tfrac{1}{4}.
 \]
 
 
 Следовательно,
 \[
-	\overline r = \left(\frac{1}{4},\ \frac{1}{4},\ \frac{1}{8},\ \frac{1}{16},\ \frac{1}{32},\ \ldots\right).
+	\overline r = \left(\tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{8},\ \tfrac{1}{16},\ \tfrac{1}{32},\ \ldots\right).
+\]
+
+\[
+	que = \sum_{i=0}^\infty v_i r_i =
+	= \tfrac{1}{4} + \tfrac{2}{8} + \sum_{k=3}^\infty k \cdot \tfrac{1}{2^{k+1}}
+	= \tfrac{1}{4} + \tfrac{1}{4} + \tfrac{1}{2}
+	= 1.
 \]
 
 
 \subsubsection*{Задача 5.2}
 
-При вероятностях $p_1=\tfrac{1}{4},\quad p_2=\tfrac{1}{2},\quad p_3=\tfrac{1}{4}$
-
+При вероятностях $p_0=\tfrac{1}{4},\quad p_1=\tfrac{1}{2},\quad p_2=\tfrac{1}{4}$
 \[
 	\begin{array}{rcl}
 		\begin{aligned}
-			r_1 & = \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2,                                           \\
-			r_2 & = \tfrac{1}{2} r_1 + \tfrac{1}{2} r_2 + \tfrac{1}{4} r_3,                        \\
-			r_3 & = \tfrac{1}{4} r_1 + \tfrac{1}{2} r_2 + \tfrac{1}{4} r_3 + \tfrac{1}{4} r_4,     \\
-			r_k & = \tfrac{1}{4} r_{k-2} + \tfrac{1}{2} r_k + \tfrac{1}{4} r_{k+1}, \quad k \ge 3.
+			r_0 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1,                                           \\
+			r_1 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2,                        \\
+			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{4} r_3,     \\
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{2} r_k + \tfrac{1}{4} r_{k+1}, \quad k \ge 3.
 		\end{aligned}
 		 & \qquad \Rightarrow \qquad &
 		\begin{aligned}
-			r_1 & = r_2,                    \\
-			r_2 & = 2r_1,                   \\
-			r_3 & = r_1,                    \\
-			r_k & = r_{k-2}, \quad k \ge 3.
+			r_0 & = r_0,                 \\
+			r_1 & = 3r_0,                \\
+			r_2 & = 4r_0,                \\
+			r_k & = 4r_0, \quad k \ge 3.
 		\end{aligned}
 	\end{array}
 \]
 
-\[
-	\begin{aligned}
-	\end{aligned}
-\]
-
-Нет нормированного решения, следовательно, стационарного распределения нет.
+Нормированного решения нет, стационарного распределения не существует.
 
 
 \subsection{Семинар 6}
