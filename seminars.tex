@@ -1038,57 +1038,6 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(\beta_1+\tfrac{\beta_2}{2},\,0,\,\beta_3+\tfrac{\beta_2}{2}\right).
 \]
 
-\subsubsection*{Задача 6.3}
-
-
-\begin{tikzpicture}[
-		>=Stealth, thick,
-		state/.style = {draw, circle, minimum size=9mm, font=\small},
-		e/.style   = {->, shorten >=2pt, shorten <=2pt},
-		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
-	]
-
-	% --- вершины ---
-	\node[state] (Q0) at (0,0) {$1$};
-	\node[state] (Q1) at (2.5,0) {$2$};
-	\node[state] (Q2) at (5,0) {$3$};
-
-	% --- рёбра ---
-	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
-	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
-
-	\path[e, bend left=12]   (Q2) edge node[lbl] {$1$} (Q1);
-
-\end{tikzpicture}
-
-
-\[
-	\Lambda =
-	\begin{pmatrix}
-		0 & 0  & 0  \\
-		1 & -2 & 1  \\
-		0 & 1  & -1
-	\end{pmatrix}
-\]
-
-\[
-	\vec{p}(0) = (0,0,1).
-\]
-
-\[
-	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
-\]
-
-\[
-	\begin{aligned}
-		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t),            \\
-		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-2) + p_3(t)\cdot 1 = -2p_2(t)+p_3(t), \\
-		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot(-1) = p_2(t)-p_3(t).
-	\end{aligned}
-\]
-
-
-
 \subsection{Семинар 7}
 
 \subsubsection*{Задача 7.1}
@@ -1107,8 +1056,8 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\node[state] (Q2) at (5,0) {$3$};
 
 	% --- рёбра ---
-	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
-	\path[e, bend left=12]   (Q1) edge node[lbl] {$2$} (Q2);
+	\path[e, bend left=12] (Q1) edge node[lbl] {$2$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
 
 	\path[e, bend left=12]   (Q2) edge node[lbl] {$2$} (Q1);
 
@@ -1140,21 +1089,103 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\end{aligned}
 \]
 
+Преобразование Лапласа:
 
 \[
-	s \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
+	\mathcal{L}\{\vec p'(t)\}(s)=s \vec \pi(s)-\vec p(0)
+	,\quad
+	\mathcal{L}\{\vec p(t)\}(s)=\vec \pi(s)
+	,\quad
+	s \vec \pi(s)-\vec p(0)=\vec \pi(s)\Lambda.
+\]
+
+\[
+	\pi_1+\pi_2+\pi_3=\frac{1}{s}
 \]
 
 \[
 	\begin{aligned}
-		s \pi_1(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 2 + \pi_3(s)\cdot 0 = 2\pi_2(s),              \\
+		s \pi_1(s)-0 & = \pi_1(s)\cdot(0) + \pi_2(s)\cdot 2 + \pi_3(s)\cdot 0 = 2\pi_2(s),             \\
 		s \pi_2(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot(-3) + \pi_3(s)\cdot 2 = -3\pi_2(s)+2\pi_3(s), \\
 		s \pi_3(s)-1 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot(-2) = \pi_2(s)-2\pi_3(s).
 	\end{aligned}
 \]
 
+\[
+	\begin{aligned}
+		(s)\pi_1(s)-2\pi_2(s)    & = 0, \\
+		-2\pi_3(s)+(s+3)\pi_2(s) & = 0, \\
+		-\pi_2(s)+(s+2)\pi_3(s)  & = 1.
+	\end{aligned}
+\]
 
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{2}{s}\pi_2(s),   \\
+		\pi_3(s) & = \frac{s+3}{2}\pi_2(s).
+	\end{aligned}
+\]
 
+\[
+	\pi_2(s)\left(\frac{2}{s}+1+\frac{s+3}{2}\right) = \frac{1}{s}.
+\]
+
+\[
+	\pi_2(s)\left(\frac{4+2s+s(s+3)}{2s}\right) = \frac{1}{s}.
+\]
+
+\[
+	\pi_2(s) = \frac{2}{4+2s+s(s+3)}
+	= \frac{2}{s^2+5s+4}
+	=\frac{2}{(s+1)(s+4)}.
+\]
+
+\[
+	\pi_1(s) = \frac{2}{s} \pi_2(s) = \frac{4}{s(s+1)(s+4)},
+	\quad
+	\pi_3(s) = \frac{s+3}{2} \pi_2(s) = \frac{s+3}{(s+1)(s+4)}.
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{4}{s(s+1)(s+4)}
+		= \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+4}                         \\
+		\pi_2(s) & = \frac{2}{(s+1)(s+4)} = \frac{D}{s+1} + \frac{E}{s+4}     \\
+		\pi_3(s) & =	 \frac{s+3}{(s+1)(s+4)} = \frac{F}{s+1} + \frac{G}{s+4}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		A & = \lim_{s\rightarrow 0} s\pi_1(s)      = \frac{4}{(0+1)(0+4)} = 1,         \\
+		B & = \lim_{s\rightarrow -1} (s+1)\pi_1(s) = \frac{4}{(-1)(3)} = -\frac{4}{3}, \\
+		C & = \lim_{s\rightarrow -4} (s+4)\pi_1(s) = \frac{4}{(-4)(-3)} = \frac{1}{3}, \\
+		D & = \lim_{s\rightarrow -1} (s+1)\pi_2(s) = \frac{2}{(-1+4)} = \frac{2}{3},   \\
+		E & = \lim_{s\rightarrow -4} (s+4)\pi_2(s) = \frac{2}{(-4+1)} = -\frac{2}{3},  \\
+		F & = \lim_{s\rightarrow -1} (s+1)\pi_3(s) = \frac{-1+3}{-1+4} = \frac{2}{3},  \\
+		G & = \lim_{s\rightarrow -4} (s+4)\pi_3(s) = \frac{-4+3}{-4+1} = \frac{1}{3}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{1}{s} - \frac{4}{3(s+1)} + \frac{1}{3(s+4)}, \\
+		\pi_2(s) & = \frac{2}{3(s+1)} - \frac{2}{3(s+4)},               \\
+		\pi_3(s) & = \frac{2}{3(s+1)} + \frac{1}{3(s+4)}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \mathcal{L}^{-1}\{\pi_1(s)\}(t) = 1 - \tfrac{4}{3}e^{-t} + \tfrac{1}{3}e^{-4t}, \\
+		p_2(t) & = \mathcal{L}^{-1}\{\pi_2(s)\}(t) = \tfrac{2}{3}e^{-t} - \tfrac{2}{3}e^{-4t},     \\
+		p_3(t) & = \mathcal{L}^{-1}\{\pi_3(s)\}(t) = \tfrac{2}{3}e^{-t} + \tfrac{1}{3}e^{-4t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(1,\,0,\,0\right).
+\]
 
 \subsubsection*{Задача 7.2}
 
@@ -1252,8 +1283,8 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 \]
 
 \[
-	\pi_1(s) = \frac{(s+2)^2}{s[(s+2)^2+9s(s+2)^2+ 18s]}
-	= \frac{(s+2)^2}{s[s^2+13s+40]}
+	\pi_1(s) = \frac{(s+2)^2}{s((s+2)^2+9(s+2)^2+ 18)}
+	= \frac{(s+2)^2}{s(s^2+13s+40)}
 	= \frac{(s+2)^2}{s(s+5)(s+8)}.
 \]
 
