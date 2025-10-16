@@ -1,0 +1,134 @@
+
+\subsection{Семинар 5}
+
+\subsubsection*{Задача 5}
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$0$};
+	\node[state] (Q1) at (2.5,0) {$1$};
+	\node[state] (Q2) at (5,0) {$2$};
+	\node[state] (Q3) at (7.5,0) {$3$};
+	\node[state] (Q4) at (10,0) {$4$};
+	\node[state] (Q5) at (12.5,0) {$\ldots$};
+
+	% --- рёбра ---
+	\path[e, loop above]   (Q0) edge node[lbl] {$p_0$} (Q0);
+	\path[e, bend left=12] (Q0) edge node[lbl] {$p_1$} (Q1);
+	\path[e, bend left=56] (Q0) edge node[lbl] {$p_2$} (Q2);
+
+	\path[e, bend left=12] (Q1) edge node[lbl] {$p_0$} (Q0);
+	\path[e, loop above]   (Q1) edge node[lbl] {$p_1$} (Q1);
+	\path[e, bend left=12] (Q1) edge node[lbl] {$p_2$} (Q2);
+
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p_0$} (Q1);
+	\path[e, loop above]   (Q2) edge node[lbl] {$p_1$} (Q2);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$p_2$} (Q3);
+
+	\path[e, bend left=12] (Q3) edge node[lbl] {$p_0$} (Q2);
+	\path[e, loop above]   (Q3) edge node[lbl] {$p_1$} (Q3);
+	\path[e, bend left=12] (Q3) edge node[lbl] {$p_2$} (Q4);
+
+	\path[e, bend left=12] (Q4) edge node[lbl] {$p_0$} (Q3);
+	\path[e, loop above]   (Q4) edge node[lbl] {$p_1$} (Q4);
+	\path[e, bend left=12] (Q4) edge node[lbl] {$p_2$} (Q5);
+
+\end{tikzpicture}
+
+Найти: $P$, $\overline{r}$ (стационарное распределение), $\mathrm{que} := \mathbb E[K]$.
+
+\paragraph{Решение.}
+
+\[
+	P =
+	\begin{array}{c|cccccc}
+		       & Q_0    & Q_1    & Q_2    & Q_3    & Q_4    & \ldots \\ \hline
+		Q_0    & p_0    & p_1    & p_2    & 0      & 0      & \ldots \\
+		Q_1    & p_0    & p_1    & p_2    & 0      & 0      & \ldots \\
+		Q_2    & 0      & p_0    & p_1    & p_2    & 0      & \ldots \\
+		Q_3    & 0      & 0      & p_0    & p_1    & p_2    & \ldots \\
+		Q_4    & 0      & 0      & 0      & p_0    & p_1    & \ldots \\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+	\end{array}
+\]
+
+Стационарное распределение $\overline r=(r_0,r_1,r_2,r_3,\ldots)$ задаётся условиями
+\[
+	\overline r P = \overline r,\quad \sum_{i=0}^\infty r_i = 1,\quad r_i\ge0.
+\]
+Из матрицы $P$ получаем систему:
+\[
+	\begin{array}{rcl}
+		\begin{aligned}
+			r_0 & = p_0 r_0 + p_0 r_1,                                 \\
+			r_1 & = p_1 r_0 + p_1 r_1 + p_0 r_2,                       \\
+			r_2 & = p_2 r_0 + p_2 r_1 + p_1 r_2 + p_0 r_3,             \\
+			r_k & = p_2 r_{k-1} + p_1 r_k + p_0 r_{k+1}, \quad k\ge 2.
+		\end{aligned}
+	\end{array}
+\]
+
+\subsubsection*{Задача 5.1}
+
+Пусть $p_0=\tfrac{1}{2},\ p_1=\tfrac{1}{4},\ p_2=\tfrac{1}{4}$. Тогда
+\[
+	\begin{array}{rcl}
+		\begin{aligned}
+			r_0 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1,                                           \\
+			r_1 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{2} r_2,                        \\
+			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{2} r_3,     \\
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{4} r_k + \tfrac{1}{2} r_{k+1}, \quad k \ge 2.
+		\end{aligned}
+		 & \qquad \Rightarrow \qquad &
+		\begin{aligned}
+			r_1 & = r_0,                         \\
+			r_2 & = r_0,                         \\
+			r_k & = r_0\,2^{\,2-k},\quad k\ge 2.
+		\end{aligned}
+	\end{array}
+\]
+
+\[
+	\sum_{i=0}^\infty r_i = r_0+r_1+r_2+\sum_{k=3}^\infty r_0\,2^{\,2-k}
+	=3r_0+r_0\!\sum_{m=1}^\infty 2^{-m}=4r_0=1
+	\ \Rightarrow\ r_0=\tfrac14.
+\]
+
+
+\[
+	\overline r = \left(\tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{4},\ \tfrac{1}{8},\ \tfrac{1}{16},\ \tfrac{1}{32},\ \ldots\right).
+\]
+
+\[
+	\mathrm{que}=\mathbb E[K]=\sum_{k=0}^\infty k\,r_k
+	=\tfrac14+\tfrac12+\sum_{k=3}^\infty k\,2^{-k}
+	=\tfrac34+\Bigl(\sum_{k=1}^\infty k\,2^{-k}-\tfrac12-\tfrac12\Bigr)
+	=\tfrac34+1=\tfrac{7}{4}.
+\]
+
+\subsubsection*{Задача 5.2}
+
+При вероятностях $p_0=\tfrac{1}{4},\quad p_1=\tfrac{1}{2},\quad p_2=\tfrac{1}{4}$
+\[
+	\begin{array}{rcl}
+		\begin{aligned}
+			r_0 & = \tfrac{1}{4} r_0 + \tfrac{1}{4} r_1,                                           \\
+			r_1 & = \tfrac{1}{2} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2,                        \\
+			r_2 & = \tfrac{1}{4} r_0 + \tfrac{1}{2} r_1 + \tfrac{1}{4} r_2 + \tfrac{1}{4} r_3,     \\
+			r_k & = \tfrac{1}{4} r_{k-1} + \tfrac{1}{2} r_k + \tfrac{1}{4} r_{k+1}, \quad k \ge 2,
+		\end{aligned}
+		 & \qquad \Rightarrow \qquad &
+		\begin{aligned}
+			r_1 & = 3r_0,                    \\
+			r_2 & = 4r_0,                    \\
+			r_k & = r_0\,(k+2),\quad k\ge 0.
+		\end{aligned}
+	\end{array}
+\]
+Серия \(\sum_{k\ge0} r_k\) расходится, нормированного решения нет; стационарное распределение не существует.

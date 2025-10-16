@@ -1,0 +1,150 @@
+
+
+
+\subsection{Семинар 6}
+
+\subsubsection*{Задача 6.1}
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
+
+\end{tikzpicture}
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		0 & 0  & 0 \\
+		1 & -2 & 1 \\
+		0 & 0  & 0
+	\end{pmatrix}
+\]
+
+\[
+	\vec{p}(0) = (0,1,0).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t),     \\
+		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-2) + p_3(t)\cdot 0 = -2p_2(t), \\
+		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_2(t) & = p_2(0)e^{-2t} = e^{-2t},                                       \\
+		p_1(t) & = \int p_2(t)\,dt = \int e^{-2t}\,dt = -\tfrac{1}{2}e^{-2t}+C_1, \\
+		p_3(t) & = \int p_2(t)\,dt = \int e^{-2t}\,dt = -\tfrac{1}{2}e^{-2t}+C_2.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(0) & = -\tfrac{1}{2}+C_1=0 \ \Rightarrow\ C_1=\tfrac{1}{2}, \\
+		p_3(0) & = -\tfrac{1}{2}+C_2=0 \ \Rightarrow\ C_2=\tfrac{1}{2}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \tfrac{1}{2}-\tfrac{1}{2}e^{-2t}, \\
+		p_2(t) & = e^{-2t},                          \\
+		p_3(t) & = \tfrac{1}{2}-\tfrac{1}{2}e^{-2t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(\tfrac{1}{2},\,0,\,\tfrac{1}{2}\right).
+\]
+
+\subsubsection*{Задача 6.2}
+
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$1$} (Q2);
+
+\end{tikzpicture}
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		0 & 0  & 0 \\
+		1 & -2 & 1 \\
+		0 & 0  & 0
+	\end{pmatrix}
+\]
+
+
+\[
+	\vec{p}(0) = (\beta_1,\beta_2,\beta_3).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t),     \\
+		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-2) + p_3(t)\cdot 0 = -2p_2(t), \\
+		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot 0 = p_2(t).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_2(t) & = p_2(0)e^{-2t} = \beta_2 e^{-2t},                                             \\
+		p_1(t) & = \int p_2(t)\,dt = \int \beta_2 e^{-2t}\,dt = -\tfrac{\beta_2}{2}e^{-2t}+C_1, \\
+		p_3(t) & = \int p_2(t)\,dt = \int \beta_2 e^{-2t}\,dt = -\tfrac{\beta_2}{2}e^{-2t}+C_2.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(0) & = -\tfrac{\beta_2}{2}+C_1=\beta_1 \ \Rightarrow\ C_1=\beta_1+\tfrac{\beta_2}{2}, \\
+		p_3(0) & = -\tfrac{\beta_2}{2}+C_2=\beta_3 \ \Rightarrow\ C_2=\beta_3+\tfrac{\beta_2}{2}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \beta_1+\tfrac{\beta_2}{2}-\tfrac{\beta_2}{2}e^{-2t}, \\
+		p_2(t) & = \beta_2 e^{-2t},                                      \\
+		p_3(t) & = \beta_3+\tfrac{\beta_2}{2}-\tfrac{\beta_2}{2}e^{-2t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=\left(\beta_1+\tfrac{\beta_2}{2},\,0,\,\beta_3+\tfrac{\beta_2}{2}\right).
+\]

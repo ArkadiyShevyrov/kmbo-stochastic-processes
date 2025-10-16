@@ -1,0 +1,161 @@
+
+\subsection{Семинар 2}
+
+\subsubsection*{Задача с книгами}
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e1/.style   = {->, shorten >=2pt, shorten <=2pt},
+		e2/.style   = {->, shorten >=2pt, shorten <=2pt},
+		e3/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вероятности ---
+	\newcommand{\p}[1]{p_{#1}}
+	\renewcommand{\p}[1]{\ifcase#1\relax \or \frac{1}{2}\or \frac{1}{3}\or \frac{1}{6}\fi}
+
+	% --- вершины ---
+	\node[state] (Q1) at (90:3)   {$123$};
+	\node[state] (Q2) at (30:3)   {$132$};
+	\node[state] (Q3) at (-30:3)  {$213$};
+	\node[state] (Q4) at (-90:3)  {$231$};
+	\node[state] (Q5) at (-150:3) {$312$};
+	\node[state] (Q6) at (150:3)  {$321$};
+
+	% --- рёбра ---
+	% Q1 = 123
+	\path[e1, bend left=12] (Q1) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, bend left=12] (Q1) edge node[lbl] {$\p{2}$} (Q2);
+	\path[e3, loop above]   (Q1) edge node[lbl] {$\p{3}$} (Q1);
+
+	% Q2 = 132
+	\path[e1, bend left=12] (Q2) edge node[lbl] {$\p{1}$} (Q6);
+	\path[e2, loop right]   (Q2) edge node[lbl] {$\p{2}$} (Q2);
+	\path[e3, bend left=12] (Q2) edge node[lbl] {$\p{3}$} (Q1);
+
+	% Q3 = 213
+	\path[e1, bend left=12] (Q3) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, bend left=12] (Q3) edge node[lbl] {$\p{2}$} (Q2);
+	\path[e3, loop right]   (Q3) edge node[lbl] {$\p{3}$} (Q3);
+
+	% Q4 = 231
+	\path[e1, loop below]   (Q4) edge node[lbl] {$\p{1}$} (Q4);
+	\path[e2, bend left=12] (Q4) edge node[lbl] {$\p{2}$} (Q5);
+	\path[e3, bend left=12] (Q4) edge node[lbl] {$\p{3}$} (Q3);
+
+	% Q5 = 312
+	\path[e1, bend left=12] (Q5) edge node[lbl] {$\p{1}$} (Q6);
+	\path[e2, loop left]    (Q5) edge node[lbl] {$\p{2}$} (Q5);
+	\path[e3, bend left=12] (Q5) edge node[lbl] {$\p{3}$} (Q1);
+
+	% Q6 = 321
+	\path[e1, loop left]    (Q6) edge node[lbl] {$\p{1}$} (Q6);
+	\path[e2, bend left=12] (Q6) edge node[lbl] {$\p{2}$} (Q5);
+	\path[e3, bend left=12] (Q6) edge node[lbl] {$\p{3}$} (Q2);
+
+\end{tikzpicture}
+
+\[
+	P =
+	\begin{array}{c|cccccc}
+		    & Q_1          & Q_2          & Q_3          & Q_4          & Q_5          & Q_6          \\
+		\hline
+		Q_1 & \tfrac{1}{6} & \tfrac{1}{3} & 0            & \tfrac{1}{2} & 0            & 0            \\
+		Q_2 & \tfrac{1}{6} & \tfrac{1}{3} & 0            & 0            & 0            & \tfrac{1}{2} \\
+		Q_3 & 0            & \tfrac{1}{3} & \tfrac{1}{6} & \tfrac{1}{2} & 0            & 0            \\
+		Q_4 & 0            & 0            & \tfrac{1}{6} & \tfrac{1}{2} & \tfrac{1}{3} & 0            \\
+		Q_5 & \tfrac{1}{6} & 0            & 0            & 0            & \tfrac{1}{3} & \tfrac{1}{2} \\
+		Q_6 & 0            & \tfrac{1}{6} & 0            & 0            & \tfrac{1}{3} & \tfrac{1}{2}
+	\end{array}
+\]
+
+
+Стационарное распределение $\overline r=(r_1,r_2,r_3,r_4,r_5,r_6)$
+задаётся условиями
+\[
+	\overline r P = \overline r,
+	\qquad \sum_{i=1}^6 r_i = 1,
+	\qquad r_i \ge 0.
+\]
+
+Из матрицы $P$ получаем систему:
+\[
+	\begin{array}{rcl}
+		\begin{aligned}
+			r_1 & = \tfrac{1}{6}r_1 + \tfrac{1}{6}r_2 + \tfrac{1}{6}r_5,                   \\
+			r_2 & = \tfrac{1}{3}r_1 + \tfrac{1}{3}r_2 + \tfrac{1}{3}r_3 + \tfrac{1}{6}r_6, \\
+			r_3 & = \tfrac{1}{6}r_3 + \tfrac{1}{6}r_4,                                     \\
+			r_4 & = \tfrac{1}{2}r_1 + \tfrac{1}{2}r_3 + \tfrac{1}{2}r_4,                   \\
+			r_5 & = \tfrac{1}{3}r_4 + \tfrac{1}{3}r_5 + \tfrac{1}{3}r_6,                   \\
+			r_6 & = \tfrac{1}{2}r_2 + \tfrac{1}{2}r_5 + \tfrac{1}{2}r_6,
+		\end{aligned}
+		 & \qquad \Rightarrow \qquad &
+		\begin{aligned}
+			6r_1 & = r_1 + r_2 + r_5,          \\
+			6r_2 & = 2r_1 + 2r_2 + 2r_3 + r_6, \\
+			6r_3 & = r_3 + r_4,                \\
+			2r_4 & = r_1 + r_3 + r_4,          \\
+			3r_5 & = r_4 + r_5 + r_6,          \\
+			2r_6 & = r_2 + r_5 + r_6.
+		\end{aligned}
+	\end{array}
+\]
+
+\[
+	\begin{array}{rcl}
+		\begin{aligned}
+			5r_1 - r_2 - r_5          & = 0, \\
+			-2r_1 + 4r_2 - 2r_3 - r_6 & = 0, \\
+			5r_3 - r_4                & = 0, \\
+			-\,r_1 - r_3 + r_4        & = 0, \\
+			-\,r_4 + 2r_5 - r_6       & = 0, \\
+			r_1+r_2+r_3+r_4+r_5+r_6   & =1,
+		\end{aligned}
+		 & \qquad \Rightarrow \qquad &
+		\underbrace{\!
+			\begin{pmatrix}
+				5  & -1 & 0  & 0  & -1 & 0  \\
+				-2 & 4  & -2 & 0  & 0  & -1 \\
+				0  & 0  & 5  & -1 & 0  & 0  \\
+				-1 & 0  & -1 & 1  & 0  & 0  \\
+				0  & 0  & 0  & -1 & 2  & -1 \\
+				1  & 1  & 1  & 1  & 1  & 1
+			\end{pmatrix}}_{\displaystyle A}
+		\underbrace{\!
+			\begin{pmatrix}r_1\\r_2\\r_3\\r_4\\r_5\\r_6\end{pmatrix}}_{\displaystyle x}
+		=
+		\underbrace{\!
+			\begin{pmatrix}0\\0\\0\\0\\0\\1\end{pmatrix}}_{\displaystyle b}.
+	\end{array}
+\]
+
+\[
+	\left[
+		\begin{array}{rrrrrr|r}
+			5  & -1 & 0  & 0  & -1 & 0  & 0 \\
+			-2 & 4  & -2 & 0  & 0  & -1 & 0 \\
+			0  & 0  & 5  & -1 & 0  & 0  & 0 \\
+			-1 & 0  & -1 & 1  & 0  & 0  & 0 \\
+			0  & 0  & 0  & -1 & 2  & -1 & 0 \\
+			1  & 1  & 1  & 1  & 1  & 1  & 1
+		\end{array}
+		\right]
+	\overset{}{\longrightarrow}
+	\left[
+		\begin{array}{rrrrrr|r}
+			1 & 0 & 0 & 0 & 0 & 0 & \tfrac{2}{25} \\
+			0 & 1 & 0 & 0 & 0 & 0 & \tfrac{3}{20} \\
+			0 & 0 & 1 & 0 & 0 & 0 & \tfrac{1}{50} \\
+			0 & 0 & 0 & 1 & 0 & 0 & \tfrac{1}{10} \\
+			0 & 0 & 0 & 0 & 1 & 0 & \tfrac{1}{4}  \\
+			0 & 0 & 0 & 0 & 0 & 1 & \tfrac{2}{5}
+		\end{array}
+		\right]
+\]
+
+\[
+	\overline r =
+	\left(\tfrac{2}{25},\;\tfrac{3}{20},\;\tfrac{1}{50},\;\tfrac{1}{10},\;\tfrac{1}{4},\;\tfrac{2}{5}\right).
+\]
