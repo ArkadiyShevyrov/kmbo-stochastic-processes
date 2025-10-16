@@ -1087,37 +1087,169 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\end{aligned}
 \]
 
+Преобразование Лапласа
+
 \[
-	\begin{pmatrix}p_2\\p_3\end{pmatrix}'=
-	A\begin{pmatrix}p_2\\p_3\end{pmatrix},\qquad
-	A=\begin{pmatrix}-2&1\\[2pt]1&-1\end{pmatrix}.
+	s \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
+\]
+
+\[
+	\begin{aligned}
+		s \pi_1(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot 0 = \pi_2(s),              \\
+		s \pi_2(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot(-2) + \pi_3(s)\cdot 1 = -2\pi_2(s)+\pi_3(s), \\
+		s \pi_3(s)-1 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot(-1) = \pi_2(s)-\pi_3(s).
+	\end{aligned}
+\]
+
+
+\subsection{Семинар 7}
+
+\subsubsection*{Задача 7.1}
+
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12]   (Q1) edge node[lbl] {$2$} (Q2);
+
+	\path[e, bend left=12]   (Q2) edge node[lbl] {$2$} (Q1);
+
+\end{tikzpicture}
+
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		0 & 0  & 0  \\
+		2 & -3 & 1  \\
+		0 & 2  & -2
+	\end{pmatrix}
+\]
+
+\[
+	\vec{p}(0) = (0,0,1).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 2 + p_3(t)\cdot 0 = 2p_2(t),            \\
+		p_2'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot(-3) + p_3(t)\cdot 2 = -3p_2(t)+2p_3(t), \\
+		p_3'(t) & = p_1 (t)\cdot 0 + p_2(t)\cdot 1 + p_3(t)\cdot(-2) = p_2(t)-2p_3(t).
+	\end{aligned}
 \]
 
 
 \[
-	\begin{pmatrix}p_2\\p_3\end{pmatrix}
-	= C_1\,v_1\,e^{\lambda_1 t}+C_2\,v_2\,e^{\lambda_2 t},\qquad
+	s \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
+\]
+
+\[
 	\begin{aligned}
-		p_2(0) & =0, \\
-		p_3(0) & =1
+		s \pi_1(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 2 + \pi_3(s)\cdot 0 = 2\pi_2(s),              \\
+		s \pi_2(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot(-3) + \pi_3(s)\cdot 2 = -3\pi_2(s)+2\pi_3(s), \\
+		s \pi_3(s)-1 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot(-2) = \pi_2(s)-2\pi_3(s).
+	\end{aligned}
+\]
+
+
+
+
+\subsubsection*{Задача 7.2}
+
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q0) edge node[lbl] {$9$} (Q1);
+
+	\path[e, bend left=12] (Q1) edge node[lbl] {$2$} (Q2);
+
+	\path[e, bend left=24] (Q2) edge node[lbl] {$2$} (Q0);
+
+\end{tikzpicture}
+
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		-9 & 9  & 0  \\
+		0  & -2 & 2  \\
+		2  & 0  & -2
+	\end{pmatrix}
+\]
+
+\[
+	\vec{p}(0) = (1,0,0).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	p_i(t)=\pi_s(s)
+\]
+
+\[
+	p'_i(t) = \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
+\]
+
+\[
+	\pi_1+\pi_2+\pi_3=\frac{1}{S}
+\]
+
+\[
+	\begin{aligned}
+		s \pi_1(s)-1 & = \pi_1(s)\cdot(-9) + \pi_2(s)\cdot 0 + \pi_3(s)\cdot 2 = -9\pi_1(s)+2\pi_3(s), \\
+		s \pi_2(s)-0 & = \pi_1(s)\cdot 9 + \pi_2(s)\cdot(-2) + \pi_3(s)\cdot 0 = 9\pi_1(s)-2\pi_2(s),  \\
+		s \pi_3(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 2 + \pi_3(s)\cdot(-2) = 2\pi_2(s)-2\pi_3(s).
 	\end{aligned}
 \]
 
 \[
-	C_1=\frac{1}{2}-\frac{\sqrt{5}}{10},\qquad
-	C_2=\frac{1}{2}+\frac{\sqrt{5}}{10}.
+	\begin{aligned}
+		(s+9)\pi_1(s)-2\pi_3(s)  & = 1, \\
+		-9\pi_1(s)+(s+2)\pi_2(s) & = 0, \\
+		-2\pi_2(s)+(s+2)\pi_3(s) & = 0.
+	\end{aligned}
 \]
 
 \[
-	\boxed{\,p_2(t)=\frac{\sqrt{5}}{5}\!\left(e^{\frac{-3+\sqrt{5}}{2}t}-e^{\frac{-3-\sqrt{5}}{2}t}\right)\,},\qquad
-	\boxed{\,p_3(t)=\left(\tfrac{1}{2}-\tfrac{\sqrt{5}}{10}\right)e^{\frac{-3-\sqrt{5}}{2}t}+\left(\tfrac{1}{2}+\tfrac{\sqrt{5}}{10}\right)e^{\frac{-3+\sqrt{5}}{2}t}\,}.
+	\begin{aligned}
+		\pi_2(s) & = \frac{9}{s+2}\pi_1(s),                              \\
+		\pi_3(s) & = \frac{2}{s+2}\pi_2(s) = \frac{18}{(s+2)^2}\pi_1(s).
+	\end{aligned}
 \]
 
 \[
-	\boxed{\,p_1(t)=1-p_2(t)-p_3(t)
-		=1-\frac{5-3\sqrt{5}}{10}\,e^{\frac{-3-\sqrt{5}}{2}t}-\frac{5+3\sqrt{5}}{10}\,e^{\frac{-3+\sqrt{5}}{2}t}\,}.
+	\pi_1(1+ \frac{9}{s+2} + \frac{18}{(s+2)^2}) = \frac{1}{s}.
 \]
 
 \[
-	\vec{p}(t)\xrightarrow[t\to\infty]{}\vec{p}(\infty)=(1,0,0).
+	\pi_1\left(\frac{s(s+2)^2+9s(s+2)^2+ 18s}{s(s+2)^2}\right)=\frac{(s+2)^2}{s(s+2)^2}.
 \]
