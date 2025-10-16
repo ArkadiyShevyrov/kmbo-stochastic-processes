@@ -1,0 +1,241 @@
+
+\subsection{Лекция 4}
+
+\subsubsection*{Марковский процесс с непрерывным временем}
+
+Величина $\lambda_{ji} \cdot p_j(t)$ называется потоком вероятности из состояния $E_j$ в состояние $E_i$ в момент времени $t$.
+
+Из дифференциальных уравнений Колмогорова следует: произвольная вероятности состояния равна
+сумме всех потоков вероятностей, приходящих в это состояние, минус сумма всех потоков вероятностей,
+выходящих из этого состояния.
+
+\textbf{Свойства матрицы интенсивностей перехода:}
+
+1) $\lambda_{ij}\geq 0$, при $i\ne j$;
+
+2) $\lambda_{ii}<0$;
+
+3) $\sum_j \lambda_{ij}=0$, $\lambda_{ii}=-\sum_{j\ne i} \lambda_{ij}$.
+
+\textbf{Система дифференциальных уравнений Колмогорова:}
+
+$\frac{dp_i(t)}{dt}=\sum_j \lambda_{ji} p_j(t)=\lambda_{ii} p_i(t) + \sum_{j\ne i} \lambda_{ji} p_j(t)
+	=\sum_{j\ne i} \lambda_{ji} p_j(t) - p_i(t) \sum_{j\ne i} \lambda_{ji}$
+
+---
+
+$\left\{ {P}(t) \right\}_{t \ge 0}$
+
+1) ${P}(0) = {I}$,
+
+2) ${P}(t+s) = {P}(t)\,{P}(s)$,
+
+3) $\vec{p}(t) = \vec{p}(0)\,{P}(t)$.
+
+---
+
+\[
+	\lambda_{ij} = \lim_{\tau \to +0}
+	\frac{p_{ij}(\tau) - p_{ij}(0)}{\tau}
+\]
+
+\[
+	i \ne j \Rightarrow
+	\lambda_{ij} = \lim_{\tau \to +0}
+	\frac{p_{ij}(\tau)}{\tau} \ge 0,
+	\qquad
+	i = j \Rightarrow
+	\lambda_{ii} = \lim_{\tau \to +0}
+	\frac{p_{ii}(\tau) - 1}{\tau} \le 0.
+\]
+
+---
+
+
+\[
+	\sum_j p_{ij}(t) = 1,
+	\qquad
+	\left( \sum_j p_{ij}(t) \right)'_{t=0} = (1)' = 0,
+\]
+
+\[
+	\sum_j \lambda_{ij} = 0,
+	\qquad
+	\Rightarrow
+	\qquad
+	\lambda_{ii} = - \sum_{j \ne i} \lambda_{ij}.
+\]
+
+
+---
+
+\[
+	\vec{p}'(t)
+	= \lim_{\tau \to 0}
+	\frac{\vec{p}(t+\tau) - \vec{p}(t)}{\tau}
+	=
+	\lim_{\tau \to 0}
+	\frac{\vec{p}(t){P}(\tau) - \vec{p}(t)}{\tau}
+\]
+
+\[
+	= \vec{p}(t)
+	\lim_{\tau \to 0}
+	\frac{P(\tau) - P(0)}{\tau}
+	= \vec{p}(t)\,{\Lambda}.
+\]
+
+---
+
+\begin{align*}
+	p_i'(t)
+	 & = \sum_j p_j(t)\,\lambda_{ji}
+	\\[4pt]
+	 & = \sum_{j \ne i} p_j(t)\,\lambda_{ji} + p_i(t)\,\lambda_{ii}
+	\\[4pt]
+	 & = \sum_{j \ne i} p_j(t)\,\lambda_{ji} - \sum_{j \ne i} p_i(t)\,\lambda_{ij}.
+\end{align*}
+
+---
+
+\begin{align*}
+	{P}'(t)
+	 & = \lim_{\tau \to 0}
+	\frac{{P}(t+\tau) - {P}(t)}{\tau}
+	\\[4pt]
+	 & = \lim_{\tau \to 0}
+	\frac{{P}(t){P}(\tau) - {P}(t)}{\tau}
+	\\[4pt]
+	 & = {P}(t)
+	\lim_{\tau \to 0}
+	\frac{{P}(\tau) - {P}(0)}{\tau}
+		= {P}(t)\,{\Lambda}
+	\\[4pt]
+	 & = \lim_{\tau \to 0}
+	\frac{{P}(t){P}(\tau) - {P}(t)}{\tau}
+	= \lim_{\tau \to 0}
+	\frac{{P}(t+\tau) - {P}(t)}{\tau}
+	\\[4pt]
+	 & =
+	\left(
+	\lim_{\tau \to 0}
+	\frac{{P}(t+\tau) - {P}(t)}{\tau}
+	\right)
+	{P}(t)
+	= {\Lambda}\,{P}(t).
+\end{align*}
+
+---
+
+
+Дифференциальные уравнения Колмогорова
+
+Векторная форма дифференциальных уравнений Колмогорова для вероятностей состояний:
+$\vec{p'}(t)=\vec{p}(t)\Lambda$, где $\vec{p}(t)=(p_0(t),p_1(t),...,p_n(t),...)$.
+
+Прямое уравнение Колмогорова: $P'(t)=P\Lambda$.
+
+Обратное уравнение Колмогорова: $P'(t)=\Lambda P(t)$.
+
+---
+
+Марковский процесс с непрерывным временем ($\vec{p}(t), \{P(t)\}_{t>0}$) - эргодический:
+\[
+	\exists \lim_{t \to +\infty} {P}(t) = {Q}
+	=
+	\begin{pmatrix}
+		q_{11} & q_{12} & \cdots \\
+		q_{21} & q_{22} & \cdots \\
+		\vdots & \vdots & \ddots
+	\end{pmatrix},
+	\qquad
+	q_{ij} > 0 \ \forall i,j.
+\]
+
+---
+
+\begin{enumerate}
+	\item
+	      $\displaystyle
+		      \exists \lim_{t \to +\infty}
+		      \overline{\mathbf{p}}(t)
+		      =
+		      \overline{\mathbf{q}}
+		      = (q_1, q_2, \ldots)
+	      $
+
+	\item предел не зависит от $\overline{\mathbf{p}}(0)$
+
+	\item $q_j > 0 \ \forall j$
+\end{enumerate}
+
+---
+
+Процесс Маркова$\{ X_t \}_{t \ge 0}$ — эргодический $\Longleftrightarrow$
+1) неприводим, 2) существует стационарное распределение.
+---
+
+Распределение вероятностей состояний, которое не зависит от времени $p_i(t+\tau ) = p_i(t)=p_i$
+для любых $t,\tau\leq 0$ и любых $i=1,2,...$ называется стационарным распределением.
+
+Система линейных алгебраических уравнений для стационарных вероятностей
+\[
+	\begin{cases}
+		\sum_j  \lambda_{ji} r_j = 0, \quad i=1,2,... \\
+		\sum_j r_j = 1
+	\end{cases}
+\]
+
+---
+
+\textbf{Свойства матрицы интенсивностей перехода:}
+\begin{enumerate}
+	\item $\lambda_{ij} \ge 0 \quad$ при $i \ne j$;
+	\item $\lambda_{ii} \le 0$;
+	\item $\displaystyle \sum_j \lambda_{ij} = 0,
+		      \qquad
+		      \lambda_{ii} = - \sum_{j \ne i} \lambda_{ij}.$
+\end{enumerate}
+
+\vspace{1em}
+
+\textbf{Система дифференциальных уравнений Колмогорова}
+\[
+	\frac{dp_i(t)}{dt}
+	= \sum_j \lambda_{ji}\,p_j(t)
+	= \lambda_{ii}\,p_i(t)
+	+ \sum_{j \ne i} \lambda_{ji}\,p_j(t)
+\]
+\[
+	= \sum_{j \ne i} \lambda_{ji}\,p_j(t)
+	- p_i(t)\sum_{j \ne i} \lambda_{ij},
+	\qquad i = 1, 2, \ldots
+\]
+
+\textbf{Стациорнаное распределение}
+
+Из уравнений следует: при стационарном распределении для каждого стояния сумма всех потоков вероятностей, приходящих в это состояние, равна сумме всех потоков вероятностей, выходящих из этого состояния.
+
+\[
+	\sum_{j \ne i} \lambda_{ji} r_j = r_i \sum_{j \ne i} \lambda_{ij} r_i
+\]
+
+---
+
+\subsubsection*{Время пребывания марковского процесса с непрерывным временем в состоянии}
+
+Пусть $\tau(i)$ — время пребывания марковского процесса $X(t)$ в состоянии $i$.
+Получаем
+$P\bigl(\tau(i) > t\bigr)= \lim_{n \to \infty} [p_{ii}(\frac{t}{n})]^n.$
+
+Но $p_{ii}\!\left(\tfrac{t}{n}\right)= 1 + \lambda_{ii}\tfrac{t}{n} + o\!\left(\tfrac{1}{n}\right).$
+Пусть $\lambda_i = -\lambda_{ii} = \sum_{j \ne i} \lambda_{ij}$.
+
+Тогда
+$\lim_{n \to \infty} [p_{ii}(\frac{t}{n})]^n
+	= \lim_{n \to \infty}
+	\left[1 - \lambda_i \tfrac{t}{n} + o\!\left(\tfrac{1}{n}\right)\right]^n
+	= e^{-\lambda_i t}.$
+
+Значит, $F_{\tau(i)}(t) = 1 - e^{-\lambda_i t}$,
+т.\,е. $\tau(i)$ имеет показатель­ное распределение с параметром $\lambda_i$.
