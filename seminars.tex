@@ -1087,19 +1087,6 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 	\end{aligned}
 \]
 
-Преобразование Лапласа
-
-\[
-	s \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
-\]
-
-\[
-	\begin{aligned}
-		s \pi_1(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot 0 = \pi_2(s),              \\
-		s \pi_2(s)-0 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot(-2) + \pi_3(s)\cdot 1 = -2\pi_2(s)+\pi_3(s), \\
-		s \pi_3(s)-1 & = \pi_1(s)\cdot 0 + \pi_2(s)\cdot 1 + \pi_3(s)\cdot(-1) = \pi_2(s)-\pi_3(s).
-	\end{aligned}
-\]
 
 
 \subsection{Семинар 7}
@@ -1212,15 +1199,25 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 \]
 
 \[
-	p_i(t)=\pi_s(s)
+	\begin{aligned}
+		p_1'(t) & =  p_1 (t)\cdot(-9) + p_2(t)\cdot 0 + p_3(t)\cdot 2 = -9p_1(t)+2p_3(t), \\
+		p_2'(t) & =  p_1 (t)\cdot 9 + p_2(t)\cdot(-2) + p_3(t)\cdot 0 = 9p_1(t)-2p_2(t),  \\
+		p_3'(t) & =  p_1 (t)\cdot 0 + p_2(t)\cdot 2 + p_3(t)\cdot(-2) = 2p_2(t)-2p_3(t).
+	\end{aligned}
+\]
+
+Преобразование Лапласа:
+
+\[
+	\mathcal{L}\{\vec p'(t)\}(s)=s \vec \pi(s)-\vec p(0)
+	,\quad
+	\mathcal{L}\{\vec p(t)\}(s)=\vec \pi(s)
+	,\quad
+	s \vec \pi(s)-\vec p(0)=\vec \pi(s)\Lambda.
 \]
 
 \[
-	p'_i(t) = \pi_i(s)-p_i(0) = \sum_{j=1}^3 \pi_j(s)\Lambda_{ji},\quad i=1,2,3.
-\]
-
-\[
-	\pi_1+\pi_2+\pi_3=\frac{1}{S}
+	\pi_1+\pi_2+\pi_3=\frac{1}{s}
 \]
 
 \[
@@ -1251,5 +1248,62 @@ $$que=\sum_{i=0}^{4} v_i r_i$$
 \]
 
 \[
-	\pi_1\left(\frac{s(s+2)^2+9s(s+2)^2+ 18s}{s(s+2)^2}\right)=\frac{(s+2)^2}{s(s+2)^2}.
+	\pi_1\left(\frac{(s+2)^2+9s(s+2)^2+ 18s}{(s+2)^2}\right) = \frac{1}{s}.
+\]
+
+\[
+	\pi_1(s) = \frac{(s+2)^2}{s[(s+2)^2+9s(s+2)^2+ 18s]}
+	= \frac{(s+2)^2}{s[s^2+13s+40]}
+	= \frac{(s+2)^2}{s(s+5)(s+8)}.
+\]
+
+\[
+	\pi_2(s) = \frac{9}{s+2}\pi_1(s) = \frac{9(s+2)}{s(s+5)(s+8)},
+	\quad
+	\pi_3(s) = \frac{18}{(s+2)^2}\pi_1(s) = \frac{18}{s(s+5)(s+8)}.
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{(s+2)^2}{s(s+5)(s+8)} = \frac{A}{s} + \frac{B}{s+5} + \frac{C}{s+8}, \\
+		\pi_2(s) & = \frac{9(s+2)}{s(s+5)(s+8)} = \frac{D}{s} + \frac{E}{s+5} + \frac{F}{s+8},  \\
+		\pi_3(s) & = \frac{18}{s(s+5)(s+8)} = \frac{G}{s} + \frac{H}{s+5} + \frac{I}{s+8}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		A & = \lim_{s\rightarrow 0} s\pi_1(s)      & = \frac{(0+2)^2}{(0+5)(0+8)} = \frac{4}{40} = \frac{1}{10}, \\
+		B & = \lim_{s\rightarrow -5} (s+5)\pi_1(s) & = \frac{(-5+2)^2}{-5(-5+8)} = \frac{9}{-15} = -\frac{3}{5}, \\
+		C & = \lim_{s\rightarrow -8} (s+8)\pi_1(s) & = \frac{(-8+2)^2}{-8(-8+5)} = \frac{36}{24} = \frac{3}{2},  \\
+		D & = \lim_{s\rightarrow 0} s\pi_2(s)      & = \frac{9(0+2)}{(0+5)(0+8)} = \frac{18}{40} = \frac{9}{20}, \\
+		E & = \lim_{s\rightarrow -5} (s+5)\pi_2(s) & = \frac{9(-5+2)}{-5(-5+8)} = \frac{-27}{-15} = \frac{9}{5}, \\
+		F & = \lim_{s\rightarrow -8} (s+8)\pi_2(s) & = \frac{9(-8+2)}{-8(-8+5)} = \frac{-54}{24} = -\frac{9}{4}, \\
+		G & = \lim_{s\rightarrow 0} s\pi_3(s)      & = \frac{18}{(0+5)(0+8)} = \frac{18}{40} = \frac{9}{20},     \\
+		H & = \lim_{s\rightarrow -5} (s+5)\pi_3(s) & = \frac{18}{-5(-5+8)} = \frac{18}{-15} = -\frac{6}{5},      \\
+		I & = \lim_{s\rightarrow -8} (s+8)\pi_3(s) & = \frac{18}{-8(-8+5)} = \frac{18}{24} = \frac{3}{4}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{1}{10s} - \frac{3}{5(s+5)} + \frac{3}{2(s+8)}, \\
+		\pi_2(s) & = \frac{9}{20s} + \frac{9}{5(s+5)} - \frac{9}{4(s+8)}, \\
+		\pi_3(s) & = \frac{9}{20s} - \frac{6}{5(s+5)} + \frac{3}{4(s+8)}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \mathcal{L}^{-1}\{\pi_1(s)\}(t)
+		= \frac{1}{10} - \frac{3}{5}e^{-5t} + \frac{3}{2}e^{-8t}, \\
+		p_2(t) & = \mathcal{L}^{-1}\{\pi_2(s)\}(t)
+		= \frac{9}{20} + \frac{9}{5}e^{-5t} - \frac{9}{4}e^{-8t}, \\
+		p_3(t) & = \mathcal{L}^{-1}\{\pi_3(s)\}(t)
+		= \frac{9}{20} - \frac{6}{5}e^{-5t} + \frac{3}{4}e^{-8t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow [t\to\infty]{}\vec{p}(\infty)=\left(\tfrac{1}{10},\,\tfrac{9}{20},\,\tfrac{9}{20}\right).
 \]
