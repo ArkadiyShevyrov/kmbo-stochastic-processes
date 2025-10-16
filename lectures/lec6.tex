@@ -226,5 +226,272 @@ $(X(s_1), \ldots, X(s_n)) \quad \text{и} \quad (X'(s_1), \ldots, X'(s_n))$.
 
 Из стационарности следует:
 
+\begin{itemize}
+	\item число заявок$X((s, s + t]) = X(s + t) - X(s)$
+	      на интервале $(s, s + t]$ зависит только от $t$;
+
+	\item $p_k(t) = P(X(t) = k) = P(X(s + t) - X(s) = k)$.
+\end{itemize}
+
+Из отсутствия последействия следует, что
+\[
+	X\!\left(\left(0, \tfrac{t}{n}\right]\right),\,
+	X\!\left(\left(\tfrac{t}{n}, \tfrac{2t}{n}\right]\right),\,
+	\ldots,\,
+	X\!\left(\left(\tfrac{(n - 1)t}{n}, t\right]\right)
+\]
+независимы, и
+\[
+	p_0(t) = [p_0\!\left(\tfrac{t}{n}\right)]^n.
+\]
+
+Если $p_0(1) = \gamma$, то
+\[
+	p_0\!\left(\tfrac{1}{n}\right) = \gamma^{\tfrac{1}{n}}
+	\quad \text{и} \quad
+	p_0\!\left(\tfrac{k}{n}\right) = [\gamma]^{\tfrac{k}{n}}.
+\]
+
+---
+
+Если $t \in \left( \frac{k-1}{n}, \frac{k}{n} \right)$, то
+$\gamma^n = p_0\!\left(\frac{k-1}{n}\right) \ge p_0(t) \ge p_0\!\left(\frac{k}{n}\right) = \gamma^n.$
+
+Значит, $p_0(t) = \gamma^t$, и так как $\gamma \in (0,1)$, то можно положить
+$\gamma = e^{-\lambda}, \ \lambda \in (0, +\infty).$
+Получаем $p_0(t) = e^{-\lambda t}.$
+
+Пусть
+\[
+	(0, \tfrac{t}{n}) \cup (\tfrac{t}{n}, \tfrac{2t}{n}] \cup \ldots \cup (\tfrac{(n-1)t}{n}, t].
+\]
+Рассмотрим полную группу событий $\{H_0, H_1\}$:
+$H_0$ — нет интервалов, содержащих более чем одно событие; \\
+$H_1$ — имеется хотя бы один интервал, содержащий более одного события.
+
+---
+
+\[
+	p_k(t) = P(X(t) = k) = P(X(t) = k, H_0) + P(X(t) = k, H_1)
+\]
+
+Полагая \(\tau = \frac{t}{n}\), \(p_{>1}(\tau) = 1 - p_0(\tau) - p_1(\tau)\), получаем
+
+\[
+	P(X(t) = k, H_0) = C_n^k [p_{>1}(\tau)]^k [p_0(\tau)]^{n-k}
+\]
+
+\[
+	= e^{-\lambda t} \frac{(\lambda t)^k}{k!}
+	\frac{n (n-1) \ldots (n-k+1)}{n^k}
+	[1 + o(1)] = \frac{(\lambda t)^k}{k!} e^{-\lambda t},
+	\quad \text{при } n \to \infty
+\]
+
+и
+
+\[
+	P(X(t) = k, H_1) < np_1(\tau) + t p_{>1}(\tau) \to 0
+\]
+
+---
+
+\subsection*{Процесс Пуассона}
+
+Граф процесса Пуассона
+
+\begin{center}
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style={draw, rectangle, minimum width=10mm, minimum height=8mm, font=\small, align=center}
+		]
+		% узлы
+		\node[state] (0) at (0,0) {0};
+		\node[state] (1) at (2,0) {1};
+		\node[state] (2) at (4,0) {2};
+		\node[state] (d1) at (8,0) {$\cdots$};
+
+		% стрелки вправо (интенсивность λ)
+		\path[->] (0) edge node[above] {$\lambda$} (1);
+		\path[->] (1) edge node[above] {$\lambda$} (2);
+		\path[->] (2) edge node[above] {$\lambda$} (d1);
+	\end{tikzpicture}
+\end{center}
+
+
+Рассмотрим систему уравнений Колмогорова:
+
+\[
+	\begin{cases}
+		p_0'(t) = -\lambda p_0(t), \\
+		p_k'(t) = \lambda p_{k-1}(t) - \lambda p_k(t), \quad k \ge 1.
+	\end{cases}
+\]
+
+Решением этой системы с начальными условиями
+\[
+	(p_0(0), p_1(0), p_2(0), \ldots) = (1, 0, 0, \ldots)
+\]
+имеет вид:
+\[
+	p_k(t) = P(X_t = k) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}, \quad k = 0, 1, 2, \ldots
+\]
+т.е. \( X_t \) имеет распределение Пуассона с параметром \( \lambda t \).
+
+При этом:
+\[
+	M X_t = D X_t = \lambda t.
+\]
+
+--- [слайд 10]
+
+\[
+	\begin{tikzpicture}[
+			>=Stealth, thick,
+			state/.style={draw, rectangle, minimum width=10mm, minimum height=8mm, font=\small, align=center}
+		]
+		% узлы
+		\node[state] (0) at (0,0) {0};
+		\node[state] (1) at (2,0) {1};
+		\node[state] (2) at (4,0) {2};
+		\node[state] (k1) at (6,0) {$k-1$};
+		\node[state] (k) at (8,0) {$k$};
+		\node[state] (kp1) at (10,0) {$k+1$};
+		\node[state] (d1) at (12,0) {$\cdots$};
+
+		% стрелки
+		\path[->] (0) edge node[above] {$\lambda$} (1);
+		\path[->] (1) edge node[above] {$\lambda$} (2);
+		\path[->] (2) edge node[above] {$\lambda$} (k1);
+		\path[->] (k1) edge node[above] {$\lambda$} (k);
+		\path[->] (k) edge node[above] {$\lambda$} (kp1);
+		\path[->] (kp1) edge node[above] {$\lambda$} (d1);
+	\end{tikzpicture}
+\]
+
+\[
+	\begin{cases}
+		p_0'(t) = -\lambda p_0(t), \\[4pt]
+		p_k'(t) = \lambda p_{k-1}(t) - \lambda p_k(t), \quad k = 1, 2, \ldots
+	\end{cases}
+\]
+
+\[
+	\vec{p}(0) = (1, 0, 0, \ldots)
+\]
+
+\[
+	p_k(t) = \overline{T}_k(s), \quad
+	p_0' = s\,\overline{T}_0(s) - 1, \quad
+	p_k' = s\,\overline{T}_k(s), \; k \ge 1
+\]
+
+--- [слайд 11]
+
+\[
+	\begin{cases}
+		s \overline{p}_0 - 1 = -\lambda \overline{p}_0, \\[4pt]
+		s \overline{p}_k = \lambda \overline{p}_{k-1} - \lambda \overline{p}_k, \quad k = 1, 2, \ldots
+	\end{cases}
+\]
+
+\[
+	\overline{p}_0 = \frac{1}{s + \lambda}, \qquad
+	\overline{p}_k = \frac{\lambda}{s + \lambda} \, \overline{p}_{k-1}
+	= \frac{\lambda^k}{(s + \lambda)^{k+1}}
+\]
+
+\[
+	p_0(t) = e^{-\lambda t}, \qquad
+	p_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}
+\]
+
+
+--- [слайд 12]
+
+\[
+	N_t \text{ — пуассоновский процесс}
+\]
+
+\[
+	\begin{array}{c|cccccc}
+		N_t & 0      & 1      & 2      & \cdots & k      & \cdots \\ \hline
+		P   & p_0(t) & p_1(t) & p_2(t) & \cdots & p_k(t) & \cdots
+	\end{array}
+\]
+
+\[
+	P(N_t = k) = p_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}
+\]
+
+--- [слайд 13]
+
+
+\subsection*{Траектории процесса Пуассона}
+
+Процесс Пуассона
+
+\[
+	N(t) \text{ — число событий на интервале } [0, t].
+\]
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+		% оси
+		\draw[->] (0,0) -- (6,0) node[below] {$t$};
+		\draw[->] (0,0) -- (0,4.5) node[left] {$N(t)$};
+
+		% метки по времени
+		\foreach \x/\label in {1/$t_1$,2/$t_2$,3/$t_3$,4/$t_4$}
+		\draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+
+		% ступенчатая функция Пуассона
+		\draw[thick, ->] (0,0) -- (1,0);
+		\draw[thick] (1,0) -- (1,1);
+		\draw[thick, ->] (1,1) -- (2,1);
+		\draw[thick] (2,1) -- (2,2);
+		\draw[thick, ->] (2,2) -- (3,2);
+		\draw[thick] (3,2) -- (3,3);
+		\draw[thick, ->] (3,3) -- (4,3);
+		\draw[thick] (4,3) -- (4,4);
+		\draw[thick, ->] (4,4) -- (5.5,4);
+
+		% подписи
+		\node at (1,1.3) {$1$};
+		\node at (2,2.3) {$2$};
+		\node at (3,3.3) {$3$};
+		\node at (4,4.3) {$4$};
+	\end{tikzpicture}
+\end{center}
+
+--- [слайд 14]
+
+\subsection*{Интервалы между заявками в пуассоновском потоке}
+
+Пусть
+\[
+	\Pi = \{ t_1 \le t_2 \le \ldots \}
+\]
+— пуассоновский поток событий с интервалами
+\[
+	\{ \tau_k = t_k - t_{k-1}, \; k \ge 1 \}, \quad (t_0 = 0).
+\]
+В силу отсутствия последействия и ординарности пуассоновского потока все \(\tau_k\) независимы в совокупности.
+
+Рассмотрим функцию распределения
+\[
+	F_{\tau_k}(t) = P(\tau_k \le t),
+\]
+получаем:
+\[
+	P(\tau_k > t) = P(t_k - t_{k-1} > t) = P(X((t_{k-1}, t_{k-1}+t]) = 0) = P(X(t) = 0) = e^{-\lambda t}.
+\]
+
+Следовательно,
+\[
+	F_{\tau_k}(t) = 1 - e^{-\lambda t}.
+\]
+
+Значит, все \(\tau_k\) имеют одинаковое показательное распределение с параметром \(\lambda\).
 
 ---
