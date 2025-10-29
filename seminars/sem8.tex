@@ -1,0 +1,449 @@
+\subsection{Семинар 8}
+
+\subsubsection*{Задача 8.1}
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$10$} (Q0);
+	\path[e, bend left=12] (Q1) edge node[lbl] {$5$} (Q2);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$1$} (Q1);
+
+\end{tikzpicture}
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		-10 & 10 & 0  \\
+		0   & -5 & 5  \\
+		1   & 0  & -1
+	\end{pmatrix}
+\]
+
+\[
+	\vec{p}(0) = (1,0,0).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & =  p_1 (t)\cdot(-10) + p_2(t)\cdot 0 + p_3(t)\cdot 1 = -10p_1(t)+p_3(t), \\
+		p_2'(t) & =  p_1 (t)\cdot 10 + p_2(t)\cdot(-5) + p_3(t)\cdot 0 = 10p_1(t)-5p_2(t), \\
+		p_3'(t) & =  p_1 (t)\cdot 0 + p_2(t)\cdot 5 + p_3(t)\cdot(-1) = 5p_2(t)-p_3(t).
+	\end{aligned}
+\]
+
+Преобразование Лапласа:
+
+\[
+	\mathcal{L}\{\vec p'(t)\}(s)=s \vec \pi(s)-\vec p(0)
+	,\quad
+	\mathcal{L}\{\vec p(t)\}(s)=\vec \pi(s)
+	,\quad
+	s \vec \pi(s)-\vec p(0)=\vec \pi(s)\Lambda.
+\]
+
+\[
+	\pi_1+\pi_2+\pi_3=\frac{1}{s}
+\]
+
+\[
+	\begin{aligned}
+		s \pi_1(s)-1 & = -10\pi_1(s)+\pi_3(s), \\
+		s \pi_2(s)   & = 10\pi_1(s)-5\pi_2(s), \\
+		s \pi_3(s)   & = 5\pi_2(s)-\pi_3(s).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		(s+10)\pi_1(s)-\pi_3(s)   & = 1, \\
+		-10\pi_1(s)+(s+5)\pi_2(s) & = 0, \\
+		-5\pi_2(s)+(s+1)\pi_3(s)  & = 0.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		\pi_2(s) & = \frac{10}{s+5}\pi_1(s),                                \\
+		\pi_3(s) & = \frac{5}{s+1}\pi_2(s) = \frac{50}{(s+5)(s+1)}\pi_1(s).
+	\end{aligned}
+\]
+
+\[
+	\pi_1\!\left( (s+10)-\frac{50}{(s+5)(s+1)}\right) = 1.
+\]
+
+\[
+	\pi_1(s) = \frac{(s+5)(s+1)}{(s+10)(s+5)(s+1)-50}
+	= \frac{(s+5)(s+1)}{s\,(s^2+16s+65)}.
+\]
+
+\[
+	\pi_2(s) = \frac{10}{s+5}\pi_1(s) = \frac{10(s+1)}{s\,(s^2+16s+65)},
+	\quad
+	\pi_3(s) = \frac{50}{(s+5)(s+1)}\pi_1(s) = \frac{50}{s\,(s^2+16s+65)}.
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{(s+5)(s+1)}{s\,(s^2+16s+65)} = \frac{A}{s} + \frac{B s + C}{s^2+16s+65}, \\
+		\pi_2(s) & = \frac{10(s+1)}{s\,(s^2+16s+65)} = \frac{D}{s} + \frac{E s + F}{s^2+16s+65},    \\
+		\pi_3(s) & = \frac{50}{s\,(s^2+16s+65)} = \frac{G}{s} + \frac{H s + I}{s^2+16s+65}.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		A & = \lim_{s\rightarrow 0} s\pi_1(s) & = \frac{(0+5)(0+1)}{(0)^2+16(0)+65} = \frac{5}{65} = \frac{1}{13}, \\
+		D & = \lim_{s\rightarrow 0} s\pi_2(s) & = \frac{10(0+1)}{65} = \frac{10}{65} = \frac{2}{13},               \\
+		G & = \lim_{s\rightarrow 0} s\pi_3(s) & = \frac{50}{65} = \frac{10}{13}.
+	\end{aligned}
+\]
+
+Коэффициенты при квадратном знаменателе (тождественное равенство по степеням $s$):
+
+\[
+	\begin{aligned}
+		\pi_1:\quad & (s+5)(s+1) = A(s^2+16s+65) + s(Bs+C)
+		            & \Rightarrow                          &
+		\begin{cases}
+			A+B=1,   \\
+			16A+C=6, \\
+			65A=5
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			A=\tfrac{1}{13},  \\
+			B=\tfrac{12}{13}, \\
+			C=\tfrac{62}{13};
+		\end{cases}
+		\\[6pt]
+		\pi_2:\quad & 10(s+1) = D(s^2+16s+65) + s(Es+F)
+		            & \Rightarrow                          &
+		\begin{cases}
+			D+E=0,    \\
+			16D+F=10, \\
+			65D=10
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			D=\tfrac{2}{13},  \\
+			E=-\tfrac{2}{13}, \\
+			F=\tfrac{98}{13};
+		\end{cases}
+		\\[6pt]
+		\pi_3:\quad & 50 = G(s^2+16s+65) + s(Hs+I)
+		            & \Rightarrow                          &
+		\begin{cases}
+			G+H=0,   \\
+			16G+I=0, \\
+			65G=50
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			G=\tfrac{10}{13},  \\
+			H=-\tfrac{10}{13}, \\
+			I=-\tfrac{160}{13}.
+		\end{cases}
+	\end{aligned}
+\]
+
+Переход к сдвигу $s\mapsto s+8$:
+\[
+	s^2+16s+65=(s+8)^2+1,
+	\quad
+	\begin{aligned}
+		B s + C & = B(s+8) + (C-8B).
+	\end{aligned}
+\]
+Следовательно,
+\[
+	\begin{aligned}
+		\pi_1(s) & =
+		\frac{1}{13s} + \frac{\frac{12}{13}(s+8) - \frac{34}{13}}{(s+8)^2+1},  \\
+		\pi_2(s) & =
+		\frac{2}{13s} + \frac{-\frac{2}{13}(s+8) + \frac{114}{13}}{(s+8)^2+1}, \\
+		\pi_3(s) & =
+		\frac{10}{13s} + \frac{-\frac{10}{13}(s+8) - \frac{80}{13}}{(s+8)^2+1}.
+	\end{aligned}
+\]
+
+Обратное преобразование Лапласа:
+\[
+	\mathcal{L}^{-1}\!\left\{\frac{1}{s}\right\}=1,\quad
+	\mathcal{L}^{-1}\!\left\{\frac{s+8}{(s+8)^2+1}\right\}=e^{-8t}\cos t,\quad
+	\mathcal{L}^{-1}\!\left\{\frac{1}{(s+8)^2+1}\right\}=e^{-8t}\sin t.
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \frac{1}{13} + \frac{12}{13}e^{-8t}\cos t - \frac{34}{13}e^{-8t}\sin t,  \\
+		p_2(t) & = \frac{2}{13} - \frac{2}{13}e^{-8t}\cos t + \frac{114}{13}e^{-8t}\sin t,  \\
+		p_3(t) & = \frac{10}{13} - \frac{10}{13}e^{-8t}\cos t - \frac{80}{13}e^{-8t}\sin t.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow [t\to\infty]{}\vec{p}(\infty)=\left(\tfrac{1}{13},\,\tfrac{2}{13},\,\tfrac{10}{13}\right).
+\]
+
+Стационарное распределение $\overline r=(r_1,r_2,r_3,\ldots)$
+\[
+	\begin{cases}
+		r_1 = -10 r_1 + r_3, \\
+		r_2 = 10 r_1 -5 r_2, \\
+		r_3 = 5 r_2 - r_3,   \\
+		r_1 + r_2 + r_3 = 1.
+	\end{cases}
+	,\quad
+	\begin{cases}
+		-10r_1 + r_3 = 0, \\
+		10r_1 - 5r_2 = 0, \\
+		5r_2 - r_3 = 0,   \\
+		r_1 + r_2 + r_3 = 1.
+	\end{cases}
+\]
+
+\[
+	r_2=2r_1,\quad r_3=10r_1
+	,\quad
+	r_1(1+2+10)=1
+	,\quad
+	r_1=\frac{1}{13}
+\]
+
+\[
+	\vec r = \left(\frac{1}{13}, \frac{2}{13}, \frac{10}{13}\right)
+\]
+
+
+
+\subsubsection*{Задача 8.2}
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, circle, minimum size=9mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style  = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0) at (0,0) {$1$};
+	\node[state] (Q1) at (2.5,0) {$2$};
+	\node[state] (Q2) at (5,0) {$3$};
+
+	% --- рёбра ---
+	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12] (Q1) edge node[lbl] {$4$} (Q2);
+	\path[e, bend left=12] (Q2) edge node[lbl] {$1$} (Q1);
+
+\end{tikzpicture}
+
+\[
+	\Lambda =
+	\begin{pmatrix}
+		-1 & 1  & 0  \\
+		0  & -4 & 4  \\
+		1  & 0  & -1
+	\end{pmatrix}
+\]
+
+\[
+	\vec{p}(0) = (1,0,0).
+\]
+
+\[
+	\vec{p}'(t) = \vec{p}(t)\Lambda,\quad \vec{p}(t)=(p_1(t),p_2(t),p_3(t)).
+\]
+
+\[
+	\begin{aligned}
+		p_1'(t) & = -p_1(t)+p_3(t),  \\
+		p_2'(t) & =  p_1(t)-4p_2(t), \\
+		p_3'(t) & =  4p_2(t)-p_3(t).
+	\end{aligned}
+\]
+
+Преобразование Лапласа:
+
+\[
+	\mathcal{L}\{\vec p'(t)\}(s)=s \vec \pi(s)-\vec p(0)
+	,\quad
+	\mathcal{L}\{\vec p(t)\}(s)=\vec \pi(s)
+	,\quad
+	s \vec \pi(s)-\vec p(0)=\vec \pi(s)\Lambda.
+\]
+
+\[
+	\pi_1+\pi_2+\pi_3=\frac{1}{s}
+\]
+
+\[
+	\begin{aligned}
+		s \pi_1(s)-1 & = -\pi_1(s)+\pi_3(s),  \\
+		s \pi_2(s)   & =  \pi_1(s)-4\pi_2(s), \\
+		s \pi_3(s)   & =  4\pi_2(s)-\pi_3(s).
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		(s+1)\pi_1(s)-\pi_3(s)   & = 1, \\
+		-\pi_1(s)+(s+4)\pi_2(s)  & = 0, \\
+		-4\pi_2(s)+(s+1)\pi_3(s) & = 0.
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		\pi_2(s) & = \frac{1}{s+4}\,\pi_1(s),                                  \\
+		\pi_3(s) & = \frac{4}{s+1}\,\pi_2(s) = \frac{4}{(s+4)(s+1)}\,\pi_1(s).
+	\end{aligned}
+\]
+
+\[
+	\pi_1\!\left( (s+1)-\frac{4}{(s+4)(s+1)}\right) = 1.
+\]
+
+\[
+	\pi_1(s) = \frac{(s+4)(s+1)}{(s+1)(s+4)(s+1)-4}
+	= \frac{(s+4)(s+1)}{s\,(s+3)^2}.
+\]
+
+\[
+	\pi_2(s) = \frac{1}{s+4}\pi_1(s) = \frac{s+1}{s\,(s+3)^2},
+	\quad
+	\pi_3(s) = \frac{4}{(s+4)(s+1)}\pi_1(s) = \frac{4}{s\,(s+3)^2}.
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{(s+4)(s+1)}{s\,(s+3)^2} = \frac{A}{s} + \frac{B}{s+3} + \frac{C}{(s+3)^2}, \\
+		\pi_2(s) & = \frac{s+1}{s\,(s+3)^2}       = \frac{D}{s} + \frac{E}{s+3} + \frac{F}{(s+3)^2},  \\
+		\pi_3(s) & = \frac{4}{s\,(s+3)^2}         = \frac{G}{s} + \frac{H}{s+3} + \frac{I}{(s+3)^2}.
+	\end{aligned}
+\]
+
+Тождественные равенства (сравнение коэффициентов):
+
+\[
+	\begin{aligned}
+		\pi_1:\quad & (s+4)(s+1)
+		= A(s+3)^2 + B\,s(s+3) + C\,s
+		\\[-2pt]
+		            & \Rightarrow
+		\begin{cases}
+			A+B=1,     \\
+			6A+3B+C=5, \\
+			9A=4
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			A=\tfrac{4}{9}, \\
+			B=\tfrac{5}{9}, \\
+			C=\tfrac{2}{3};
+		\end{cases}
+		\\[6pt]
+		\pi_2:\quad & s+1
+		= D(s+3)^2 + E\,s(s+3) + F\,s
+		\\[-2pt]
+		            & \Rightarrow
+		\begin{cases}
+			D+E=0,     \\
+			6D+3E+F=1, \\
+			9D=1
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			D=\tfrac{1}{9},  \\
+			E=-\tfrac{1}{9}, \\
+			F=\tfrac{2}{3};
+		\end{cases}
+		\\[6pt]
+		\pi_3:\quad & 4
+		= G(s+3)^2 + H\,s(s+3) + I\,s
+		\\[-2pt]
+		            & \Rightarrow
+		\begin{cases}
+			G+H=0,     \\
+			6G+3H+I=0, \\
+			9G=4
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			G=\tfrac{4}{9},  \\
+			H=-\tfrac{4}{9}, \\
+			I=-\tfrac{4}{3}.
+		\end{cases}
+	\end{aligned}
+\]
+
+\[
+	\begin{aligned}
+		\pi_1(s) & = \frac{4}{9s} + \frac{5}{9(s+3)} + \frac{2}{3(s+3)^2}, \\
+		\pi_2(s) & = \frac{1}{9s} - \frac{1}{9(s+3)} + \frac{2}{3(s+3)^2}, \\
+		\pi_3(s) & = \frac{4}{9s} - \frac{4}{9(s+3)} - \frac{4}{3(s+3)^2}.
+	\end{aligned}
+\]
+
+Обратное преобразование Лапласа:
+\[
+	\mathcal{L}^{-1}\!\left\{\frac{1}{s}\right\}=1,\quad
+	\mathcal{L}^{-1}\!\left\{\frac{1}{s+3}\right\}=e^{-3t},\quad
+	\mathcal{L}^{-1}\!\left\{\frac{1}{(s+3)^2}\right\}=t\,e^{-3t}.
+\]
+
+\[
+	\begin{aligned}
+		p_1(t) & = \frac{4}{9} + \frac{5}{9}e^{-3t} + \frac{2}{3}\,t\,e^{-3t}, \\
+		p_2(t) & = \frac{1}{9} - \frac{1}{9}e^{-3t} + \frac{2}{3}\,t\,e^{-3t}, \\
+		p_3(t) & = \frac{4}{9} - \frac{4}{9}e^{-3t} - \frac{4}{3}\,t\,e^{-3t}.
+	\end{aligned}
+\]
+
+\[
+	\vec{p}(t)\xrightarrow [t\to\infty]{}\vec{p}(\infty)=\left(\tfrac{4}{9},\,\tfrac{1}{9},\,\tfrac{4}{9}\right).
+\]
+
+Стационарное распределение $\overline r=(r_1,r_2,r_3,\ldots)$
+\[
+	\begin{cases}
+		r_1 = - r_1 + r_3, \\
+		r_2 = r_1 -4 r_2,  \\
+		r_3 = 4 r_2 - r_3, \\
+		r_1 + r_2 + r_3 = 1.
+	\end{cases}
+	,\quad
+	\begin{cases}
+		- r_1 + r_3 = 0, \\
+		r_1 - 4 r_2 = 0, \\
+		4 r_2 - r_3 = 0, \\
+		r_1 + r_2 + r_3 = 1.
+	\end{cases}
+\]
+
+\[
+	r_2=\frac{1}{4}r_1,\quad r_3=r_1
+	,\quad
+	r_1\!\left(1+\tfrac{1}{4}+1\right)=1
+	,\quad
+	r_1=\frac{4}{9}
+\]
+
+\[
+	\vec r = \left(\frac{4}{9}, \frac{1}{9}, \frac{4}{9}\right)
+\]
