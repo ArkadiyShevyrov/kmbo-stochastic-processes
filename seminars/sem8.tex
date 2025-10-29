@@ -15,9 +15,9 @@
 	\node[state] (Q2) at (5,0) {$3$};
 
 	% --- рёбра ---
-	\path[e, bend left=12] (Q1) edge node[lbl] {$10$} (Q0);
+	\path[e, bend left=12] (Q0) edge node[lbl] {$10$} (Q1);
 	\path[e, bend left=12] (Q1) edge node[lbl] {$5$} (Q2);
-	\path[e, bend left=12] (Q2) edge node[lbl] {$1$} (Q1);
+	\path[e, bend left=24] (Q2) edge node[lbl] {$1$} (Q0);
 
 \end{tikzpicture}
 
@@ -247,9 +247,9 @@
 	\node[state] (Q2) at (5,0) {$3$};
 
 	% --- рёбра ---
-	\path[e, bend left=12] (Q1) edge node[lbl] {$1$} (Q0);
+	\path[e, bend left=12] (Q0) edge node[lbl] {$1$} (Q1);
 	\path[e, bend left=12] (Q1) edge node[lbl] {$4$} (Q2);
-	\path[e, bend left=12] (Q2) edge node[lbl] {$1$} (Q1);
+	\path[e, bend left=24] (Q2) edge node[lbl] {$1$} (Q0);
 
 \end{tikzpicture}
 
