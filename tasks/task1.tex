@@ -119,7 +119,6 @@ $$
 \subsubsection*{Задача 9.3}
 $K(\tau)=2-3|\tau|$, $T=1$
 
-
 На $\left[0,1\right]$: $K(\tau)=2-3\tau$.
 
 $$
@@ -168,3 +167,50 @@ $$
 
 \subsubsection*{Задача 9.4}
 $K(\tau)=2-3|\tau|$, $T=2$
+
+На $\left[0,2\right]$: $K(\tau)=2-3\tau$.
+
+$$
+	D_0=\frac{1}{2} \left[\int_{0}^{2} (2-3\tau) d\tau\right]=
+	\frac{1}{2} \left[2\tau-\frac{3\tau^2}{2}\right]_0^2=-1
+$$
+
+$$
+	D_k=\frac{2}{2} \left[\int_{0}^{2} (2-3\tau)\cos(\frac{k \pi \tau}{2}) d\tau\right]=
+	\left(2\left[\int_{0}^{2}\cos(\frac{k \pi \tau}{2}) d\tau\right]-3\left[\int_{0}^{2} \tau\cos(\frac{k \pi \tau}{2}) d\tau\right]\right)
+$$
+
+$$
+	I_1=\int_{0}^{2}\cos(\frac{k \pi \tau}{2}) d\tau=\left[\frac{2\sin(\frac{k \pi \tau}{2})}{k\pi}\right]_0^2=0
+$$
+
+$$
+	\begin{aligned}
+		I_2 & = \int_{0}^{2} \tau \cos(\frac{k \pi \tau}{2}) \, d\tau
+		= \left[ \tau \frac{2\sin(\frac{k \pi \tau}{2})}{k \pi} \right]_0^2 - \int_{0}^{2} \frac{2\sin(\frac{k \pi \tau}{2})}{k \pi} \, d\tau
+		= 0 - \frac{4}{(k\pi)^2}[\cos(\frac{k \pi \tau}{2})]_0^2
+		\\ & = -\frac{4}{(k\pi)^2}(-\cos(k \pi) + 1)
+		= -\frac{4(1 - \cos(k \pi))}{k^2 \pi^2}
+		= -\frac{4(1-(-1)^k)}{k^2\pi^2}
+	\end{aligned}
+$$
+
+$$
+	D_k =(2I_1-3I_2)
+	=\left(2\cdot0-3\left(-\frac{4(1-(-1)^k)}{k^2\pi^2}\right)\right)
+	=\frac{12(1-(-1)^k)}{k^2\pi^2}
+	=
+	\begin{cases}
+		\frac{24}{k^2 \pi^2}, & k = 2m+1, \\
+		0,                    & k = 2m.
+	\end{cases}
+$$
+
+$$
+	\begin{aligned}
+		K(\tau) & =D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{1}\right)
+		=-1 + \sum_{k=1}^{\infty} \frac{12(1-(-1)^k)}{k^2\pi^2} \cos(k \pi \tau)
+		\\ & = -1 + \sum_{m=0}^{\infty} \frac{24}{(2m+1)^2\pi^2} \cos((2m+1) \pi \tau)
+		= -1 + \frac{24}{\pi^2} \sum_{m=0}^{\infty} \frac{\cos((2m+1) \pi \tau)}{(2m+1)^2}
+	\end{aligned}
+$$
