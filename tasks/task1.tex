@@ -1,1 +1,79 @@
-1
+\subsection*{Спектральное разложение}
+
+\subsubsection*{Общее решение}
+
+Спектральное разложение корреляционной функции $K(\tau)$.
+
+$K(\tau)$ - чётная функция. $T$ - полупириуд функции $K(\tau)$.
+
+Разложение ищем в виде:
+$$
+	K(\tau)=\sum_{k=0}^{\infty} D_k \cos\left(\frac{k \pi \tau}{T}\right)
+	=D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{T}\right)
+$$
+
+Где:
+
+$$
+	D_0=\frac{1}{T} \left[\int_{0}^{T} K(\tau) d\tau\right]
+$$
+
+$$
+	D_k=\frac{2}{T} \left[\int_{0}^{T} K(\tau)\cos(\frac{k \pi \tau}{T}) d\tau\right]
+$$
+
+\subsubsection*{Задача 9.1}
+$K(\tau)=1-|\tau|$, $T=1$
+
+На $\left[0,1\right]$: $K(\tau)=1-\tau$.
+
+$$
+	I_1=\int_{0}^{1}\cos(k \pi \tau) d\tau=\left[\frac{sin(k \pi \tau)}{k\pi}\right]_0^1=0
+$$
+
+$$
+	\begin{aligned}
+		I_2 & = \int_{0}^{1} \tau \cos(k \pi \tau) \, d\tau
+		= \left[ \tau \frac{\sin(k \pi \tau)}{k \pi} \right]_0^1 - \int_{0}^{1} \frac{\sin(k \pi \tau)}{k \pi} \, d\tau
+		= 0 - \frac{1}{(k\pi)^2}[\cos(k \pi \tau)]_0^1
+		\\ & = -\frac{1}{(k\pi)^2}(-\cos(k \pi) + 1)
+		= -\frac{1 - \cos(k \pi)}{k^2 \pi^2}
+		= -\frac{1-(-1)^k}{k^2\pi^2}
+	\end{aligned}
+$$
+
+$$
+	D_k =2(I_1-I_2)
+	=2(0-(-\frac{1-(-1)^k}{k^2\pi^2}))
+	=\frac{2(1-(-1)^k)}{k^2\pi^2}
+	=
+	\begin{cases}
+		\frac{4}{k^2 \pi^2}, & k = 2m+1, \\
+		0,                   & k = 2m.
+	\end{cases}
+$$
+
+$$
+	\begin{aligned}
+		K(\tau) & =D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{1}\right)
+		=\frac{1}{2} + \sum_{k=1}^{\infty} \frac{2(1-(-1)^k)}{k^2\pi^2} \cos(k \pi \tau)
+		\\ & = \frac{1}{2} + \sum_{m=0}^{\infty} \frac{4}{(2m+1)^2\pi^2} \cos((2m+1) \pi \tau)
+		= \frac{1}{2} + \frac{4}{\pi^2} \sum_{m=0}^{\infty} \frac{\cos((2m+1) \pi \tau)}{(2m+1)^2}
+	\end{aligned}
+$$
+
+\subsubsection*{Задача 9.2}
+$K(\tau)=1-\tau^2$, $T=1$
+
+$$
+	.
+$$
+
+\subsubsection*{Задача 9.3}
+$K(\tau)=2-3|\tau|$, $T=1$
+
+\subsubsection*{Задача 9.4}
+$K(\tau)=2-3|\tau|$, $T=2$
+
+\subsubsection*{Задача 9.5}
+$K(\tau)=3-|\tau|$, $T=5$
