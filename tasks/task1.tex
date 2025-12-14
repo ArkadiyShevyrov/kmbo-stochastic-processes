@@ -119,5 +119,52 @@ $$
 \subsubsection*{Задача 9.3}
 $K(\tau)=2-3|\tau|$, $T=1$
 
+
+На $\left[0,1\right]$: $K(\tau)=2-3\tau$.
+
+$$
+	D_0=\frac{1}{1} \left[\int_{0}^{1} (2-3\tau) d\tau\right]=\left[2\tau-\frac{3\tau^2}{2}\right]_0^1=\frac{1}{2}
+$$
+
+$$
+	D_k=\frac{2}{1} \left[\int_{0}^{1} (2-3\tau)\cos(\frac{k \pi \tau}{1}) d\tau\right]=
+	2\left(2\left[\int_{0}^{1}\cos(k \pi \tau) d\tau\right]-3\left[\int_{0}^{1} \tau\cos(k \pi \tau) d\tau\right]\right)
+$$
+
+$$
+	I_1=\int_{0}^{1}\cos(k \pi \tau) d\tau=\left[\frac{sin(k \pi \tau)}{k\pi}\right]_0^1=0
+$$
+
+$$
+	\begin{aligned}
+		I_2 & = \int_{0}^{1} \tau \cos(k \pi \tau) \, d\tau
+		= \left[ \tau \frac{\sin(k \pi \tau)}{k \pi} \right]_0^1 - \int_{0}^{1} \frac{\sin(k \pi \tau)}{k \pi} \, d\tau
+		= 0 - \frac{1}{(k\pi)^2}[\cos(k \pi \tau)]_0^1
+		\\ & = -\frac{1}{(k\pi)^2}(-\cos(k \pi) + 1)
+		= -\frac{1 - \cos(k \pi)}{k^2 \pi^2}
+		= -\frac{1-(-1)^k}{k^2\pi^2}
+	\end{aligned}
+$$
+
+$$
+	D_k =2(2I_1-3I_2)
+	=2\left(2\cdot0-3\left(-\frac{1-(-1)^k}{k^2\pi^2}\right)\right)
+	=\frac{6(1-(-1)^k)}{k^2\pi^2}
+	=
+	\begin{cases}
+		\frac{12}{k^2 \pi^2}, & k = 2m+1, \\
+		0,                    & k = 2m.
+	\end{cases}
+$$
+
+$$
+	\begin{aligned}
+		K(\tau) & =D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{1}\right)
+		=\frac{1}{2} + \sum_{k=1}^{\infty} \frac{6(1-(-1)^k)}{k^2\pi^2} \cos(k \pi \tau)
+		\\ & = \frac{1}{2} + \sum_{m=0}^{\infty} \frac{12}{(2m+1)^2\pi^2} \cos((2m+1) \pi \tau)
+		= \frac{1}{2} + \frac{12}{\pi^2} \sum_{m=0}^{\infty} \frac{\cos((2m+1) \pi \tau)}{(2m+1)^2}
+	\end{aligned}
+$$
+
 \subsubsection*{Задача 9.4}
 $K(\tau)=2-3|\tau|$, $T=2$
