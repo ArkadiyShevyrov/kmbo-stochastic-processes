@@ -1,0 +1,46 @@
+\section*{§ 6. Системы массового обслушивания}
+
+Система массового обслуживания (СМО) - это математическая модель реальных систем
+
+
+
+\begin{tikzpicture}[
+		>=Stealth, thick,
+		state/.style = {draw, rectangle, minimum width=10mm, minimum height=8mm, font=\small},
+		e/.style   = {->, shorten >=2pt, shorten <=2pt},
+		lbl/.style = {font=\scriptsize, fill=white, inner sep=1pt}
+	]
+
+	% --- вершины ---
+	\node[state] (Q0)   at (0,0)   {$0$};
+	\node[state] (Q1)   at (2,0)   {$1$};
+	\node (QT) at (4,0) {$\cdots$};
+	\node[state] (Qn)   at (6,0)   {$n$};
+	\node[state] (Qnp1) at (8,0)  {$n\!+\!1$};
+	\node at (10,0) {$\cdots$};
+	\node[state] (Qnm)  at (12,0)  {$n\!+\!m\!-\!1$};
+	\node[state] (Qnmm) at (14,0)  {$n\!+\!m$};
+
+	% --- рёбра между первыми ---
+	\path[e] (Q0) edge[bend left=15] node[lbl] {$\lambda$} (Q1);
+	\path[e] (Q1) edge[bend left=15] node[lbl] {$\mu$} (Q0);
+
+	\path[e] (Q1) edge[bend left=15] node[lbl] {$\lambda$} (QT);
+	\path[e] (QT) edge[bend left=15] node[lbl] {$2\mu$} (Q1);
+
+	% --- многоточие ---
+
+	% --- центральные рёбра ---
+	\path[e] (QT) edge[bend left=15] node[lbl] {$\lambda$} (Qn);
+	\path[e] (Qn) edge[bend left=15] node[lbl] {$n\mu$} (QT);
+
+	\path[e] (Qn) edge[bend left=15] node[lbl] {$\lambda$} (Qnp1);
+	\path[e] (Qnp1) edge[bend left=15] node[lbl] {$n\mu$} (Qn);
+
+	% --- многоточие справа ---
+
+	% --- последние рёбра ---
+	\path[e] (Qnm) edge[bend left=15] node[lbl] {$\lambda$} (Qnmm);
+	\path[e] (Qnmm) edge[bend left=15] node[lbl] {$n\mu$} (Qnm);
+
+\end{tikzpicture}
