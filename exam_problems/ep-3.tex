@@ -148,34 +148,46 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=$,
-	$Y_t=$
+	$K_X(t,s)=3 \cos(2t) \cos(2s)$,
+	$Y_t= e^{it} \frac{\partial}{\partial t}X_t - 3it X_t$
 
 
 	$$
-		L_t[\cdot] =
+		L_t[\cdot] = e^{it} \frac{\partial}{\partial t}[\cdot] - 3it [\cdot]
 	$$
 
 	$$
-		\overline{L}_s[\cdot] =
+		\overline{L}_s[\cdot] = e^{-is} \frac{\partial}{\partial s}[\cdot] + 3is [\cdot]
 	$$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =
+			\overline{L}_s[K_x(t,s)] & = e^{-is} \frac{\partial}{\partial s}K_x(t,s) + 3is K_x(t,s)
+			= e^{-is} \frac{\partial}{\partial s}(3 \cos(2t) \cos(2s)) + 3is (3 \cos(2t) \cos(2s))
+			\\ & = e^{-is} (3\cos(2t)) (-2\sin(2s)) + 9is \cos(2t) \cos(2s)
+			\\ & = -6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s)
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =
+			L_t[\overline{L}_s[K_x(t,s)]] & =  e^{it} \frac{\partial}{\partial t}\overline{L}_s[K_x(t,s)] - 3it \overline{L}_s[K_x(t,s)]
+			\\ & = e^{it} \frac{\partial}{\partial t}(-6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s))
+			\\ & - 3it (-6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s))
+			\\ & = -6 e^{it-is} \sin(2s) (-2\sin(2t)) + 9is e^{it} \cos(2s) (-2\sin(2t))
+			\\ & + 18it e^{-is} \cos(2t) \sin(2s) +27ts \cos(2t) \cos(2s)
+			\\ & = 12 e^{it-is} \sin(2s) \sin(2t) - 18is e^{it} \cos(2s) \sin(2t)
+			\\ & + 18it e^{-is} \cos(2t) \sin(2s) +27ts \cos(2t) \cos(2s)
 		\end{aligned}
 	$$
 \end{solution}
 
 \begin{conclusion}
 	$$
-		K_Y(t,s) =
+		\begin{aligned}
+			K_Y(t,s) & =12 e^{it-is} \sin(2s) \sin(2t) - 18is e^{it} \cos(2s) \sin(2t)
+			\\ & + 18it e^{-is} \cos(2t) \sin(2s) +27ts \cos(2t) \cos(2s)
+		\end{aligned}
 	$$
 \end{conclusion}
 
