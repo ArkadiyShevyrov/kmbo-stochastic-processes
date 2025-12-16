@@ -1,1 +1,94 @@
-\section{Задачи по экзамену}
+\documentclass[a4paper,12pt]{article}
+
+% Пакеты
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{tikz} 
+\usetikzlibrary{arrows.meta,positioning}
+\tikzset{lab/.style={font=\footnotesize, inner sep=1pt}}
+
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.5cm,right=1.5cm]{geometry}
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{definition}{Определение}[section]
+\newtheorem{example}{Пример}[section]
+
+\newcommand{\term}[1]{\textit{#1}\textnormal{}} 
+
+\usepackage{epigraph}
+
+\usepackage[none]{hyphenat}
+\pretolerance=10000
+\tolerance=2000
+\emergencystretch=3em
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+
+\setlength{\epigraphwidth}{0.6\textwidth}
+\setlength{\epigraphrule}{0pt}          
+\renewcommand{\epigraphflush}{flushleft}
+
+%-----
+\newcounter{variant}    % номер prac-3-N
+\newcounter{problem}[variant]
+
+\renewcommand{\theproblem}{\thevariant.\arabic{problem}}
+
+\newenvironment{problem}{
+    \refstepcounter{problem}
+    \par\medskip
+    \textbf{Задача №\theproblem.}
+    \par\medskip
+}{
+    \par\medskip
+}
+
+\newenvironment{condition}{\par\textbf{Условие.}}{\par}
+\newenvironment{theory}{\par\textbf{Теория.}}{\par}
+\newenvironment{solution}{\par\textbf{Решение.}}{\par}
+\newenvironment{conclusion}{\par\textbf{Вывод.}}{\par}
+%-----
+
+
+% Заголовок
+\title{Задачи к экзамену. Лобузов}
+\date{2025}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+\setcounter{variant}{1}
+\setcounter{problem}{0}
+\input{exam_problems/ep-1.tex}
+\newpage
+
+\setcounter{variant}{2}
+\setcounter{problem}{0}
+\input{exam_problems/ep-2.tex}
+\newpage
+
+\setcounter{variant}{3}
+\setcounter{problem}{0}
+\input{exam_problems/ep-3.tex}
+\newpage
+
+\setcounter{variant}{4}
+\setcounter{problem}{0}
+\input{exam_problems/ep-4.tex}
+
+\end{document}
+
