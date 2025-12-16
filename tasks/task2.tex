@@ -195,120 +195,121 @@ $$
 
 $$
 	\begin{aligned}
-	\overline{L}_s[L_t[K_x(\tau,\sigma)]] & =
-	\int_{0}^{s} -i \sigma \, L_t[K_x(\tau,\sigma)] \, d\sigma
-	= \int_{0}^{s} -i \sigma \, i e^{-2i\sigma}
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right) \, d\sigma
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\int_{0}^{s} \sigma e^{-2i\sigma} \, d\sigma
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\left(
-	\left[
-		\sigma \frac{1}{-2i} e^{-2i\sigma}
-		\right]_0^s
-	+ \frac{1}{2i}
-	\int_{0}^{s} e^{-2i\sigma} \, d\sigma
-	\right)
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\left(
-	\left(
-	-\frac{s}{2i} e^{-2is}
-	\right)
-	+ \frac{1}{2i}
-	\left[
-		\frac{1}{-2i} e^{-2i\sigma}
-		\right]_0^s
-	\right)
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\left(
-	\left(
+		\overline{L}_s[L_t[K_x(\tau,\sigma)]] & =
+		\int_{0}^{s} -i \sigma \, L_t[K_x(\tau,\sigma)] \, d\sigma
+		= \int_{0}^{s} -i \sigma \, i e^{-2i\sigma}
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right) \, d\sigma
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\int_{0}^{s} \sigma e^{-2i\sigma} \, d\sigma
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\left(
+		\left[
+			\sigma \frac{1}{-2i} e^{-2i\sigma}
+			\right]_0^s
+		+ \frac{1}{2i}
+		\int_{0}^{s} e^{-2i\sigma} \, d\sigma
+		\right)
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\left(
+		\left(
 		-\frac{s}{2i} e^{-2is}
 		\right)
-	+ \frac{1}{4}
-	\left(
-		e^{-2is}
-		-1
+		+ \frac{1}{2i}
+		\left[
+			\frac{1}{-2i} e^{-2i\sigma}
+			\right]_0^s
 		\right)
-	\right)
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	\frac{t}{2i}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\left(
-	e^{-2is}
-	\left(
-	-\frac{s}{2i}
-	+ \frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\\ & =
-	\left(
-	e^{2it}
-	\left(
-	-\frac{t}{2}+\frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\left(
-	e^{-2is}
-	\left(
-	\frac{s}{2}
-	+ \frac{1}{4}
-	\right)
-	-\frac{1}{4}
-	\right)
-	\\ & = \frac{1}{16}
-	\left(
-	e^{2it}(-2t+1)-1
-	\right)
-	\left(
-	e^{-2is} (2s+1)-1
-	\right)
-	\\ & =
-	\frac{1}{16}
-	\left(
-	e^{2it-2is}(-2t+1)(2s+1)
-	-e^{2it}(-2t+1)
-	-e^{-2is}(2s+1)
-	+1
-	\right)
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\left(
+		\left(
+			-\frac{s}{2i} e^{-2is}
+			\right)
+		+ \frac{1}{4}
+		\left(
+			e^{-2is}
+			-1
+			\right)
+		\right)
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		\frac{t}{2i}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\left(
+		e^{-2is}
+		\left(
+		-\frac{s}{2i}
+		+ \frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\\ & =
+		\left(
+		e^{2it}
+		\left(
+		-\frac{t}{2}+\frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\left(
+		e^{-2is}
+		\left(
+		\frac{s}{2}
+		+ \frac{1}{4}
+		\right)
+		-\frac{1}{4}
+		\right)
+		\\ & = \frac{1}{16}
+		\left(
+		e^{2it}(-2t+1)-1
+		\right)
+		\left(
+		e^{-2is} (2s+1)-1
+		\right)
+		\\ & =
+		\frac{1}{16}
+		\left(
+		e^{2it-2is}(-2t+1)(2s+1)
+		-e^{2it}(-2t+1)
+		-e^{-2is}(2s+1)
+		+1
+		\right)
+	\end{aligned}
 $$
