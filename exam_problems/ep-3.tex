@@ -262,34 +262,41 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=$,
-	$Y_t=$
-
-
-	$$
-		L_t[\cdot] =
-	$$
+	$K_X(t,s)=5e^{i(t-s)}=5e^{it-is}$,
+	$Y_t=e^{-2it} \frac{dX_t}{dt} +it X_t$
 
 	$$
-		\overline{L}_s[\cdot] =
+		L_t[\cdot] = e^{-2it} \frac{d}{dt}[\cdot] +it [\cdot]
+	$$
+
+	$$
+		\overline{L}_s[\cdot] = e^{2is} \frac{d}{ds}[\cdot] -is [\cdot]
 	$$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_X(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & = e^{2is} \frac{d}{ds}K_X(t,s) -is K_X(t,s)
+			= e^{2is} \frac{d}{ds}(5e^{it-is}) -is 5e^{it-is}
+			\\ & = -5 e^{2is} (i e^{it-is}) -is 5e^{it-is}
+			=-5i e^{it+is} -is 5e^{it-is}
+			=-5i (e^{it+is} + s e^{it-is})
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_X(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & = e^{-2it} \frac{d}{dt}\overline{L}_s[K_X(t,s)] +it \overline{L}_s[K_X(t,s)]
+			\\ & = e^{-2it} \frac{d}{dt}(-5i (e^{it+is} + s e^{it-is})) +it (-5i (e^{it+is} + s e^{it-is}))
+			\\ & = e^{-2it} (5(e^{it+is} + s e^{it-is})) + 5t(e^{it+is} + s e^{it-is})
+			\\ & = 5 e^{-it+is} + 5s e^{-it-is} + 5t e^{it+is} + 5ts e^{it-is}
+			\\ & = 5 (e^{-it+is} + s e^{-it-is} + t e^{it+is} + ts e^{it-is})
 		\end{aligned}
 	$$
 \end{solution}
 
 \begin{conclusion}
 	$$
-		K_Y(t,s) =
+		K_Y(t,s) = 5 (e^{-it+is} + s e^{-it-is} + t e^{it+is} + ts e^{it-is})
 	$$
 \end{conclusion}
 
