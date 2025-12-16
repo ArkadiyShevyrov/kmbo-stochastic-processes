@@ -25,8 +25,7 @@ $$
 
 \begin{solution}
 
-
-	$K_x(t,s)=e^{-2i(t-s)}=e^{-2it+2is}$, $Y_t = \int_{0}^{t} i \tau X_\tau d\tau$
+	$K_x(t,s)=e^{2i(t-s)}=e^{2it-2is}$, $Y_t = \int_{0}^{t} i \tau X_\tau d\tau$
 
 	$$
 		L_t[\cdot] = \int_{0}^{t} i \tau [\cdot] d\tau
@@ -37,89 +36,184 @@ $$
 	$$
 
 	$$
-		K_x(t,s)=K_x(\tau,\sigma)=e^{-2i\tau+2i\sigma}
+		K_x(t,s)=K_x(\tau,\sigma)=e^{2i\tau-2i\sigma}
 	$$
 
 	$$
 		\begin{aligned}
 			L_t[K_x(\tau,\sigma)] & = \int_{0}^{t} i\,\tau\,K_x(\tau,\sigma)\,d\tau
-			= i e^{2i\sigma}\int_{0}^{t} \tau e^{-2i\tau}\,d\tau
-			= i e^{2i\sigma} \left( \left[-\frac{\tau}{2i}e^{-2i\tau}\right]_0^t + \frac{1}{2i}\int_0^t e^{-2i\tau}\,d\tau \right)
-			\\ & = i e^{2i\sigma} \left( -\frac{t}{2i}e^{-2it} + \frac{1}{2i}\left[-\frac{1}{2i}e^{-2i\tau}\right]_0^t \right)
-			= i e^{2i\sigma} \left( -\frac{t}{2i}e^{-2it} + \frac{1}{4}\left(e^{-2it}-1\right) \right)
-			\\ & = i e^{2i\sigma} \left( e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4} \right)
-		\end{aligned}
-	$$
-
-
-	$$
-		\begin{aligned}
-			\overline{L}_s[L_t[K_x(\tau,\sigma)]] & = \int_{0}^{s} -i \sigma L_t[K_x(\tau,\sigma)] d\sigma
-			= \int_{0}^{s} -i \sigma \left( i e^{2i\sigma} \left( e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4} \right)\right) d\sigma
-			\\ & = \left( e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4} \right) \int_{0}^{s} \sigma e^{2i\sigma} \, d\sigma
-			\\ & = \left( e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4} \right)
+			= i e^{-2i\sigma}\int_{0}^{t} \tau e^{2i\tau}\,d\tau
+			\\ & = i e^{-2i\sigma}
 			\left(
 			\left[
-				\frac{\sigma}{2i} e^{2i\sigma}
-				\right]_0^s -
-			\int_{0}^{s} \frac{1}{2i} e^{2i\sigma} \, d\sigma
+				\tau\frac{1}{2i}e^{2i\tau}
+				\right]_0^t
+			-
+			\frac{1}{2i} \int_{0}^{t} e^{2i\tau} \, d\tau
 			\right)
-			\\ & = \left( e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4} \right)
+			\\ & = i e^{-2i\sigma}
 			\left(
-			\frac{s}{2i} e^{2is}
+			\frac{t}{2i} e^{2it}
 			-
 			\frac{1}{2i}
 			\left[
-				\frac{1}{2i} e^{2i\sigma}
+				\frac{1}{2i} e^{2i\tau}
+				\right]_0^t
+			\right)
+			\\ & = i e^{-2i\sigma}
+			\left(
+			\frac{t}{2i} e^{2it}
+			+
+			\frac{1}{4}
+			\left(
+			e^{2it}
+			-1
+			\right)
+			\right)
+			\\ & = i e^{-2i\sigma}
+			\left(
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+		\end{aligned}
+	$$
+
+	$$
+		\begin{aligned}
+			\overline{L}_s[L_t[K_x(\tau,\sigma)]] & =
+			\int_{0}^{s} -i \sigma \, L_t[K_x(\tau,\sigma)] \, d\sigma
+			= \int_{0}^{s} -i \sigma \, i e^{-2i\sigma}
+			\left(
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right) \, d\sigma
+			\\ & =
+			\left(
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\int_{0}^{s} \sigma e^{-2i\sigma} \, d\sigma
+			\\ & =
+			\left(
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\left(
+			\left[
+				\sigma \frac{1}{-2i} e^{-2i\sigma}
+				\right]_0^s
+			+ \frac{1}{2i}
+			\int_{0}^{s} e^{-2i\sigma} \, d\sigma
+			\right)
+			\\ & =
+			\left(
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\left(
+			\left(
+			-\frac{s}{2i} e^{-2is}
+			\right)
+			+ \frac{1}{2i}
+			\left[
+				\frac{1}{-2i} e^{-2i\sigma}
 				\right]_0^s
 			\right)
 			\\ & =
 			\left(
-			e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) -\frac{1}{4}
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
 			\right)
 			\left(
-			\frac{s}{2i} e^{2is}
-			+
-			\frac{1}{4}( e^{2is} - 1)
+			\left(
+				-\frac{s}{2i} e^{-2is}
+				\right)
+			+ \frac{1}{4}
+			\left(
+				e^{-2is}
+				-1
+				\right)
 			\right)
 			\\ & =
-			e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) \frac{s}{2i} e^{2is}
-			+
-			e^{-2it} \left( \frac{1}{4}-\frac{t}{2i}\right) \frac{1}{4} ( e^{2is} - 1)
-			-\frac{1}{4} \frac{s}{2i} e^{2is}
-			-\frac{1}{4} \frac{1}{4} ( e^{2is} - 1)
-			\\ & =
-			e^{-2it+2is} \left( \frac{s}{8i} + \frac{st}{4} \right)
-			+ e^{-2it+2is} \left( \frac{1}{16} - \frac{t}{8i} \right)
-			+ e^{-2it} \left( \frac{t}{8i} - \frac{1}{16} \right)
-			\\ & + e^{2is} \left( -\frac{s}{8i} \right)
-			+ e^{2is} \left( \frac{1}{16} \right) + \frac{1}{16}
-			\\ & =
-			e^{-2it+2is}  \left(\frac{st}{4} + \frac{s}{8i} - \frac{t}{8i} + \frac{1}{16} \right)
-			+ e^{-2it} \left( \frac{t}{8i} - \frac{1}{16} \right)
-			+ e^{2is}  \left( -\frac{s}{8i} + \frac{1}{16} \right)
-			+ \frac{1}{16}
-			\\ & = \frac{1}{4}
 			\left(
-			e^{-2it+2is}  \left(st + \frac{s}{2i} - \frac{t}{2i} + \frac{1}{4} \right)
-			+ e^{-2it} \left( \frac{t}{2i} - \frac{1}{4} \right)
-			+ e^{2is}  \left( -\frac{s}{2i} + \frac{1}{4} \right)
+			e^{2it}
+			\left(
+			\frac{t}{2i}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\left(
+			e^{-2is}
+			\left(
+			-\frac{s}{2i}
 			+ \frac{1}{4}
 			\right)
+			-\frac{1}{4}
+			\right)
 			\\ & =
+			\left(
+			e^{2it}
+			\left(
+			-\frac{t}{2}+\frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\left(
+			e^{-2is}
+			\left(
+			\frac{s}{2}
+			+ \frac{1}{4}
+			\right)
+			-\frac{1}{4}
+			\right)
+			\\ & = \frac{1}{16}
+			\left(
+			e^{2it}(-2t+1)-1
+			\right)
+			\left(
+			e^{-2is} (2s+1)-1
+			\right)
+			\\ & =
+			\frac{1}{16}
+			\left(
+			e^{2it-2is}(-2t+1)(2s+1)
+			-e^{2it}(-2t+1)
+			-e^{-2is}(2s+1)
+			+1
+			\right)
 		\end{aligned}
 	$$
+
 \end{solution}
 
 \begin{conclusion}
 
 	$$
-		K_Y(t,s)= \frac{1}{4}
+		K_Y(t,s) =
+		\frac{1}{16}
 		\left(
-		e^{-2it+2is}  \left(st - \frac{si}{2} + \frac{ti}{2} + \frac{1}{4} \right)
-		+ e^{-2it} \left( -\frac{ti}{2} - \frac{1}{4} \right)
-		+ e^{2is}  \left(  \frac{si}{2} + \frac{1}{4} \right)
-		+ \frac{1}{4}
+		e^{2it-2is}(-2t+1)(2s+1)
+		-e^{2it}(-2t+1)
+		-e^{-2is}(2s+1)
+		+1
 		\right)
 	$$
 \end{conclusion}
@@ -141,6 +235,7 @@ $$
 
 \begin{solution}
 
+	$K_X(t,s)=2e^{i(t-s)}=2e^{it-is}$
 \end{solution}
 
 \begin{conclusion}
