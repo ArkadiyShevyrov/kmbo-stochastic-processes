@@ -2,14 +2,14 @@
 
 \subsubsection*{Формулы}
 
-Корреляционная функция $K_x(t,s)$
+Корреляционная функция $K_X(t,s)$
 
 $$
 	Y_t=L_t[X_t]
 $$
 
 $$
-	K_Y(t,s)=L_t[\overline{L}_s[K_x(t,s)]]=\overline{L}_s[L_t[K_x(t,s)]]
+	K_Y(t,s)=L_t[\overline{L}_s[K_X(t,s)]]=\overline{L}_s[L_t[K_X(t,s)]]
 $$
 
 \begin{problem}
@@ -25,7 +25,7 @@ $$
 
 \begin{solution}
 
-	$K_x(t,s)=e^{2i(t-s)}=e^{2it-2is}$, $Y_t = \int_{0}^{t} i \tau X_\tau d\tau$
+	$K_X(t,s)=e^{2i(t-s)}=e^{2it-2is}$, $Y_t = \int_{0}^{t} i \tau X_\tau d\tau$
 
 	$$
 		L_t[\cdot] = \int_{0}^{t} i [\cdot] d\tau
@@ -36,12 +36,12 @@ $$
 	$$
 
 	$$
-		K_x(t,s)=K_x(\tau,\sigma)=e^{2i\tau-2i\sigma}
+		K_X(t,s)=K_X(\tau,\sigma)=e^{2i\tau-2i\sigma}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[K_x(\tau,\sigma)] & = \int_{0}^{t} i\,K_x(\tau,\sigma)\,d\tau
+			L_t[K_X(\tau,\sigma)] & = \int_{0}^{t} i\,K_X(\tau,\sigma)\,d\tau
 			= i e^{-2i\sigma}\int_{0}^{t} e^{2i\tau}\,d\tau
 			\\ & = i e^{-2i\sigma}
 			\left[
@@ -54,8 +54,8 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[L_t[K_x(\tau,\sigma)]] & =
-			\int_{0}^{s} -i \, L_t[K_x(\tau,\sigma)] \, d\sigma
+			\overline{L}_s[L_t[K_X(\tau,\sigma)]] & =
+			\int_{0}^{s} -i \, L_t[K_X(\tau,\sigma)] \, d\sigma
 			= \int_{0}^{s} -i \, i e^{-2i\sigma} \frac{1}{2} (e^{2it}-1) \, d\sigma
 			\\ & = \frac{1}{2} (e^{2it}-1) \int_{0}^{s} e^{-2i\sigma}  \, d\sigma
 			= \frac{1}{2} (e^{2it}-1)
@@ -108,7 +108,7 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =-3is\frac{\partial}{\partial s}K_x(t,s) + e^{-is}K_x(t,s)
+			\overline{L}_s[K_X(t,s)] & =-3is\frac{\partial}{\partial s}K_X(t,s) + e^{-is}K_X(t,s)
 			= -3is\frac{\partial}{\partial s}2e^{it-is} + e^{-is}2e^{it-is}
 			\\ & = -3is\cdot -2i e^{it-is} + 2 e^{it-2is}
 			= -6s e^{it-is} + 2 e^{it-2is}
@@ -117,7 +117,7 @@ $$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & = 3it\frac{\partial}{\partial t}\overline{L}_s[K_x(t,s)] + e^{it}\overline{L}_s[K_x(t,s)]
+			L_t[\overline{L}_s[K_X(t,s)]] & = 3it\frac{\partial}{\partial t}\overline{L}_s[K_X(t,s)] + e^{it}\overline{L}_s[K_X(t,s)]
 			\\ & = 3it\frac{\partial}{\partial t}(-6s e^{it-is} + 2 e^{it-2is}) + e^{it}(-6s e^{it-is} + 2 e^{it-2is})
 			\\ & =3it(-6si e^{it-is}+2ie^{it-2is}) - 6s e^{2it-is} + 2 e^{2it-2is}
 			\\ & =18ts e^{it-is} - 6te^{it-2is} - 6s e^{2it-is} + 2 e^{2it-2is}
@@ -162,7 +162,7 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & = e^{-is} \frac{\partial}{\partial s}K_x(t,s) + 3is K_x(t,s)
+			\overline{L}_s[K_X(t,s)] & = e^{-is} \frac{\partial}{\partial s}K_X(t,s) + 3is K_X(t,s)
 			= e^{-is} \frac{\partial}{\partial s}(3 \cos(2t) \cos(2s)) + 3is (3 \cos(2t) \cos(2s))
 			\\ & = e^{-is} (3\cos(2t)) (-2\sin(2s)) + 9is \cos(2t) \cos(2s)
 			\\ & = -6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s)
@@ -171,7 +171,7 @@ $$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =  e^{it} \frac{\partial}{\partial t}\overline{L}_s[K_x(t,s)] - 3it \overline{L}_s[K_x(t,s)]
+			L_t[\overline{L}_s[K_X(t,s)]] & =  e^{it} \frac{\partial}{\partial t}\overline{L}_s[K_X(t,s)] - 3it \overline{L}_s[K_X(t,s)]
 			\\ & = e^{it} \frac{\partial}{\partial t}(-6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s))
 			\\ & - 3it (-6  e^{-is} \cos(2t) \sin(2s) + 9is \cos(2t) \cos(2s))
 			\\ & = -6 e^{it-is} \sin(2s) (-2\sin(2t)) + 9is e^{it} \cos(2s) (-2\sin(2t))
@@ -208,34 +208,40 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=$,
-	$Y_t=$
+	$K_X(t,s)=\cos(5(t-s))=\cos(5t-5s)$,
+	$Y_t=10\frac{\partial X_t}{\partial t}$
 
 
 	$$
-		L_t[\cdot] =
+		L_t[\cdot] = 10\frac{\partial}{\partial t}[\cdot]
 	$$
 
 	$$
-		\overline{L}_s[\cdot] =
+		\overline{L}_s[\cdot] = 10\frac{\partial}{\partial s}[\cdot]
 	$$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & = 10\frac{\partial}{\partial s}K_X(t,s)
+			= 10\frac{\partial}{\partial s}\cos(5t-5s)
+			= 10 (5 \sin(5t-5s))
+			= 50 \sin(5t-5s)
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & = 10\frac{\partial}{\partial t}\overline{L}_s[K_X(t,s)]
+			= 10\frac{\partial}{\partial t}(50 \sin(5t-5s))
+			\\ & = 500 (5 \cos(5t-5s))
+			= 2500 \cos(5t-5s)
 		\end{aligned}
 	$$
 \end{solution}
 
 \begin{conclusion}
 	$$
-		K_Y(t,s) =
+		K_Y(t,s) = 2500 \cos(5t-5s)
 	$$
 \end{conclusion}
 
@@ -270,13 +276,13 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & =
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & =
 		\end{aligned}
 	$$
 \end{solution}
@@ -318,13 +324,13 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & =
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & =
 		\end{aligned}
 	$$
 \end{solution}
@@ -366,13 +372,13 @@ $$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_x(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & =
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_x(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & =
 		\end{aligned}
 	$$
 \end{solution}
