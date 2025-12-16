@@ -94,11 +94,42 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=2e^{i(t-s)}=2e^{it-is}$
+	$K_X(t,s)=2e^{i(t-s)}=2e^{it-is}$,
+	$Y_t=3it \frac{dX_t}{dt} + e^{it} X_t$
+
+
+	$$
+		L_t[\cdot] = 3it\frac{\partial}{\partial t}[\cdot] + e^{it}[\cdot]
+	$$
+
+	$$
+		\overline{L}_s[\cdot] = -3is\frac{\partial}{\partial s}[\cdot] + e^{-is}[\cdot]
+	$$
+
+	$$
+		\begin{aligned}
+			\overline{L}_s[K_x(t,s)] & =-3is\frac{\partial}{\partial s}K_x(t,s) + e^{-is}K_x(t,s)
+			= -3is\frac{\partial}{\partial s}2e^{it-is} + e^{-is}2e^{it-is}
+			\\ & = -3is\cdot -2i e^{it-is} + 2 e^{it-2is}
+			= -6s e^{it-is} + 2 e^{it-2is}
+		\end{aligned}
+	$$
+
+	$$
+		\begin{aligned}
+			L_t[\overline{L}_s[K_x(t,s)]] & = 3it\frac{\partial}{\partial t}\overline{L}_s[K_x(t,s)] + e^{it}\overline{L}_s[K_x(t,s)]
+			\\ & = 3it\frac{\partial}{\partial t}(-6s e^{it-is} + 2 e^{it-2is}) + e^{it}(-6s e^{it-is} + 2 e^{it-2is})
+			\\ & =3it(-6si e^{it-is}+2ie^{it-2is}) - 6s e^{2it-is} + 2 e^{2it-2is}
+			\\ & =18ts e^{it-is} - 6te^{it-2is} - 6s e^{2it-is} + 2 e^{2it-2is}
+		\end{aligned}
+	$$
+
 \end{solution}
 
 \begin{conclusion}
-
+	$$
+		K_Y(t,s) =18ts e^{it-is} - 6te^{it-2is} - 6s e^{2it-is} + 2 e^{2it-2is}
+	$$
 \end{conclusion}
 
 \end{problem}
