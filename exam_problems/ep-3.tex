@@ -277,8 +277,8 @@ $$
 		\begin{aligned}
 			\overline{L}_s[K_X(t,s)] & = e^{2is} \frac{d}{ds}K_X(t,s) -is K_X(t,s)
 			= e^{2is} \frac{d}{ds}(5e^{it-is}) -is 5e^{it-is}
-			\\ & = -5 e^{2is} (i e^{it-is}) -is 5e^{it-is}
-			=-5i e^{it+is} -is 5e^{it-is}
+			\\ & = 5 e^{2is} (-i e^{it-is}) -5 i s e^{it-is}
+			=-5i e^{it+is} -5 i s e^{it-is}
 			=-5i (e^{it+is} + s e^{it-is})
 		\end{aligned}
 	$$
@@ -287,7 +287,7 @@ $$
 		\begin{aligned}
 			L_t[\overline{L}_s[K_X(t,s)]] & = e^{-2it} \frac{d}{dt}\overline{L}_s[K_X(t,s)] +it \overline{L}_s[K_X(t,s)]
 			\\ & = e^{-2it} \frac{d}{dt}(-5i (e^{it+is} + s e^{it-is})) +it (-5i (e^{it+is} + s e^{it-is}))
-			\\ & = e^{-2it} (5(e^{it+is} + s e^{it-is})) + 5t(e^{it+is} + s e^{it-is})
+			\\ & = e^{-2it} (-5ii(e^{it+is} + s e^{it-is})) + 5t(e^{it+is} + s e^{it-is})
 			\\ & = 5 e^{-it+is} + 5s e^{-it-is} + 5t e^{it+is} + 5ts e^{it-is}
 			\\ & = 5 (e^{-it+is} + s e^{-it-is} + t e^{it+is} + ts e^{it-is})
 		\end{aligned}
@@ -317,34 +317,40 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=$,
-	$Y_t=$
+	$K_X(t,s)=5 \sin(3t)\sin(3s)$,
+	$Y_t=\frac{1}{10} e^{-2it} \frac{\partial X_t}{\partial t}$
 
 
 	$$
-		L_t[\cdot] =
+		L_t[\cdot] = \frac{1}{10} e^{-2it} \frac{\partial}{\partial t}[\cdot]
 	$$
 
 	$$
-		\overline{L}_s[\cdot] =
+		\overline{L}_s[\cdot] = \frac{1}{10} e^{2is} \frac{\partial}{\partial s}[\cdot]
 	$$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_X(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & = \frac{1}{10} e^{2is} \frac{\partial}{\partial s}K_X(t,s)
+			= \frac{1}{10} e^{2is} \frac{\partial}{\partial s} (5 \sin(3t)\sin(3s))
+			\\ & = \frac{1}{10}  e^{2is} (15 \sin(3t) \cos (3s))
+			= \frac{3}{2}  e^{2is} \sin(3t) \cos (3s)
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_X(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & = \frac{1}{10} e^{-2it} \frac{\partial}{\partial t}\overline{L}_s[K_X(t,s)]
+			= \frac{1}{10} e^{-2it} \frac{\partial}{\partial t}(\frac{3}{2}  e^{2is} \sin(3t) \cos (3s))
+			\\ & = \frac{1}{10} e^{-2it} \left( \frac{9}{2} e^{2is} \cos(3t) \cos (3s) \right)
+			\\ & = \frac{9}{20} e^{-2it+2is} \cos(3t) \cos(3s)
 		\end{aligned}
 	$$
 \end{solution}
 
 \begin{conclusion}
 	$$
-		K_Y(t,s) =
+		K_Y(t,s) = \frac{9}{20} e^{-2it+2is} \cos(3t) \cos(3s)
 	$$
 \end{conclusion}
 
