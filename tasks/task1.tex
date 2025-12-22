@@ -1,15 +1,12 @@
 \subsection*{Спектральное разложение}
 
-\subsubsection*{Общее решение}
+\subsubsection*{Общее решение для чётных функций}.
 
-Спектральное разложение корреляционной функции $K(\tau)$.
-
-$K(\tau)$ - чётная функция. $T$ - полупириуд функции $K(\tau)$.
+Спектральное разложение корреляционной функции $K(\tau)$, заданной на $[-T,T]$.
 
 Разложение ищем в виде:
 $$
-	K(\tau)=\sum_{k=0}^{\infty} D_k \cos\left(\frac{k \pi \tau}{T}\right)
-	=D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{T}\right)
+	K(\tau)=D_0+\sum_{k=1}^{\infty} D_k \cos\left(\frac{k \pi \tau}{T}\right)
 $$
 
 Где:
@@ -20,6 +17,19 @@ $$
 
 $$
 	D_k=\frac{2}{T} \left[\int_{0}^{T} K(\tau)\cos(\frac{k \pi \tau}{T}) d\tau\right]
+$$
+
+Спектральное разложение корреляционной функции $K(\tau)$, $\tau \in \mathbb{R}$.
+
+Разложение ищем в виде:
+$$
+	K(\tau)=\frac{1}{2\pi}\int_{-\infty}^{\infty} S(\omega)e^{i\omega \tau} \, d\omega
+$$
+
+Где:
+
+$$
+	S(\omega)=2\int_{0}^{\infty} K(\tau) \cos(\omega\tau) \, d\tau
 $$
 
 \subsubsection*{Задача 9.1}
@@ -213,4 +223,143 @@ $$
 		\\ & = -1 + \sum_{m=0}^{\infty} \frac{24}{(2m+1)^2\pi^2} \cos(\frac{(2m+1) \pi \tau}{2})
 		= -1 + \frac{24}{\pi^2} \sum_{m=0}^{\infty} \frac{\cos(\frac{(2m+1) \pi \tau}{2})}{(2m+1)^2}
 	\end{aligned}
+$$
+
+
+
+\subsubsection*{Задача 9.5}
+$K_X(\tau)=\cos(\tau) e^{i|\tau|}$, $\tau \in \mathbb{R}$
+
+На $[0,\infty)$: $K(\tau)=\cos(\tau) e^{i\tau}$
+
+
+$$
+	\cos(a\tau)=\frac{e^{i a\tau}+e^{-i a\tau}}{2}
+$$
+
+$$
+	\int_{0}^{\infty} e^{-a\tau} \, d\tau = \frac{1}{a}
+$$
+
+$$
+	\int_{0}^{\infty} \tau e^{-a\tau} \, d\tau = \frac{1}{a^2}
+$$
+
+$$
+	\begin{aligned}
+		S(\omega) & = 2\int_{0}^{\infty} (\cos(\tau) e^{i\tau}) \cos(\omega\tau) \, d\tau
+		= 2 \int_{0}^{\infty} \frac{e^{i \tau}+e^{-i \tau}}{2} e^{i\tau} \frac{e^{i \omega\tau}+e^{-i \omega\tau}}{2} \, d\tau
+		\\ & = \frac{1}{2}
+		\left(
+		\int_{0}^{\infty} (e^{2i\tau}+1)(e^{i\omega \tau} + e^{-i\omega \tau}) \, d\tau
+		\right)
+		\\ & = \frac{1}{2}
+		\left(
+		\int_{0}^{\infty} e^{i(2+\omega)\tau} \, d\tau
+		+\int_{0}^{\infty} e^{i(2-\omega)\tau}  \, d\tau
+		+\int_{0}^{\infty} e^{i\omega\tau}  \, d\tau
+		+\int_{0}^{\infty} e^{-i(\omega)\tau}  \, d\tau
+		\right)
+	\end{aligned}
+$$
+
+$$
+	K(\tau)=\frac{1}{2\pi}\int_{-\infty}^{\infty} S(\omega)e^{i\omega \tau} \, d\omega
+$$
+
+
+
+\subsubsection*{Задача 9.6}
+$K_X(\tau)=(2+|\tau|) e^{-|\tau|}$, $\tau \in \mathbb{R}$
+
+На $[0,\infty)$: $K(\tau)=(2+\tau) e^{-\tau}$
+
+Вариант №1
+
+
+$$
+	\cos(a\tau)=\frac{e^{i a\tau}+e^{-i a\tau}}{2}
+$$
+
+$$
+	\int_{0}^{\infty} e^{-a\tau} \, d\tau = \frac{1}{a}
+$$
+
+$$
+	\int_{0}^{\infty} \tau e^{-a\tau} \, d\tau = \frac{1}{a^2}
+$$
+
+
+$$
+	\begin{aligned}
+		S(\omega) & =2\int_{0}^{\infty} ((2+\tau) e^{-\tau}) \cos(\omega\tau) \, d\tau
+		\\ & = 2
+		\left(
+		2\int_{0}^{\infty} e^{-\tau} \cos(\omega \tau) \, d\tau
+		+
+		\int_{0}^{\infty} \tau e^{-\tau} \cos(\omega \tau) \, d\tau
+		\right)
+		\\ & = 2
+		\left(
+		2\int_{0}^{\infty} e^{-\tau} (\frac{e^{i\omega \tau}+e^{-i\omega \tau}}{2}) \, d\tau
+		+
+		\int_{0}^{\infty} \tau e^{-\tau} (\frac{e^{i\omega \tau}+e^{-i\omega \tau}}{2}) \, d\tau
+		\right)
+		\\ & = 2
+		\left(
+		\int_{0}^{\infty} e^{-\tau} (e^{i\omega \tau}+e^{-i\omega \tau}) \, d\tau
+		+
+		\frac{1}{2}\int_{0}^{\infty} \tau e^{-\tau} (e^{i\omega \tau}+e^{-i\omega \tau}) \, d\tau
+		\right)
+		\\ & = 2
+		\left(
+		\int_{0}^{\infty} e^{-\tau + i\omega \tau}+e^{-\tau -i\omega \tau} \, d\tau
+		+
+		\frac{1}{2}\int_{0}^{\infty} \tau e^{-\tau + i\omega \tau}+\tau e^{-\tau -i\omega \tau}  \, d\tau
+		\right)
+		\\ & = 2 \int_{0}^{\infty} e^{-(1-i\omega)\tau} \, d\tau
+		+ 2 \int_{0}^{\infty} e^{-(1+i\omega)\tau} \, d\tau
+		+ \int_{0}^{\infty} \tau e^{-(1-i\omega)\tau} \, d\tau
+		+ \int_{0}^{\infty} \tau e^{-(1+i\omega)\tau} \, d\tau
+		\\ & =
+		2\frac{1}{1-i\omega}
+		+ 2\frac{1}{1+i\omega}
+		+ \frac{1}{(1-i\omega)^2}
+		+ \frac{1}{(1+i\omega)^2}
+		\\ & = \frac{4}{1+\omega^2} +\frac{2(1-\omega^2)}{(1+\omega^2)^2}
+		= 2 \left(\frac{3+\omega^2}{(1+\omega^2)^2}\right)
+	\end{aligned}
+$$
+
+Вариант №2
+
+$$
+	\int_{0}^{\infty}e^{-a\tau} cos(\omega \tau) d\tau = \frac{a}{a^2+\omega^2}
+$$
+
+$$
+	\int_{0}^{\infty} \tau e^{-a\tau} cos(\omega \tau) d\tau = \frac{a-\omega^2}{(a^2+\omega^2)^2}
+$$
+
+
+$$
+	\begin{aligned}
+		S(\omega) & =2\int_{0}^{\infty} ((2+\tau) e^{-\tau}) \cos(\omega\tau) \, d\tau
+		\\ & = 2
+		\left(
+		2\int_{0}^{\infty} e^{-\tau} \cos(\omega \tau) \, d\tau
+		+
+		\int_{0}^{\infty} \tau e^{-\tau} \cos(\omega \tau) \, d\tau
+		\right)
+		\\ & = 2
+		\left(
+		\frac{2}{1+\omega^2} +\frac{1-\omega^2}{(1+\omega^2)^2}
+		\right)
+		= 2 \left(\frac{3+\omega^2}{(1+\omega^2)^2}\right)
+	\end{aligned}
+$$
+
+$$
+	K(\tau) =\frac{1}{2\pi}\int_{-\infty}^{\infty} S(\omega)e^{i\omega \tau} \, d\omega
+	= \frac{1}{2\pi}\int_{-\infty}^{\infty} 2 \left(\frac{3+\omega^2}{(1+\omega^2)^2}\right)e^{i\omega \tau} \, d\omega
 $$

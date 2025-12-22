@@ -1,4 +1,4 @@
-\section*{Кореляционная функция}
+\section*{Корреляционная функция}
 
 \subsubsection*{Формулы}
 
@@ -371,34 +371,40 @@ $$
 
 \begin{solution}
 
-	$K_X(t,s)=$,
-	$Y_t=$
+	$K_X(t,s)=7e^{3i(t-s)}=7e^{3it-3is}$,
+	$Y_t=3\frac{dX_t}{dt}$
 
 
 	$$
-		L_t[\cdot] =
+		L_t[\cdot] = 3\frac{\partial}{\partial t}[\cdot]
 	$$
 
 	$$
-		\overline{L}_s[\cdot] =
+		\overline{L}_s[\cdot] = 3\frac{\partial}{\partial s}[\cdot]
 	$$
 
 	$$
 		\begin{aligned}
-			\overline{L}_s[K_X(t,s)] & =
+			\overline{L}_s[K_X(t,s)] & = 3\frac{\partial}{\partial s}K_X(t,s)
+			= 3\frac{\partial}{\partial s}7e^{3it-3is}
+			\\ & = 3\cdot 7(-3i e^{3it-3is})
+			= -189i e^{3it-3is}
 		\end{aligned}
 	$$
 
 	$$
 		\begin{aligned}
-			L_t[\overline{L}_s[K_X(t,s)]] & =
+			L_t[\overline{L}_s[K_X(t,s)]] & = 3\frac{\partial}{\partial t}\overline{L}_s[K_X(t,s)]
+			= 3\frac{\partial}{\partial t}(-189i e^{3it-3is})
+			\\ & = 3 \cdot -189i (3i e^{3it-3is})
+			= 567 e^{3it-3is}
 		\end{aligned}
 	$$
 \end{solution}
 
 \begin{conclusion}
 	$$
-		K_Y(t,s) =
+		K_Y(t,s) = 567 e^{3it-3is}
 	$$
 \end{conclusion}
 
