@@ -23,7 +23,7 @@ $\rho=\frac{\lambda}{\mu}$ - приведённая нагрузка систе�
 $\nu=\frac{\rho}{n}=\frac{\lambda}{n\mu}$ - коэффициент загрузки системы.
 
 Термины:
-$P_{\text{откз}}$ - вероятность отказа,
+$P_{\text{отк}}$ - вероятность отказа,
 $Q$ - относительная пропускная способность, \\
 $A$ - абсолютная пропускная способность,
 $\bar{k}$ - среднее число занятых приборов,
@@ -32,29 +32,29 @@ $\bar{z}$ - среднее число заявок в системе,
 $\bar{t}_{\text{оч}}$ - среднее время ожидания,
 $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
-$r_0=\left(\sum_{i=0}^{n} \frac{\rho^i}{i!}\right)^{-1}$,
-$r_n=\frac{\rho^n}{n!}r_0$.
-
+\renewcommand{\arraystretch}{1.3}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		                       & $(M|M|n|0)$ 2                                     & $(M|M|n|\infty)$ 3          & $M|M|n|m$                             \\
+		                       & $(M|M|n|0)$                                         & $(M|M|n|\infty)$, $\nu<1$                                                              & $(M|M|n|m)$                                                                                                         \\
 		\hline
-		$P_{\text{откз}}$      & $r_n=\frac{\rho^n}{n!}r_0$                        & $0$                         & $=r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$ \\
+		$r_0$                  & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}\right)^{-1}$ & $\left(\sum_{k=0}^{n-1}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\frac{1}{1-\nu}\right)^{-1}$ & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j\right)^{-1}$                            \\
 		\hline
-		$Q$                    & $1-P_{\text{откз}}$                               & $1-P_{\text{откз}}=1$       & $1-P_{\text{откз}}$                   \\
+		$P_{\text{отк}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $0$                                                                                    & $r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$                                                                                \\
 		\hline
-		$A$                    & $\lambda Q$                                       & $\lambda Q=\lambda$         & $\lambda Q$                           \\
+		$Q$                    & $1-P_{\text{отк}}$                                  & $1-P_{\text{отк}}=1$                                                                   & $1-P_{\text{отк}}$                                                                                                  \\
 		\hline
-		$\bar{k}$              & $\bar{z}=\rho Q$                                  & $\rho Q=\rho$               & $\rho Q$                              \\
+		$A$                    & $\lambda Q$                                         & $\lambda Q=\lambda$                                                                    & $\lambda Q$                                                                                                         \\
 		\hline
-		$\bar{r}$              & $0$                                               & $\nu \frac{r_n}{(1-\nu)^2}$ &                                       \\
+		$\bar{k}$              & $\rho Q$                                            & $\rho Q=\rho$                                                                          & $\rho Q$                                                                                                            \\
 		\hline
-		$\bar{z}$              & $\bar{k}$                                         & $\bar{k}+\bar{r}$           &                                       \\
+		$\bar{r}$              & $0$                                                 & $\nu \frac{r_n}{(1-\nu)^2}$                                                            & $\frac{\rho^n}{n!}r_0 \sum_{j=1}^{m} j \nu^j=\frac{\rho^n}{n!}r_0 \frac{\nu(1-(m+1)\nu^m + m\nu^{m+1})}{(1-\mu)^2}$ \\
 		\hline
-		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                       & $\frac{\bar{r}}{\lambda}$   &                                       \\
+		$\bar{z}$              & $\bar{k}$                                           & $\bar{k}+\bar{r}$                                                                      & $\bar{k}+\bar{r}$                                                                                                   \\
 		\hline
-		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}$ & $\frac{\bar{z}}{\lambda}$   &                                       \\
+		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                         & $\frac{\bar{r}}{\lambda}$                                                              & $\frac{\bar{r}}{\lambda}$                                                                                           \\
+		\hline
+		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}$   & $\frac{\bar{z}}{\lambda}$                                                              & $\frac{\bar{z}}{\lambda}$                                                                                           \\
 		\hline
 	\end{tabular}
 \end{table}
