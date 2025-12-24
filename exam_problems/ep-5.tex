@@ -1,0 +1,314 @@
+\section{СМО}
+
+
+\subsection*{Общая теория}
+
+СМО - система массового обслуживания.
+
+Три типа задач:
+$M|M|n|0$, $M|M|n|\infty$, $M|M|n|m$.
+
+Где $M$ - пуассоновский поток заявок,
+$M$ - экспоненциальное время обслуживания,
+$n$ - число каналов обслуживаниея,
+$m$ - ёмкость системы.
+
+Где $m=0$ - нет очереди,
+$m=\infty$ - неограниченная очередь,
+$m=m$ - ограченная очередь на $m$ мест.
+
+$\lambda$ - интенсивность входного потока заявок,
+$\mu$ - интенсивность обслуживания одним прибором,
+$\rho=\frac{\lambda}{\mu}$ - приведённая нагрузка системы,
+$\nu=\frac{\rho}{n}=\frac{\lambda}{n\mu}$ - коэффициент загрузки системы.
+
+Термины:
+$P_{\text{откз}}$ - вероятность отказа,
+$Q$ - относительная пропускная способность, \\
+$A$ - абсолютная пропускная способность,
+$\bar{k}$ - среднее число занятых приборов,
+$\bar{r}$ - среднее число заявок в очереди,
+$\bar{z}$ - среднее число заявок в системе,
+$\bar{t}_{\text{оч}}$ - среднее время ожидания,
+$\bar{t}_{\text{СМО}}$-  среднее время в системе.
+
+$r_0=\left(\sum_{i=0}^{n} \frac{\rho^i}{i!}\right)^{-1}$,
+$r_n=\frac{\rho^n}{n!}r_0$.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		                       & $(M|M|n|0)$ 2                                     & $(M|M|n|\infty)$ 3          & $M|M|n|m$                             \\
+		\hline
+		$P_{\text{откз}}$      & $r_n=\frac{\rho^n}{n!}r_0$                        & $0$                         & $=r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$ \\
+		\hline
+		$Q$                    & $1-P_{\text{откз}}$                               & $1-P_{\text{откз}}=1$       & $1-P_{\text{откз}}$                   \\
+		\hline
+		$A$                    & $\lambda Q$                                       & $\lambda Q=\lambda$         & $\lambda Q$                           \\
+		\hline
+		$\bar{k}$              & $\bar{z}=\rho Q$                                  & $\rho Q=\rho$               & $\rho Q$                              \\
+		\hline
+		$\bar{r}$              & $0$                                               & $\nu \frac{r_n}{(1-\nu)^2}$ &                                       \\
+		\hline
+		$\bar{z}$              & $\bar{k}$                                         & $\bar{k}+\bar{r}$           &                                       \\
+		\hline
+		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                       & $\frac{\bar{r}}{\lambda}$   &                                       \\
+		\hline
+		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}$ & $\frac{\bar{z}}{\lambda}$   &                                       \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
+\subsection*{Задачи}
+
+\begin{problem}
+
+\begin{condition}
+	(01.4)
+
+	В СМО $(M|M|2|2)$ интенсивность прихода заявок $\lambda=2$ в час,
+	среднее время обслуживания ожной заявки $T_{\text{обсл}}=15$ мин.
+	Найти среднее число занятых приборов.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(27.5)
+
+	В парихмахерской задачи работают 2 мастера,
+	в холле имеются 3 кресла для ожидающих обслуживания клиентов.
+	В среднем один мастер обслуживает одного клиента 30 минут.
+	Среднее число клиентов в час равно 4.
+	Найти вероятность того, что в момент прихода клиента все мастера будут заняты.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(51.8)
+
+	В парихмахерской работают 5 мастеров.
+	В среднем один мастер обслуживает одного клиента 20 минут.
+	В среднем приходит 3 клиента в час.
+	Если все мастера заняты, то клиент уходит.
+	Найти вероятность того, что в момент прихода клиента не менее трёх мастеров будут свободны.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(2.5)
+
+	В СМО $(M|M|2|2)$ интенсивность прихода заявок $\lambda=3$ в час,
+	среднее время обслуживания одной заявки $T=20$ минут.
+	Найти среднее число занятых приборов.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(31.5)
+
+	У входа на стадион работает одна касса.
+	В среднем подходят 300 болельщиков в час.
+	Среднее врямя покупки билета составляет 10 секунд.
+	Найти среднюю длину очереди.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(45.3)
+
+	Найти среднее время нахождения заявки в СМО $(M|M|2)$,
+	если за час поступает в среднем 9 заявок,
+	а одна заявка обслуживается в среднем 12 минут.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(43.3)
+
+	Клиент использует банкомат в сренем 3 минуты.
+	За час к банкомату подходят в среднем 18 клиентов.
+	Найти среднее время, которое клиент проводит в очереди,
+	при условии, что поток клиентов пуассоновский,
+	а время обслуживания распределено по показательному обслуживанию.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(22.2)
+
+	Клиент использует банкомат в среднем 3 минуты.
+	За час к банкомату подходят в среднем 20 клиентов.
+	Если в очереди уже стоят 8 человек, то клиент уходит.
+	Найти среднее время пребывания клиента в очереди.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(01.7)
+
+	Найти среднее время пребывания заявки в СМО $(M|M|2)$,
+	если в СМО в всреднем поступает 60 заявок в час,
+	а среднее время обслуживания одним прибором одной заявки равно 1 минуте.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(3.1)
+
+	У входа на стадион работает одна касса.
+	В среднем подходят 120 болельщиков в час.
+	Найти среднее время покупки билета, если вероятность того,
+	что перед кассой стоит только один болельших, равна $\frac{2}{9}$.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
+
+
+
+\begin{problem}
+
+\begin{condition}
+	(42.3)
+
+	В СМО $(M|M|3|0)$ поступает за час в среднем 8 заявок,
+	одна заявка обслуживается в среднем 15 минут.
+	Построить граф СМО, найти среднее число занятых приборов.
+\end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\end{problem}
