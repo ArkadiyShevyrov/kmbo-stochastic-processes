@@ -42,7 +42,7 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 		\hline
 		$P_{\text{отк}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $0$                                                                                    & $r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$                                                                                \\
 		\hline
-		$Q$                    & $1-P_{\text{отк}}$                                  & $1-P_{\text{отк}}=1$                                                                   & $1-P_{\text{отк}}$                                                                                                  \\
+		$Q$                    & $P_{\text{обсл}}=1-P_{\text{отк}}$                  & $P_{\text{обсл}}=1-P_{\text{отк}}=1$                                                   & $P_{\text{обсл}}=1-P_{\text{отк}}$                                                                                  \\
 		\hline
 		$A$                    & $\lambda Q$                                         & $\lambda Q=\lambda$                                                                    & $\lambda Q$                                                                                                         \\
 		\hline
@@ -94,16 +94,65 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 	(01.4)
 
 	В СМО $(M|M|2|2)$ интенсивность прихода заявок $\lambda=2$ в час,
-	среднее время обслуживания ожной заявки $T_{\text{обсл}}=15$ мин.
+	среднее время обслуживания каждой заявки $T_{\text{обсл}}=15$ мин.
 	Найти среднее число занятых приборов.
 \end{condition}
 
 \begin{solution}
+	$(M|M|2|2)$
+
+	$\lambda=2$,
+	$\mu=\frac{1}{T_{\text{обсл}}}=4$ клиента в час,
+	$\rho=\frac{\lambda}{\mu}=\frac{1}{2}$,
+	$\nu=\frac{\lambda}{n\mu}=\frac{2}{2\cdot 4}=\frac{1}{4}$
+
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{2}\frac{\rho^k}{k!}+\frac{\rho^2}{n!}\sum_{j=1}^{2}\nu^j
+			\right)^{-1}
+			\\ & = \left(
+			1 + \rho + \frac{\rho^2}{2} + \frac{\rho^2}{2}(\nu+\nu^2)
+			\right)^{-1}
+			=\left(
+			1 + \frac{1}{2} + \frac{1}{8} + \frac{1}{8}\left(\frac{1}{4} + \frac{1}{16}\right)
+			\right)^{-1}
+			\\ & = \frac{128}{213}
+		\end{aligned}
+	$$
+
+	$$
+		r_{n+m}=r_{4}=\nu^m \frac{\rho^n}{n!}r_0
+		=\frac{1}{4}^2 \frac{\frac{1}{2}^2}{2!} \frac{128}{213}
+		= \frac{1}{213}
+	$$
+
+	Относительная  пропускная способность $Q$
+
+	$$
+		Q=P_{\text{обсл}}=1-P_{\text{отк}}=1-r_{n+m}
+		= 1 - \frac{1}{213}
+		= \frac{212}{213}
+	$$
+
+	Среднее число занятых приборов $\bar{k}$
+
+	$$
+		\bar{k}=\rho Q
+		= \frac{1}{2} \frac{212}{213}
+		= \frac{106}{213}
+	$$
 
 \end{solution}
 
 \begin{conclusion}
 
+	$$
+		\bar{k} = \frac{106}{213}
+	$$
 \end{conclusion}
 
 \end{problem}
