@@ -1,7 +1,10 @@
 \section{Цепи Маркова}
 
+\subsection*{Общая теория}
 
+Стол прозрачный, граф круглый.
 
+\subsection*{Задачи}
 \begin{problem}
 
 \begin{condition}
@@ -13,6 +16,77 @@
 	и начальное распределение вероятностей состояний $\vec{p}(0)=(0;1;0)$.
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
+
+\begin{solution}
+
+	Матрица переходных вероятностей:
+	$$
+		P =
+		\begin{pmatrix}
+			\frac{3}{4} & \frac{1}{4} & 0           \\
+			\frac{1}{8} & \frac{5}{8} & \frac{1}{4} \\
+			\frac{1}{2} & \frac{1}{4} & \frac{1}{4}
+		\end{pmatrix}.
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(0)P^2
+		=(0;1;0)P^2.
+	$$
+
+	$$
+		\vec{p}(1)=\vec{p}(0)P
+		=(0;1;0)
+		\begin{pmatrix}
+			\frac{3}{4} & \frac{1}{4} & 0           \\
+			\frac{1}{8} & \frac{5}{8} & \frac{1}{4} \\
+			\frac{1}{2} & \frac{1}{4} & \frac{1}{4}
+		\end{pmatrix}
+		=\left(\frac{1}{8};\frac{5}{8};\frac{1}{4}\right).
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(1)P
+		=\left(\frac{1}{8};\frac{5}{8};\frac{1}{4}\right)
+		\begin{pmatrix}
+			\frac{3}{4} & \frac{1}{4} & 0           \\
+			\frac{1}{8} & \frac{5}{8} & \frac{1}{4} \\
+			\frac{1}{2} & \frac{1}{4} & \frac{1}{4}
+		\end{pmatrix}
+		=\left(\frac{19}{64};\frac{31}{64};\frac{7}{32}\right).
+	$$
+
+	Стационарное распределение $\bar r=(r_1,r_2,r_3)$:
+	$$
+		\bar r=(r_1,r_2,r_3), \qquad \bar r P=\bar r, \qquad r_1+r_2+r_3=1.
+	$$
+
+	$$
+		\begin{cases}
+			r_1=\frac{3}{4}r_1+\frac{1}{8}r_2+\frac{1}{2}r_3, \\
+			r_2=\frac{1}{4}r_1+\frac{5}{8}r_2+\frac{1}{4}r_3, \\
+			r_3=\frac{1}{4}r_2+\frac{1}{4}r_3,                \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			8r_1 = 6r_1 + r_2 + 4r_3,  \\
+			8r_2 = 2r_1 + 5r_2 + 2r_3, \\
+			8r_3 = 2r_2 + 2r_3,        \\
+			r_1 + r_2 + r_3 = 1.
+		\end{cases}
+	$$
+
+
+	$$
+		\bar r=\left(\frac{19}{64};\frac{31}{64};\frac{7}{32}\right).
+	$$
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
 
 \end{problem}
 
@@ -30,6 +104,14 @@
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
 
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
 \end{problem}
 
 
@@ -45,6 +127,14 @@
 	и начальное распределение вероятностей состояний $\vec{p}(0)=(0;0;1)$.
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
 
 \end{problem}
 
@@ -62,6 +152,14 @@
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
 
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
 \end{problem}
 
 
@@ -77,6 +175,14 @@
 	и начальное распределение вероятностей состояний $\vec{p}(0)=(0;1;0)$.
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
 
 \end{problem}
 
@@ -94,6 +200,14 @@
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
 
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
+
 \end{problem}
 
 
@@ -109,5 +223,13 @@
 	и начальное распределение вероятностей состояний $\vec{p}(0)=(0;0;1)$.
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
 \end{condition}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{conclusion}
+
+\end{conclusion}
 
 \end{problem}
