@@ -36,29 +36,29 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		                       & $(M|M|n|0)$                                         & $(M|M|n|\infty)$, $\nu<1$                                                                                            & $(M|M|n|m)$                                                                                                                \\
+		                       & $(M|M|n|0)$                                         & $(M|M|n|\infty)$, $\nu<1$                                                                                         & $(M|M|n|m)$                                                                                                                \\
 		\hline
-		$r_0$                  & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}\right)^{-1}$ & $\left(\sum_{k=0}^{n-1}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\frac{1}{1-\nu}\right)^{-1}$                               & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j\right)^{-1}$                                   \\
+		$r_0$                  & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}\right)^{-1}$ & $\left(\sum_{k=0}^{n-1}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\frac{1}{1-\nu}\right)^{-1}$                            & $\left(\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j\right)^{-1}$                                   \\
 		\hline
-		$P_{\text{отк}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $0$                                                                                                                  & $r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$                                                                                       \\
+		$P_{\text{отк}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $0$                                                                                                               & $r_{n+m}=\nu^m \frac{\rho^n}{n!}r_0$                                                                                       \\
 		\hline
-		$Q$                    & $P_{\text{обсл}}=1-P_{\text{отк}}$                  & $P_{\text{обсл}}=1-P_{\text{отк}}=1$                                                                                 & $P_{\text{обсл}}=1-P_{\text{отк}}$                                                                                         \\
+		$Q$                    & $P_{\text{обсл}}=1-P_{\text{отк}}$                  & $P_{\text{обсл}}=1-P_{\text{отк}}=1$                                                                              & $P_{\text{обсл}}=1-P_{\text{отк}}$                                                                                         \\
 		\hline
-		$A$                    & $\lambda Q$                                         & $\lambda Q=\lambda$                                                                                                  & $\lambda Q$                                                                                                                \\
+		$A$                    & $\lambda Q$                                         & $\lambda Q=\lambda$                                                                                               & $\lambda Q$                                                                                                                \\
 		\hline
-		$\bar{k}$              & $\rho Q$                                            & $\rho Q=\rho$                                                                                                        & $\rho Q$                                                                                                                   \\
+		$\bar{k}$              & $\rho Q$                                            & $\rho Q=\rho$                                                                                                     & $\rho Q$                                                                                                                   \\
 		\hline
-		$\bar{r}$              & $0$                                                 & $\nu \frac{r_n}{(1-\nu)^2}$                                                                                          & $\frac{\rho^n}{n!}r_0 \sum_{j=1}^{m} j \nu^j=\frac{\rho^n}{n!}r_0 \frac{\nu(1-(m+1)\nu^m + m\nu^{m+1})}{(1-\nu)^2}$        \\
+		$\bar{r}$              & $0$                                                 & $\nu \frac{r_n}{(1-\nu)^2}$                                                                                       & $\frac{\rho^n}{n!}r_0 \sum_{j=1}^{m} j \nu^j=\frac{\rho^n}{n!}r_0 \frac{\nu(1-(m+1)\nu^m + m\nu^{m+1})}{(1-\nu)^2}$        \\
 		\hline
-		$\bar{z}$              & $\bar{k}+\bar{r}=\bar{k}$                           & $\bar{k}+\bar{r}$                                                                                                    & $\bar{k}+\bar{r}$                                                                                                          \\
+		$\bar{z}$              & $\bar{k}+\bar{r}=\bar{k}$                           & $\bar{k}+\bar{r}$                                                                                                 & $\bar{k}+\bar{r}$                                                                                                          \\
 		\hline
-		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                         & $\frac{\bar{r}}{\lambda}$                                                                                            & $\frac{\bar{r}}{\lambda}$                                                                                                  \\
+		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                         & $\frac{\bar{r}}{\lambda}$                                                                                         & $\frac{\bar{r}}{\lambda}$                                                                                                  \\
 		\hline
-		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}$   & $\frac{\bar{z}}{\lambda}$                                                                                            & $\frac{\bar{z}}{\lambda}$                                                                                                  \\
+		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}$   & $\frac{\bar{z}}{\lambda}$                                                                                         & $\frac{\bar{z}}{\lambda}$                                                                                                  \\
 		\hline
-		$r_k$                  & $\frac{\rho^k}{k!} r_0, k=0,1,...n$                 & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & k \geq n,\end{cases}$ & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & n < k \leq n+m,\end{cases}$ \\
+		$r_k$                  & $\frac{\rho^k}{k!} r_0, k=0,1,...n$                 & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & k > n,\end{cases}$ & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & n < k \leq n+m,\end{cases}$ \\
 		\hline
-		$P_{\text{зан}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $\frac{\rho^n}{n!}\frac{r_0}{1-\nu}=1-\sum_{k=0}^{n-1}\frac{\rho^k}{k!}r_0$                                          & $\sum_{k=n}^{n+m} r_k = \frac{\rho^n}{n!}r_0 \sum_{j=0}^{m} \nu^j=\frac{\rho^n}{n!} r_0 \frac{1-\nu^{m+1}}{1-\nu}$         \\
+		$P_{\text{зан}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $\frac{\rho^n}{n!}\frac{r_0}{1-\nu}=1-\sum_{k=0}^{n-1}\frac{\rho^k}{k!}r_0$                                       & $\sum_{k=n}^{n+m} r_k = \frac{\rho^n}{n!}r_0 \sum_{j=0}^{m} \nu^j=\frac{\rho^n}{n!} r_0 \frac{1-\nu^{m+1}}{1-\nu}$         \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -378,8 +378,7 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
-
-	$(M|M|1|0|\infty)$,
+	$(M|M|1|\infty)$,
 	$T_{\text{обсл}}=10 \text{сек}=\frac{1}{6} \text{мин} = \frac{1}{360} \text{час}$ ,
 	$\mu=\frac{1}{T_{\text{обсл}}}=360 \text{клиентов в час}$,
 	$\lambda=300$,
@@ -414,10 +413,67 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|2|\infty)$,
+	$T_{\text{обсл}}=12 \text{мин} = \frac{1}{5} \text{час}$ ,
+	$\mu=\frac{1}{T_{\text{обсл}}}=5 \text{клиентов в час}$,
+	$\lambda=9$,
+	$\rho=\frac{\lambda}{\mu}=\frac{9}{5}$,
+	$\nu=\frac{\lambda}{n \mu} = \frac{9}{10}$
+
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n-1}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\frac{1}{1-\nu}
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{1}\frac{\rho^k}{k!}+\frac{\rho^2}{2!}\frac{1}{1-\nu}
+			\right)^{-1}
+			=\left(
+			1+ \rho + \frac{\rho^2}{2}\frac{1}{1-\nu}
+			\right)^{-1}
+			\\ & =\left(
+			1+ \frac{9}{5} + \frac{\frac{9}{5}^2}{2}\frac{1}{1-\frac{9}{10}}
+			\right)^{-1}
+			=\left(
+			19
+			\right)^{-1}
+			=\frac{1}{19}
+		\end{aligned}
+	$$
+
+	$$
+		r_n=\frac{\rho^n}{n!}r_0
+		=\frac{\frac{9}{5}^2}{2!} \frac{1}{19}
+		=\frac{81}{950}
+	$$
+
+	$$
+		\bar{k}=\rho
+		=\frac{9}{5}
+	$$
+
+	$$
+		\bar{r}=\nu \frac{r_n}{(1-\nu^2)}
+		=\frac{9}{10} \frac{\frac{81}{950}}{(1-\frac{9}{10})^2}
+		=\frac{729}{95}
+	$$
+
+	$$
+		\bar{z}=\bar{k}+ \bar{r}
+		=\frac{9}{5} + \frac{729}{95}
+		= \frac{180}{19}
+	$$
+
+	$$
+		\bar{t}_{\text{СМО}}=\frac{\bar{z}}{\lambda}
+		= \frac{\frac{180}{19}}{9}
+		= \frac{20}{19}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$\bar{t}_{\text{СМО}}=\frac{20}{19}$$
 \end{conclusion}
 
 \end{problem}
