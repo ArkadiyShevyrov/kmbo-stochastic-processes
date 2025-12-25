@@ -1,5 +1,93 @@
 \subsection*{Вопрос 25}
 
 \begin{condition}
-Спектральная плотность стационарного процесса, её свойства. Процесс «белый шум».
+	Спектральная плотность стационарного процесса, её свойства. Процесс «белый шум».
 \end{condition}
+
+\textbf{Стационарные процессы с непрерывным спектром}
+
+Стационарный в широком смысле процесс $\xi_t$ называется процессом
+с непрерывным спектром, если его спектральная функция $F_\xi(\omega)$
+дифференцируема:
+$
+	F'_\xi(\omega)=S_\xi^*(\omega).
+$
+
+В этом случае
+$
+	K_\xi(\tau)=\int_{-\infty}^{+\infty} e^{i\omega\tau}\, S_\xi^*(\omega)\, d\omega.
+$
+
+Функция $S_\xi^*(\omega)$ является неотрицательной и называется
+спектральной плотностью стационарного процесса.
+
+\medskip
+
+Функция $S_\xi^*(\omega)$ может быть найдена по формуле:
+$
+	S_\xi^*(\omega)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}
+	e^{-i\omega\tau}\, K_\xi(\tau)\, d\tau,
+$
+(формула обратного преобразования Фурье).
+
+\medskip
+
+Так как
+$
+	\overline{K_\xi(\tau)}=K_\xi(\tau)
+	=\int_{-\infty}^{+\infty} e^{-i\omega\tau} S_\xi^*(\omega)\, d\omega
+	=\int_{-\infty}^{+\infty} e^{i\omega\tau} S_\xi^*(-\omega)\, d\omega,
+$
+то
+$
+	S_\xi^*(\omega)=S_\xi^*(-\omega).
+$
+
+Следовательно,
+\begin{align*}
+	K_\xi(\tau)
+	 & =\int_{-\infty}^{+\infty} e^{i\omega\tau} S_\xi^*(\omega)\, d\omega \\
+	 & =\int_{0}^{+\infty} e^{i\omega\tau} S_\xi^*(\omega)\, d\omega
+	+\int_{0}^{+\infty} e^{-i\omega\tau} S_\xi^*(\omega)\, d\omega         \\
+	 & =\int_{0}^{+\infty} 2 S_\xi^*(\omega)\cos(\omega\tau)\, d\omega.
+\end{align*}
+
+Обозначая
+$
+	S_\xi(\omega)=2S_\xi^*(\omega),
+$
+получаем
+$
+	K_\xi(\tau)=\int_{0}^{+\infty} S_\xi(\omega)\cos(\omega\tau)\, d\omega,
+$
+причём
+$
+	S_\xi(\omega)=\frac{2}{\pi}\int_{0}^{+\infty}
+	K_\xi(\tau)\cos(\omega\tau)\, d\tau,
+$
+и
+$
+	S_\xi(\omega)=2S_\xi^*(\omega)=2S_\xi^*(-\omega).
+$
+
+\medskip
+
+\textbf{Белый шум.}
+
+Процессом \emph{белого шума} с интенсивностью $G$ ($G=\mathrm{const}$)
+называется стационарный процесс с спектральной плотностью
+$
+	S_\xi^*(\omega)=\frac{G}{2\pi}=\mathrm{const}.
+$
+
+Корреляционная функция процесса белого шума:
+$
+	K_\xi(\tau)=G\,\delta(\tau),
+$
+где $G$ — интенсивность белого шума,
+$\delta(\tau)$ — дельта-функция Дирака.
+
+Процесс белого шума имеет бесконечную дисперсию:
+$
+	D_\xi=G\,\delta(0)=+\infty.
+$

@@ -1,5 +1,76 @@
 \subsection*{Вопрос 16}
 
 \begin{condition}
-Корреляционная функция случайного процесса и её свойства. Примеры.
+	Корреляционная функция случайного процесса и её свойства. Примеры.
 \end{condition}
+
+
+Корреляционная функция комплексного случайного процесса $X_t$ определяется как
+$
+	K_X(t,s)
+	=
+	\mathbb{E}\bigl[(X_t-m_X(t))\,\overline{(X_s-m_X(s))}\bigr],
+	\qquad t,s\in T.
+$
+
+Эквивалентно,
+$
+	K_X(t,s)
+	=
+	\mathbb{E}[X_t\overline{X_s}]
+	-
+	m_X(t)\,\overline{m_X(s)}.
+$
+
+\medskip
+
+\textbf{Свойства корреляционной функции.}
+
+\begin{enumerate}
+	\item
+	      $
+		      K_X(t,s)=0
+	      $
+	      для некоррелированных значений процесса.
+
+	\item
+	      $
+		      K_X(t,t)=D_X(t)\ge 0.
+	      $
+
+	\item
+	      $
+		      |K_X(t,s)|^2 \le D_X(t)\,D_X(s).
+	      $
+
+	\item
+	      $
+		      K_X(s,t)=\overline{K_X(t,s)}.
+	      $
+
+	\item
+	      Пусть
+	      $
+		      Y_t=\varphi(t)\,X_t+d(t),
+	      $
+	      где $\varphi(t)$ и $d(t)$ — неслучайные функции.
+	      Тогда
+	      $
+		      K_Y(t,s)=\varphi(t)\,\overline{\varphi(s)}\,K_X(t,s).
+	      $
+
+	\item
+	      Для некоррелированных случайных процессов $X_t$ и $Y_t$
+	      $
+		      K_{X+Y}(t,s)=K_X(t,s)+K_Y(t,s).
+	      $
+
+	\item
+	      Для любых $t_1,t_2,\ldots,t_n\in T$ и любых
+	      $z_1,z_2,\ldots,z_n\in\mathbb{C}$
+	      выполняется неравенство
+	      $
+		      \sum_{i=1}^{n}\sum_{j=1}^{n}
+		      K_X(t_i,t_j)\,z_i\,\overline{z_j}\ge 0.
+	      $
+\end{enumerate}

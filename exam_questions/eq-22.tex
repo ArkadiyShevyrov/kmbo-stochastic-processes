@@ -1,5 +1,142 @@
 \subsection*{Вопрос 22}
 
 \begin{condition}
-Стационарные процессы в широком и узком смыслах. Свойства корреляционной функции.
+	Стационарные процессы в широком и узком смыслах. Свойства корреляционной функции.
 \end{condition}
+
+Пусть $X_t=X(t)$, $t\in\mathbb{R}$ — случайный процесс с конечномерными
+функциями распределения
+$
+	F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)
+	=
+	P(X_{t_1}\le x_1,\ldots,X_{t_n}\le x_n).
+$
+
+Случайный процесс $X_t$, $t\in\mathbb{R}$, называется
+\emph{стационарным в узком смысле}, если для любого $n$,
+произвольных значений $s,t_1,\ldots,t_n\in\mathbb{R}$ и $x_1,\ldots,x_n$
+выполняется равенство
+$
+	F_{t_1+s,\ldots,t_n+s}(x_1,\ldots,x_n)
+	=
+	F_{t_1,\ldots,t_n}(x_1,\ldots,x_n).
+$
+
+\medskip
+
+Случайный процесс $X_t$, удовлетворяющий условию
+$
+	\mathbb{E}|X_t|^2<\infty \qquad \forall\,t\in\mathbb{R},
+$
+с математическим ожиданием
+$
+	m_X(t)=\mathbb{E}X_t
+$
+и корреляционной функцией $K_X(t,s)$ называется
+\emph{стационарным в широком смысле}, если
+$
+	m_X(t)=\mathrm{const},
+	\qquad
+	K_X(t+u,s+u)=K_X(t,s)
+	\quad \forall\,u\in\mathbb{R}.
+$
+
+Корреляционная функция стационарного в широком смысле процесса
+зависит только от разности
+$
+	\tau=t-s
+$
+и может рассматриваться как функция одной переменной:
+$
+	K_X(\tau)=K_X(t-s)=K_X(t-s,0)=K_X(t,s).
+$
+
+Если стационарный в узком смысле процесс $X_t$
+удовлетворяет условию $\mathbb{E}|X_t|^2<\infty$,
+то он является и стационарным в широком смысле.
+
+\medskip
+
+\textbf{Свойства корреляционной функции стационарного в широком смысле процесса:}
+
+\begin{enumerate}
+	\item
+	      $
+		      K_X(0)=D_X=\mathrm{const}\ge 0.
+	      $
+
+	\item
+	      $
+		      |K_X(\tau)|\le K_X(0),
+		      \qquad \forall\,\tau\in\mathbb{R}.
+	      $
+
+	\item
+	      $
+		      K_X(-\tau)=\overline{K_X(\tau)}.
+	      $
+
+	\item
+	      Для любого $n$, произвольных $t_1,\ldots,t_n\in\mathbb{R}$ и
+	      $z_1,\ldots,z_n\in\mathbb{C}$ выполняется неравенство
+	      $
+		      \sum_{i=1}^{n}\sum_{j=1}^{n}
+		      K_X(t_i-t_j)\,z_i\,\overline{z_j}\ge 0.
+	      $
+
+	\item
+	      Случайный процесс
+	      $
+		      Y_t=\frac{dX_t}{dt}
+	      $
+	      также является стационарным в широком смысле, причём
+	      $
+		      m_Y=0,
+		      \qquad
+		      K_Y(\tau)=-K_X''(\tau).
+	      $
+\end{enumerate}
+
+\medskip
+
+\textbf{Свойства корреляционной функции $\xi_t$:}
+
+\begin{enumerate}
+	\item
+	      $
+		      K_\xi(-\tau)=\overline{K_\xi(\tau)}.
+	      $
+
+	\item
+	      $
+		      K_\xi(0)=D_\xi=\mathrm{const}.
+	      $
+
+	\item
+	      $
+		      |K_\xi(\tau)|\le D_\xi=K_\xi(0).
+	      $
+
+	\item
+	      Если
+	      $
+		      \eta_t=\alpha\,\xi_t+\beta,
+	      $
+	      то
+	      $
+		      K_\eta(\tau)=|\alpha|^2\,K_\xi(\tau).
+	      $
+
+	\item
+	      Для любых $t_1,\ldots,t_n$ и $z_1,\ldots,z_n\in\mathbb{C}$:
+	      $
+		      \sum_{i=1}^{n}\sum_{j=1}^{n}
+		      K_\xi(t_i-t_j)\,z_i\,\overline{z_j}\ge 0.
+	      $
+
+	\item
+	      Если $\xi_t$ и $\eta_t$ некоррелированы, то
+	      $
+		      K_{\xi+\eta}(\tau)=K_\xi(\tau)+K_\eta(\tau).
+	      $
+\end{enumerate}
