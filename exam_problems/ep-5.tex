@@ -303,10 +303,62 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|2|2)$
+
+	$\lambda=3$,
+	$\mu=\frac{1}{T_{\text{обсл}}}=3$ клиента в час,
+	$\rho=\frac{\lambda}{\mu}=1$,
+	$\nu=\frac{\lambda}{n\mu}=\frac{1}{2}$
+
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{2}\frac{\rho^k}{k!}+\frac{\rho^2}{n!}\sum_{j=1}^{2}\nu^j
+			\right)^{-1}
+			\\ & = \left(
+			1 + \rho + \frac{\rho^2}{2} + \frac{\rho^2}{2}(\nu+\nu^2)
+			\right)^{-1}
+			=\left(
+			1 + 1 + \frac{1}{2} + \frac{1}{2}\left(\frac{1}{2} + \frac{1}{4}\right)
+			\right)^{-1}
+			\\ & =\left(
+			\frac{23}{8}
+			\right)^{-1}
+			=\frac{8}{23}
+		\end{aligned}
+	$$
+
+	$$
+		r_{n+m}=r_{4}=\nu^m \frac{\rho^n}{n!}r_0
+		=\frac{1}{2}^2 \frac{1^2}{2!} \frac{8}{23}
+		= \frac{1}{23}
+	$$
+
+	Относительная  пропускная способность $Q$
+
+	$$
+		Q=P_{\text{обсл}}=1-P_{\text{отк}}=1-r_{n+m}
+		= 1 - \frac{1}{23}
+		= \frac{22}{23}
+	$$
+
+	Среднее число занятых приборов $\bar{k}$
+
+	$$
+		\bar{k}=\rho Q
+		= 1 \frac{22}{23}
+		= \frac{22}{23}
+	$$
+
+
 \end{solution}
 
 \begin{conclusion}
 
+	$$\bar{k}= \frac{22}{23}$$
 \end{conclusion}
 
 \end{problem}
