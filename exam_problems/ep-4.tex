@@ -31,9 +31,28 @@ $$
 	\int_{0}^{\infty} \tau  e^{-a\tau} \cos(\omega \tau) \, d\tau = \frac{a^2+\omega^2}{(a^2+\omega^2)^2}
 $$
 
-
+$$
+	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2} \, d\omega = \frac{\pi}{a} e^{-a|\tau|}
 $$
 
+
+$$
+	K(\tau)=\int_{0}^{\infty} S(\omega) \cos(\omega\tau) \, d\omega
+$$
+
+$$
+	S(\omega)=\frac{2}{\pi} \int_{0}^{\infty} K(\tau) \cos(\omega\tau) \, d\tau
+$$
+
+$$
+	S(\omega)=2\cdot S^*(\omega) = 2\cdot S^*(-\omega)
+$$
+
+------
+
+
+$$
+	K(\tau)=\int_{-\infty}^{+\infty} e^{i\omega \tau} S^*(\omega) \, d\omega
 $$
 
 
@@ -51,10 +70,26 @@ $$
 
 \begin{solution}
 
+	На $[0,\infty]$: $K(\tau)=2e^{-5\tau}$.
+
+	$$
+		\begin{aligned}
+			S(\omega) & =\frac{2}{\pi} \int_{0}^{\infty} K(\tau) \cos(\omega\tau)
+			= \frac{2}{\pi} \int_{0}^{\infty} 2e^{-5\tau} \cos(\omega\tau)
+			= \frac{4}{\pi} \int_{0}^{\infty} e^{-5\tau} \cos(\omega\tau)
+			\\ & = \frac{4}{\pi} \frac{5}{25+\omega^2}
+			= \frac{20}{\pi} \frac{1}{25+\omega^2}
+		\end{aligned}
+	$$
+
+	$$
+		S^*(\omega)=\frac{1}{2} S(\omega) = \frac{10}{\pi} \frac{1}{25+\omega^2}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$S^*(\omega)=\frac{10}{\pi} \frac{1}{25+\omega^2}$$
 \end{conclusion}
 
 \end{problem}
@@ -70,6 +105,7 @@ $$
 	$3\frac{dX(t)}{dt} - 6 X(t) = \frac{d^2 Y(t)}{d t^2}+\frac{d Y(t)}{dt} - 6 Y(t)$.
 	На вход поступает "белый шум" с интенсивностью
 	$G=3$.
+
 	Найти корреляционную функцию процесса $Y(t)$ на выходе.
 \end{condition}
 
@@ -95,6 +131,7 @@ $$
 	На вход поступает стационарный процесс $X(t)$
 	с корреляционной функцией
 	$K_X(\tau)=5e^{-3|\tau|}$.
+
 	Найти корреляционную функцию процесса $Y(t)$ на выходе.
 \end{condition}
 
@@ -117,15 +154,26 @@ $$
 
 	Спектральная плотность стационарного процесса
 	$S^*(\omega)=\frac{2}{\pi(\omega^2+25)}$.
+
 	Найти корреляционную функцию.
 \end{condition}
 
 \begin{solution}
 
+	$$
+		\begin{aligned}
+			K(\tau) & =\int_{-\infty}^{+\infty} e^{i\omega \tau} S^*(\omega) \, d\omega
+			=\int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{2}{\pi(\omega^2+25)} \, d\omega
+			\\ & = \frac{2}{\pi} \int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{1}{(\omega^2+5^2)} \, d\omega
+			= \frac{2}{\pi} \frac{\pi}{5} e^{-5|\tau|}
+			= \frac{2}{5} e^{-5|\tau|}
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$K(\tau) = \frac{2}{5} e^{-5|\tau|}$$
 \end{conclusion}
 
 \end{problem}
@@ -141,11 +189,17 @@ $$
 	$3 X(t) = \frac{d Y(t)}{dt} + 5 Y(t)$.
 	На вход поступает "белый шум" с интенсивностью
 	$G=2$.
+
 	Найти корреляционную функцию процесса $Y(t)$ на выходе.
 \end{condition}
 
 \begin{solution}
 
+	$$
+		\begin{aligned}
+			D & =\int_{-\infty}^{+\infty} S^*(\omega) \, d\omega
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
@@ -184,7 +238,9 @@ $$
 	(33.1)
 
 	Дана спектральная плотность стационарного процесса
-	$S^*(\omega)=\frac{3}{\pi(9+\omega^2)}$
+	$S^*(\omega)=\frac{3}{\pi(9+\omega^2)}$.
+
+	Найти дисперсию процесса.
 \end{condition}
 
 \begin{solution}
