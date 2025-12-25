@@ -539,14 +539,13 @@
 \end{problem}
 
 
-
 \begin{problem}
 
 \begin{condition}
 	(12.1)
 
 	В цепи Маркова дана матрица $P$ вероятностей перехода за один шаг:
-	$p_{21}=0.75$,$p_{12}=p_{33}=p_{21}=0$,
+	$p_{21}=0.75$, $p_{11}=p_{32}=p_{23}=0$,
 	$p_{33}=0.375$, $p_{21}=0.5$
 	и начальное распределение вероятностей состояний $\vec{p}(0)=(0;0;1)$.
 	Построить граф цепи Маркова, найти $\vec{p}(2)$ и стационарное распределение.
@@ -554,6 +553,7 @@
 
 \begin{solution}
 
+	p21 p21 мдээ вот это ахуенный билет (там реально на фотке так)
 \end{solution}
 
 \begin{conclusion}
@@ -578,9 +578,86 @@
 
 \begin{solution}
 
+	$$
+		P =
+		\begin{pmatrix}
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{4}{5} & \frac{1}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2}
+		\end{pmatrix}.
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(0)P^2
+		=(0;0;1)P^2.
+	$$
+
+	$$
+		\vec{p}(1)=\vec{p}(0)P
+		=(0;0;1)
+		\begin{pmatrix}
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{4}{5} & \frac{1}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2}
+		\end{pmatrix}
+		=\left(\frac{1}{2};0;\frac{1}{2}\right).
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(1)P
+		=\left(\frac{1}{2};0;\frac{1}{2}\right)
+		\begin{pmatrix}
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{4}{5} & \frac{1}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2}
+		\end{pmatrix}
+		=\left(\frac{1}{2};0;\frac{1}{2}\right).
+	$$
+
+	$$
+		\bar r=(r_1,r_2,r_3), \qquad \bar r P=\bar r, \qquad r_1+r_2+r_3=1.
+	$$
+
+	$$
+		\begin{cases}
+			r_1=\frac{1}{2}r_1+\frac{4}{5}r_2+\frac{1}{2}r_3, \\
+			r_2=\frac{1}{5}r_2,                               \\
+			r_3=\frac{1}{2}r_1+\frac{1}{2}r_3,                \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			2r_1=r_1+r_3, \\
+			5r_2=r_2,     \\
+			2r_3=r_1+r_3, \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		\begin{cases}
+			r_1=r_3, \\
+			r_2=0,   \\
+			r_1+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		r_1=r_3=\frac{1}{2}.
+	$$
+
+	$$
+		\bar r=\left(\frac{1}{2};0;\frac{1}{2}\right).
+	$$
+
 \end{solution}
 
 \begin{conclusion}
+
+	$$
+		\vec{p}(2)=\left(\frac{1}{2};0;\frac{1}{2}\right),
+		\bar r=\left(\frac{1}{2};0;\frac{1}{2}\right).
+	$$
 
 \end{conclusion}
 
