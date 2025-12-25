@@ -5,6 +5,7 @@
 Стол прозрачный, граф круглый.
 
 \subsection*{Задачи}
+
 \begin{problem}
 
 \begin{condition}
@@ -19,7 +20,6 @@
 
 \begin{solution}
 
-	Матрица переходных вероятностей:
 	$$
 		P =
 		\begin{pmatrix}
@@ -56,7 +56,6 @@
 		=\left(\frac{19}{64};\frac{31}{64};\frac{7}{32}\right).
 	$$
 
-	Стационарное распределение $\bar r=(r_1,r_2,r_3)$:
 	$$
 		\bar r=(r_1,r_2,r_3), \qquad \bar r P=\bar r, \qquad r_1+r_2+r_3=1.
 	$$
@@ -72,20 +71,46 @@
 		\begin{cases}
 			8r_1 = 6r_1 + r_2 + 4r_3,  \\
 			8r_2 = 2r_1 + 5r_2 + 2r_3, \\
-			8r_3 = 2r_2 + 2r_3,        \\
+			4r_3 = r_2 + r_3,          \\
 			r_1 + r_2 + r_3 = 1.
 		\end{cases}
 	$$
 
+	$$
+		\begin{cases}
+			2r_1 =  r_2 + 4r_3, \\
+			3r_2 = 2r_1 + 2r_3, \\
+			3r_3 = r_2,         \\
+			r_1 + r_2 + r_3 = 1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			2r_1 =  7r_3, \\
+			7r_3 = 2r_1,  \\
+			3r_3 = r_2,   \\
+			r_1 + r_2 + r_3 = 1.
+		\end{cases}
+	$$
 
 	$$
-		\bar r=\left(\frac{19}{64};\frac{31}{64};\frac{7}{32}\right).
+		r_3(\frac{7}{2}+3+1)=1
+		\Rightarrow
+		r_3=\frac{2}{15}
+	$$
+
+
+	$$
+		\bar r=\left(\frac{7}{15};\frac{2}{5};\frac{2}{15}\right).
 	$$
 
 \end{solution}
 
 \begin{conclusion}
 
+	$$
+		\vec{p}(2)=\left(\frac{19}{64};\frac{31}{64};\frac{7}{32}\right),
+		\bar r=\left(\frac{7}{15};\frac{2}{5};\frac{2}{15}\right).
+	$$
 \end{conclusion}
 
 \end{problem}
@@ -106,9 +131,95 @@
 
 \begin{solution}
 
+	$$
+		P =
+		\begin{pmatrix}
+			\frac{1}{5} & \frac{4}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			0           & \frac{3}{5} & \frac{2}{5}
+		\end{pmatrix}.
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(0)P^2
+		=(0;1;0)P^2.
+	$$
+
+	$$
+		\vec{p}(1)=\vec{p}(0)P
+		=(0;1;0)
+		\begin{pmatrix}
+			\frac{1}{5} & \frac{4}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			0           & \frac{3}{5} & \frac{2}{5}
+		\end{pmatrix}
+		=\left(\frac{1}{2};0;\frac{1}{2}\right).
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(1)P
+		=\left(\frac{1}{2};0;\frac{1}{2}\right)
+		\begin{pmatrix}
+			\frac{1}{5} & \frac{4}{5} & 0           \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			0           & \frac{3}{5} & \frac{2}{5}
+		\end{pmatrix}
+		=\left(\frac{1}{10};\frac{7}{10};\frac{1}{5}\right).
+	$$
+
+	$$
+		\bar r=(r_1,r_2,r_3), \qquad \bar r P=\bar r, \qquad r_1+r_2+r_3=1.
+	$$
+
+	$$
+		\begin{cases}
+			r_1=\frac{1}{5}r_1+\frac{1}{2}r_2, \\
+			r_2=\frac{4}{5}r_1+\frac{3}{5}r_3, \\
+			r_3=\frac{1}{2}r_2+\frac{2}{5}r_3, \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			10r_1=2r_1+5r_2, \\
+			5r_2=4r_1+3r_3,  \\
+			10r_3=5r_2+4r_3, \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		\begin{cases}
+			8r_1=5r_2,      \\
+			5r_2=4r_1+3r_3, \\
+			6r_3=5r_2,      \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			r_1=\frac{3}{4}r_3, \\
+			r_2=\frac{6}{5}r_3, \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		r_3\left(\frac{3}{4}+\frac{6}{5}+1\right)=1
+		\Rightarrow
+		r_3=\frac{20}{59}.
+	$$
+
+	$$
+		\bar r=\left(\frac{15}{59};\frac{24}{59};\frac{20}{59}\right).
+	$$
+
 \end{solution}
 
 \begin{conclusion}
+
+	$$
+		\vec{p}(2)=\left(\frac{1}{10};\frac{7}{10};\frac{1}{5}\right),
+		\bar r=\left(\frac{15}{59};\frac{24}{59};\frac{20}{59}\right).
+	$$
 
 \end{conclusion}
 
