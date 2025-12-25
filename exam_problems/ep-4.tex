@@ -221,7 +221,7 @@ $$
 	$$
 
 	$$
-		|T(i\omega)|^2=T(i\omega)\cdot \bar{T(i\omega)}
+		|T(i\omega)|^2=T(i\omega)\cdot \overline{T(i\omega)}
 		=\frac{3}{i\omega+3}\cdot\frac{3}{(-i\omega)+3}
 		=\frac{9}{3^2-(i\omega)^2}
 		=\frac{9}{3^2+\omega^2}
@@ -269,6 +269,52 @@ $$
 
 \begin{solution}
 
+	$$
+		\begin{aligned}
+			S_X(\omega) & =\frac{2}{\pi} \int_{0}^{+\infty} K_X(\tau) \cos(\omega\tau) \, d\tau
+			=\frac{2}{\pi} \int_{0}^{+\infty} 5e^{-3|\tau|} \cos(\omega\tau) \, d\tau
+			\\ & =\frac{10}{\pi} \int_{0}^{+\infty} e^{-3|\tau|} \cos(\omega\tau) \, d\tau
+			= \frac{10}{\pi} \frac{3}{3^2+\omega^2}
+		\end{aligned}
+	$$
+
+	$$
+		S_X^*(\omega)=\frac{1}{2}S_X(\omega)
+		=\frac{1}{2} \frac{10}{\pi} \frac{3}{3^2+\omega^2}
+		=\frac{5}{\pi} \frac{3}{3^2+\omega^2}
+	$$
+
+	$$
+		A(p)=2p+6,
+		B(p)=p+5
+	$$
+
+	$$
+		T(p)=\frac{A(p)}{B(p)}
+		=\frac{2p+6}{p+5}
+	$$
+
+	$$
+		|T(i\omega)|^2=T(i\omega)\cdot \overline{T(i\omega)}
+		=\frac{2i\omega+6}{i\omega+5}\cdot\frac{-2i\omega+6}{-i\omega+5}
+		=\frac{4(9+\omega^2)}{25+\omega^2}
+	$$
+
+	$$
+		S_Y^*(\omega)=|T(i\omega)|^2 S_X^*(\omega)
+		=\frac{4(9+\omega^2)}{25+\omega^2} \frac{5}{\pi} \frac{3}{3^2+\omega^2}
+		=\frac{60}{\pi} \frac{1}{5^2+\omega^2}
+	$$
+
+	$$
+		\begin{aligned}
+			K_Y(\tau) & =\int_{-\infty}^{+\infty} e^{i\omega \tau} S^*(\omega) \, d\omega
+			=\int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{60}{\pi} \frac{1}{5^2+\omega^2} \, d\omega
+			=\frac{60}{\pi} \int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{1}{5^2+\omega^2} \, d\omega
+			\\ &=\frac{60}{\pi} \frac{\pi}{5} e^{-5|\tau|}
+			=12  e^{-5|\tau|}
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
@@ -327,6 +373,42 @@ $$
 
 \begin{solution}
 
+	$$
+		K_X(\tau)=G\delta(\tau)=2\delta(\tau)
+		\Rightarrow
+		S_X^*(\omega)=\frac{G}{2\pi}=\frac{2}{2\pi}=\frac{1}{\pi}
+	$$
+
+	$$
+		A(p)=3,
+		B(p)=p+5
+	$$
+
+	$$
+		T(p)=\frac{A(p)}{B(p)}
+		=\frac{3}{p+5}
+	$$
+
+	$$
+		|T(i\omega)|^2=T(i\omega)\cdot \overline{T(i\omega)}
+		=\frac{3}{i\omega+5}\cdot\frac{3}{-i\omega+5}
+		=\frac{9}{5^2+\omega^2}
+	$$
+
+	$$
+		S_Y^*(\omega)=|T(i\omega)|^2 S_X^*(\omega)
+		=\frac{9}{5^2+\omega^2} \frac{1}{\pi}
+	$$
+
+	$$
+		\begin{aligned}
+			K_Y(\tau) & =\int_{-\infty}^{+\infty} e^{i\omega \tau} S^*(\omega) \, d\omega
+			=\int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{9}{5^2+\omega^2} \frac{1}{\pi} \, d\omega
+			= \frac{9}{\pi} \int_{-\infty}^{+\infty} e^{i\omega \tau} \frac{1}{5^2+\omega^2} \, d\omega
+			\\ &=\frac{9}{\pi} \frac{\pi}{5} e^{-5|\tau|}
+			=\frac{9}{5}  e^{-5|\tau|}
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
