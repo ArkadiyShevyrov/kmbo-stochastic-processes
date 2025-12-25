@@ -201,6 +201,9 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 			=\left(
 			1+2+2+2(1+1+1)
 			\right)^{-1}
+			\left(
+			11
+			\right)^{-1}
 			= \frac{1}{11}
 		\end{aligned}
 	$$
@@ -216,6 +219,7 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{conclusion}
 
+	$$P_{\text{зан}} = \frac{8}{11}$$
 \end{conclusion}
 
 \end{problem}
@@ -236,10 +240,51 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|5|0)$,
+	$T_{\text{обсл}}=20$ минут,
+	$\mu=\frac{1}{T_{\text{обсл}}}=3$ клиента в час,
+	$\lambda=3$,
+	$\rho=\frac{\lambda}{\mu}=1$,
+
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n}\frac{\rho^k}{k!}
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{5}\frac{\rho^k}{k!}
+			\right)^{-1}
+			\\ & = \left(
+			1 + 1+ \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120}
+			\right)^{-1}
+			\   & = \left(
+			\frac{163}{60}
+			\right)^{-1}
+			= \frac{60}{163}
+		\end{aligned}
+	$$
+
+	$$
+		r_1=\frac{\rho^k}{k!} r_0
+		= \frac{1^1}{1!} \frac{60}{163}
+		= \frac{60}{163}
+	$$
+
+	$$
+		r_2=\frac{\rho^k}{k!} r_0
+		= \frac{1^2}{2!} \frac{60}{163}
+		= \frac{30}{163}
+	$$
+
+	$$P_{\text{зан} \leq 3}=r_0 +r_1 +r_2
+		= \frac{60}{163} + \frac{60}{163} + \frac{30}{163}
+		= \frac{150}{163}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$P_{\text{зан} \leq 3}= \frac{150}{163}$$
 \end{conclusion}
 
 \end{problem}
