@@ -378,10 +378,24 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+
+	$(M|M|1|0|\infty)$,
+	$T_{\text{обсл}}=10 \text{сек}=\frac{1}{6} \text{мин} = \frac{1}{360} \text{час}$ ,
+	$\mu=\frac{1}{T_{\text{обсл}}}=360 \text{клиентов в час}$,
+	$\lambda=300$,
+	$\rho=\frac{\lambda}{\mu}=\frac{300}{360}=\frac{5}{6}$,
+
+	$$
+		\bar{r} = \frac{\rho^2}{1-\rho}
+		= \frac{(\frac{5}{6})^2}{1-\frac{5}{6}}
+		= \frac{\frac{25}{36}}{\frac{1}{6}}
+		= \frac{25}{6}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$\bar{r} = \frac{25}{6}$$
 \end{conclusion}
 
 \end{problem}
