@@ -714,10 +714,61 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|3|0)$
+
+	$\lambda=8$,
+	$T_{\text{обсл}}=15 \text{мин} = \frac{1}{4} \text{час}$ ,
+	$\mu=\frac{1}{T_{\text{обсл}}}=4$ клиента в час,
+	$\rho=\frac{\lambda}{\mu}=2$.
+
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n}\frac{\rho^k}{k!}
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{3}\frac{\rho^k}{k!}
+			\right)^{-1}
+			= \left(
+			1 + \rho + \frac{\rho^2}{2} + \frac{\rho^3}{6}
+			\right)^{-1}
+			\\ & =\left(
+			1 + 2 + \frac{8}{6}
+			\right)^{-1}
+			=\left(
+			\frac{19}{3}
+			\right)^{-1}
+			=\frac{3}{19}
+		\end{aligned}
+	$$
+
+	$$
+		r_{n+m}=\frac{\rho^n}{n!}r_0
+		=\frac{2^3}{3!} \frac{3}{19}
+		= \frac{4}{19}
+	$$
+
+	Относительная  пропускная способность $Q$
+
+	$$
+		Q=P_{\text{обсл}}=1-P_{\text{отк}}=1-r_{n+m}
+		= 1 - \frac{4}{19}
+		= \frac{15}{19}
+	$$
+
+	Среднее число занятых приборов $\bar{k}$
+
+	$$
+		\bar{k}=\rho Q
+		= 2 \frac{15}{19}
+		= \frac{30}{19}
+	$$
+
 \end{solution}
 
 \begin{conclusion}
 
+	$$\bar{k}=\frac{30}{19}$$
 \end{conclusion}
 
 \end{problem}
