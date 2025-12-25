@@ -494,10 +494,23 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|1|\infty)$,
+	$T_{\text{обсл}}=3 \text{мин} = \frac{1}{20} \text{час}$ ,
+	$\mu=\frac{1}{T_{\text{обсл}}}=20 \text{клиентов в час}$,
+	$\lambda=18$,
+	$\rho=\frac{\lambda}{\mu}=\frac{18}{20}=\frac{9}{10}$,
+
+	$$
+		t_{\text{оч}}=\frac{\bar{r}}{\lambda}
+		=\frac{\rho}{\mu(1-\rho)}
+		=\frac{\frac{9}{10}}{20(1-\frac{9}{10})}
+		=\frac{9}{20}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$t_{\text{оч}}=\frac{9}{20}$$
 \end{conclusion}
 
 \end{problem}
