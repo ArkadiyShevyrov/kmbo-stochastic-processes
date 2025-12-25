@@ -58,6 +58,8 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 		\hline
 		$r_k$                  & $\frac{\rho^k}{k!} r_0, k=0,1,...n$                 & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & k \geq n,\end{cases}$ & $\begin{cases} \frac{\rho^k}{k!} r_0, & 0 \leq k \leq n, \\ \frac{\rho^n}{n!} \nu^{k-n} r_0, & n < k \leq n+m,\end{cases}$ \\
 		\hline
+		$P_{\text{зан}}$       & $r_n=\frac{\rho^n}{n!}r_0$                          & $\frac{\rho^n}{n!}\frac{r_0}{1-\nu}=1-\sum_{k=0}^{n-1}\frac{\rho^k}{k!}r_0$                                          & $\sum_{k=n}^{n+m} r_k = \frac{\rho^n}{n!}r_0 \sum_{j=0}^{m} \nu^j=\frac{\rho^n}{n!} r_0 \frac{1-\nu^{m+1}}{1-\nu}$         \\
+		\hline
 	\end{tabular}
 \end{table}
 
@@ -83,6 +85,8 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 		$\bar{t}_{\text{оч}}$  & $\frac{\bar{r}}{\lambda}=0$                                             & $\frac{\bar{r}}{\lambda}=\frac{\rho}{\mu(1-\rho)}$ & $\frac{\bar{r}}{\lambda}$                                                             \\
 		\hline
 		$\bar{t}_{\text{СМО}}$ & $\frac{\bar{z}}{\lambda}=\frac{\bar{k}}{\lambda}=\frac{1}{\mu(1+\rho)}$ & $\frac{\bar{z}}{\lambda}=\frac{1}{\mu(1-\rho)}$    & $\frac{\bar{z}}{\lambda}$                                                             \\
+		\hline
+		$P_{\text{зан}}$       & $r_1=\frac{\rho}{1+\rho}$                                               & $\rho$                                             & $1-r_0=\frac{\rho(1-\rho^{m+1})}{1-\rho^{m+2}}$                                       \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -183,6 +187,30 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 	$\rho=\frac{\lambda}{\mu}=2$,
 	$\nu=\frac{\lambda}{n\mu}=1$.
 
+	$$
+		\begin{aligned}
+			r_0 & =\left(
+			\sum_{k=0}^{n}\frac{\rho^k}{k!}+\frac{\rho^n}{n!}\sum_{j=1}^{m}\nu^j
+			\right)^{-1}
+			=\left(
+			\sum_{k=0}^{2}\frac{\rho^k}{k!}+\frac{\rho^2}{n!}\sum_{j=1}^{3}\nu^j
+			\right)^{-1}
+			\\ & = \left(
+			1 + \rho + \frac{\rho^2}{2} + \frac{\rho^2}{2}(\nu+\nu^2+\nu^3)
+			\right)^{-1}
+			=\left(
+			1+2+2+2(1+1+1)
+			\right)^{-1}
+			= \frac{1}{11}
+		\end{aligned}
+	$$
+
+	$$P_{\text{зан}}=\sum_{k=n}^{n+m} r_k
+		= \frac{\rho^n}{n!}r_0 \sum_{j=0}^{m} \nu^j
+		= \frac{2^2}{2} \frac{1}{11} \sum_{j=0}^{3} 1^j
+		= 2 \frac{1}{11} 4
+		= \frac{8}{11}
+	$$
 
 \end{solution}
 
