@@ -3,19 +3,6 @@
 \subsection*{Общая теория}
 
 $$
-	cos(\pi k) = (-1)^k
-$$
-
-$$
-	(1-(-1)^k) f(x)
-	=
-	\begin{cases}
-		2 f(x), & k = 2m+1, \\
-		0,      & k = 2m.
-	\end{cases}
-$$
-
-$$
 	\int_{0}^{\infty} e^{a\tau} \, = \frac{1}{a}
 $$
 
@@ -31,10 +18,72 @@ $$
 	\int_{0}^{\infty} \tau  e^{-a\tau} \cos(\omega \tau) \, d\tau = \frac{a^2+\omega^2}{(a^2+\omega^2)^2}
 $$
 
+\textbf{Формула Выч1:}
+
 $$
 	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2} \, d\omega = \frac{\pi}{a} e^{-a|\tau|}
 $$
 
+$(\omega^2 + a^2)=(\omega-i a)(\omega+i a)$ - полюс первого порядка
+
+По лемме Жордана берём $\tau>0$, то есть только $i a$.
+
+$$
+	Rez(f,i a), f=\frac{P(z)}{Q(z)}
+	\Rightarrow
+	Req(f,i a)=\left[\frac{P(z)}{Q'(z)}\right]_{z_0=i a}
+	\Rightarrow
+	Req(f,i a)=\left[\frac{e^{i\omega \tau}}{2\omega}\right]_{\omega_0=i a}
+	=\frac{e^{-a\tau}}{2\cdot i a}
+$$
+
+$$
+	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2}
+	=\left[2\pi i \cdot Rez(f,i a)\right]
+	=\left[2\pi i \cdot \frac{e^{-a\tau}}{2\cdot i a}\right]
+	=\frac{\pi}{a} e^{-a|\tau|}
+$$
+
+\textbf{Формула Выч2:}
+
+$$
+	\int_{-\infty}^{+\infty} \frac{1}{\omega^2 +a^2} \, d\omega = \frac{\pi}{a}
+$$
+
+$(\omega^2 + a^2)=(\omega-i a)(\omega+i a)$ - полюс первого порядка
+
+По лемме Жордана берём $\tau>0$, то есть только $i a$.
+
+$$
+	Rez(f,i a), f=\frac{P(z)}{Q(z)}
+	\Rightarrow
+	Req(f,i a)=\left[\frac{P(z)}{Q'(z)}\right]_{z_0=i a}
+	\Rightarrow
+	Req(f,i a)=\left[\frac{1}{2\omega}\right]_{\omega_0=i a}
+	=\frac{1}{2\cdot i a}
+$$
+
+$$
+	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2}
+	=\left[2\pi i \cdot Rez(f,i a)\right]
+	=\left[2\pi i \cdot \frac{1}{2\cdot i a}\right]
+	=\frac{\pi}{a}
+$$
+
+\textbf{Формула Выч3:}
+
+$$
+	\int_{-\infty}^{+\infty} \frac{1}{(\omega^2 +a^2)^2} \, d\omega = \frac{\pi}{2a^3}
+$$
+
+\textbf{Формула Выч4:}
+
+$$
+	\int_{-\infty}^{+\infty} \frac{\omega^2}{(\omega^2 +a^2)^2} \, d\omega = \frac{\pi}{2a}
+$$
+
+
+Формулы далее
 
 $$
 	K(\tau)=\int_{0}^{\infty} S(\omega) \cos(\omega\tau) \, d\omega
@@ -195,11 +244,6 @@ $$
 
 \begin{solution}
 
-	$$
-		\begin{aligned}
-			D & =\int_{-\infty}^{+\infty} S^*(\omega) \, d\omega
-		\end{aligned}
-	$$
 \end{solution}
 
 \begin{conclusion}
@@ -222,10 +266,20 @@ $$
 
 \begin{solution}
 
+	$$
+		\begin{aligned}
+			D & = \int_{-\infty}^{+\infty} S^*(\omega) \, d\omega
+			= \int_{-\infty}^{+\infty} \frac{\omega^2+5}{\pi(\omega^2+1)^2} \, d\omega
+			\\ & = \frac{5}{\pi} \int_{-\infty}^{+\infty} \frac{1}{(\omega^2+1)^2} \, d\omega + \frac{1}{\pi}  \int_{-\infty}^{+\infty} \frac{\omega^2}{(\omega^2+1)^2} \, d\omega
+			\\ & = \frac{5}{\pi} \frac{\pi}{2} + \frac{1}{\pi} \frac{\pi}{2}
+			= 3
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$D = 3$$
 \end{conclusion}
 
 \end{problem}
@@ -245,10 +299,20 @@ $$
 
 \begin{solution}
 
+	$$
+		\begin{aligned}
+			D & = \int_{-\infty}^{+\infty} S^*(\omega) \, d\omega
+			= \int_{-\infty}^{+\infty} \frac{3}{\pi(9+\omega^2)} \, d\omega
+			\\ & = \frac{3}{\pi} \int_{-\infty}^{+\infty} \frac{1}{9+\omega^2} \, d\omega
+			\\ & = \frac{3}{\pi} \frac{\pi}{3}
+			= 1
+		\end{aligned}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$D = 1$$
 \end{conclusion}
 
 \end{problem}
