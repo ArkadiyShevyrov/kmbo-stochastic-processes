@@ -76,12 +76,58 @@ $$
 	\int_{-\infty}^{+\infty} \frac{1}{(\omega^2 +a^2)^2} \, d\omega = \frac{\pi}{2a^3}
 $$
 
+$(\omega^2 + a^2)^2=(\omega-i a)^2(\omega+i a)^2$ - полюс второго порядка
+
+По лемме Жордана берём $\tau>0$, то есть только $i a$.
+
+$$
+	\begin{aligned}
+		Req(f,i a) & =\lim_{z\to i a}\left(\left[(z-ia)^2\frac{1}{(z-ia)^2(z+ia)^2}\right]'\right)
+		=\lim_{z\to i a}\left(\left[\frac{1}{(z+ia)^2}\right]'\right)
+		\\ & = \lim_{z\to i a}\left(-\frac{2}{(z+ia)^3}\right)
+		=-\frac{2}{(2ia)^3}
+		=-\frac{2}{8i^3a^3}
+		=\frac{1}{4ia^3}
+	\end{aligned}
+$$
+
+$$
+	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2}
+	=\left[2\pi i \cdot Rez(f,i a)\right]
+	=\left[2\pi i \cdot \frac{1}{4ia^3}\right]
+	=\frac{pi}{2a^3}
+$$
+
 \textbf{Формула Выч4:}
 
 $$
 	\int_{-\infty}^{+\infty} \frac{\omega^2}{(\omega^2 +a^2)^2} \, d\omega = \frac{\pi}{2a}
 $$
 
+
+$(\omega^2 + a^2)^2=(\omega-i a)^2(\omega+i a)^2$ - полюс второго порядка
+
+По лемме Жордана берём $\tau>0$, то есть только $i a$.
+
+$$
+	\begin{aligned}
+		Req(f,i a) & =\lim_{z\to i a}\left(\left[(z-ia)^2\frac{z^2}{(z-ia)^2(z+ia)^2}\right]'\right)
+		=\lim_{z\to i a}\left(\left[\frac{z^2}{(z+ia)^2}\right]'\right)
+		\\ & = \lim_{z\to i a}\left(\frac{2z(z+ia)^2-2z^2(z+ia)}{(z+ia)^4}\right)
+		= \lim_{z\to i a}\left(\frac{2z(z+ia)-2z^2}{(z+ia)^3}\right)
+		\\ & = \lim_{z\to i a}\left(\frac{2zia}{(z+ia)^3}\right)
+		= \frac{2(ia)(ia)}{(2ia)^3}
+		= \frac{-2a^2}{8i^3a^3}
+		= \frac{1}{4ia}
+	\end{aligned}
+$$
+
+$$
+	\int_{-\infty}^{+\infty} e^{i\omega\tau} \frac{1}{\omega^2+a^2}
+	=\left[2\pi i \cdot Rez(f,i a)\right]
+	=\left[2\pi i \cdot \frac{1}{4ia}\right]
+	=\frac{\pi}{2a}
+$$
 
 Формулы далее
 
