@@ -17,12 +17,6 @@
 
 \usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.5cm,right=1.5cm]{geometry}
 
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem{definition}{Определение}[section]
-\newtheorem{example}{Пример}[section]
-
-\newcommand{\term}[1]{\textit{#1}\textnormal{}} 
-
 \usepackage{epigraph}
 
 \usepackage[none]{hyphenat}
@@ -38,6 +32,17 @@
 \renewcommand{\epigraphflush}{flushleft}
 
 \newenvironment{condition}{\par\textbf{Условие.}}{\par}
+
+\newcommand{\Definition}[2]{%
+  \noindent\textbf{Определение.} \textit{#1} --
+  \ignorespaces#2\unskip
+}
+
+\newcommand{\Property}[2]{%
+  \noindent\textbf{Свойство.} \textit{#1}.
+  \ignorespaces#2\unskip
+}
+
 
 % Заголовок
 \title{Вопросы к экзамену. Лобузов}
