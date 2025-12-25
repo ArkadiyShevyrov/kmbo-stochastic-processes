@@ -241,9 +241,88 @@
 
 \begin{solution}
 
+	$$
+		P =
+		\begin{pmatrix}
+			0           & \frac{3}{4} & \frac{1}{4} \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{3}{4} & \frac{1}{4} & 0
+		\end{pmatrix}.
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(0)P^2
+		=(0;0;1)P^2.
+	$$
+
+	$$
+		\vec{p}(1)=\vec{p}(0)P
+		=(0;0;1)
+		\begin{pmatrix}
+			0           & \frac{3}{4} & \frac{1}{4} \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{3}{4} & \frac{1}{4} & 0
+		\end{pmatrix}
+		=\left(\frac{3}{4};\frac{1}{4};0\right).
+	$$
+
+	$$
+		\vec{p}(2)=\vec{p}(1)P
+		=\left(\frac{3}{4};\frac{1}{4};0\right)
+		\begin{pmatrix}
+			0           & \frac{3}{4} & \frac{1}{4} \\
+			\frac{1}{2} & 0           & \frac{1}{2} \\
+			\frac{3}{4} & \frac{1}{4} & 0
+		\end{pmatrix}
+		=\left(\frac{1}{8};\frac{9}{16};\frac{5}{16}\right).
+	$$
+
+	$$
+		\bar r=(r_1,r_2,r_3), \qquad \bar r P=\bar r, \qquad r_1+r_2+r_3=1.
+	$$
+
+	$$
+		\begin{cases}
+			r_1=\frac{1}{2}r_2+\frac{3}{4}r_3, \\
+			r_2=\frac{3}{4}r_1+\frac{1}{4}r_3, \\
+			r_3=\frac{1}{4}r_1+\frac{1}{2}r_2, \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+		\Rightarrow
+		\begin{cases}
+			4r_1=2r_2+3r_3, \\
+			4r_2=3r_1+r_3,  \\
+			4r_3=r_1+2r_2,  \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		\begin{cases}
+			r_2=\frac{13}{14}r_1, \\
+			r_3=\frac{5}{7}r_1,   \\
+			r_1+r_2+r_3=1.
+		\end{cases}
+	$$
+
+	$$
+		r_1\left(1+\frac{13}{14}+\frac{5}{7}\right)=1
+		\Rightarrow
+		r_1=\frac{14}{37}.
+	$$
+
+	$$
+		\bar r=\left(\frac{14}{37};\frac{13}{37};\frac{10}{37}\right).
+	$$
+
 \end{solution}
 
 \begin{conclusion}
+
+	$$
+		\vec{p}(2)=\left(\frac{1}{8};\frac{9}{16};\frac{5}{16}\right),
+		\bar r=\left(\frac{14}{37};\frac{13}{37};\frac{10}{37}\right).
+	$$
 
 \end{conclusion}
 
