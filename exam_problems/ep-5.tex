@@ -88,6 +88,8 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 		\hline
 		$P_{\text{зан}}$       & $r_1=\frac{\rho}{1+\rho}$                                               & $\rho$                                             & $1-r_0=\frac{\rho(1-\rho^{m+1})}{1-\rho^{m+2}}$                                       \\
 		\hline
+		$r_k$                  & $\rho^k r_0$                                                            & $(1-\rho)\rho^k$                                   & $\rho\ne 1: \frac{1-\rho}{1-\rho^{m+2}}$, $\rho=1: \frac{1}{m+2}$                     \\
+		\hline
 	\end{tabular}
 \end{table}
 
@@ -654,10 +656,46 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|1|\infty)$,
+
+	$\lambda=120$,
+	$r_1=(1-\rho)\rho=\frac{2}{9}$
+
+	$$
+		r_k=(1-\rho)\rho^K
+		\rightarrow
+		r_1=(1-\rho)\rho=\frac{2}{9}
+		\rightarrow
+		9\rho^2-9\rho+2=0
+		\rightarrow
+		\rho_1=\frac{1}{3}, \rho_2=\frac{2}{3}
+	$$
+
+	Если $\rho=\frac{1}{3}$:
+
+	$$
+		\mu=\frac{\lambda}{\rho}=\frac{120}{\frac{1}{3}}=360
+	$$
+
+	$$
+		T_{\text{обсл}}=\frac{1}{\mu}=\frac{1}{360}
+	$$
+
+	Если $\rho=\frac{2}{3}$:
+
+	$$
+		\mu=\frac{\lambda}{\rho}=\frac{120}{\frac{2}{3}}=180
+	$$
+
+	$$
+		T_{\text{обсл}}=\frac{1}{\mu}=\frac{1}{180}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	Или $T_{\text{обсл}}=\frac{1}{360}$
+	или $T_{\text{обсл}}=\frac{1}{180}$
 \end{conclusion}
 
 \end{problem}
