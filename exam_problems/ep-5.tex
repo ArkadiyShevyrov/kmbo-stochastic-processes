@@ -68,7 +68,7 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 	\begin{tabular}{c|c|c|c}
 		                       & $(M|M|1|0)$                                                             & $(M|M|1|\infty)$, $\nu<1$                          & $(M|M|1|m)$                                                                           \\
 		\hline
-		$r_0$                  & $(1+\rho)^{-1}$                                                         & $1-\rho$                                           & $\frac{1-\rho}{1-\rho^{m+2}}$                                                         \\
+		$r_0$                  & $(1+\rho)^{-1}$                                                         & $1-\rho$                                           & $\rho\ne 1:\frac{1-\rho}{1-\rho^{m+2}}$ | $\rho=1:\frac{1}{m+2}$                      \\
 		\hline
 		$P_{\text{отк}}$       & $\rho r_0= \frac{\rho}{1+\rho}$                                         & $0$                                                & $\rho_{m+1}=\rho^{m+1}r_0=\frac{(1-\rho)\rho^{m+1}}{1-\rho^{m+2}}$                    \\
 		\hline
@@ -530,10 +530,33 @@ $\bar{t}_{\text{СМО}}$-  среднее время в системе.
 
 \begin{solution}
 
+	$(M|M|1|8)$,
+	$T_{\text{обсл}}=3 \text{мин} = \frac{1}{20} \text{час}$ ,
+	$\mu=\frac{1}{T_{\text{обсл}}}=20 \text{клиентов в час}$,
+	$\lambda=20$,
+	$\rho=\frac{\lambda}{\mu}=\frac{20}{20}=1$.
+
+
+	$$
+		\rho=1: r_0=\frac{1}{m+2}=\frac{1}{10}
+	$$
+
+	$$
+		\bar{r} = r_0 \sum_{j=1}^{m} j \rho^j
+		=\frac{1}{10} \sum_{j=1}^{8} j 1^j
+		=\frac{1}{10} 36 = \frac{18}{5}
+	$$
+
+	$$
+		t_{\text{оч}}=\frac{\bar{r}}{\lambda}
+		= \frac{\frac{18}{5}}{20}
+		=\frac{9}{50}
+	$$
 \end{solution}
 
 \begin{conclusion}
 
+	$$t_{\text{оч}}=\frac{9}{50}$$
 \end{conclusion}
 
 \end{problem}
